@@ -1,0 +1,54 @@
+{
+    "categories": [
+        {
+            "name": "Frontend",
+            "skills": [
+                { "name": "React", "logo": "react", "note": "5+ years" },
+                { "name": "TypeScript", "logo": "typescript", "note": "4+ years" },
+                { "name": "Next.js", "logo": "nextjs" },
+                { "name": "Vue.js", "logo": "vue" },
+                {
+                    "name": "Tailwind CSS",
+                    "logo": "tailwind",
+                    "note": "Primary styling"
+                },
+                { "name": "HTML/CSS", "logo": "html" }
+            ]
+        },
+        {
+            "name": "Backend",
+            "skills": [
+                { "name": "Node.js", "logo": "nodejs", "note": "4+ years" },
+                { "name": "Python", "logo": "python" },
+                { "name": "Go", "logo": "go" },
+                { "name": "PostgreSQL", "logo": "postgresql" },
+                { "name": "MongoDB", "logo": "mongodb" },
+                { "name": "Redis", "logo": "redis" }
+            ]
+        },
+        {
+            "name": "DevOps & Tools",
+            "skills": [
+                { "name": "Git", "logo": "git", "note": "Daily driver" },
+                { "name": "Docker", "logo": "docker" },
+                { "name": "AWS", "logo": "aws" },
+                { "name": "Vercel", "logo": "vercel" },
+                { "name": "GitHub Actions", "logo": "github" },
+                { "name": "Linux", "logo": "linux" }
+            ]
+        },
+        {
+            "name": "Design & Other",
+            "skills": [
+                { "name": "Figma", "logo": "figma", "note": "Design handoff" },
+                { "name": "REST APIs", "logo": "api" },
+                { "name": "GraphQL", "logo": "graphql" },
+                {
+                    "name": "Testing",
+                    "logo": "testing",
+                    "note": "Jest, Vitest, Playwright"
+                }
+            ]
+        }
+    ]
+}

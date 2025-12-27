@@ -1,0 +1,53 @@
+[
+    {
+        "id": "exp-1",
+        "role": "Senior Frontend Engineer",
+        "company": "TechCorp Inc.",
+        "location": "Remote",
+        "type": "Full-time",
+        "startDate": "Jan 2023",
+        "endDate": "Present",
+        "description": "Leading frontend development for the company's flagship SaaS platform, focusing on performance optimization and developer experience.",
+        "responsibilities": [
+            "Architected and implemented a design system used across 5 product teams",
+            "Reduced bundle size by 40% through code splitting and lazy loading strategies",
+            "Mentored junior developers and conducted code reviews",
+            "Led migration from JavaScript to TypeScript improving code reliability"
+        ],
+        "stack": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL"]
+    },
+    {
+        "id": "exp-2",
+        "role": "Full Stack Developer",
+        "company": "StartupXYZ",
+        "location": "San Francisco, CA",
+        "type": "Full-time",
+        "startDate": "Jun 2021",
+        "endDate": "Dec 2022",
+        "description": "Built and maintained core product features for an early-stage fintech startup, working across the entire stack.",
+        "responsibilities": [
+            "Developed real-time payment processing system handling 10k+ daily transactions",
+            "Built responsive dashboard for financial analytics and reporting",
+            "Implemented OAuth 2.0 authentication with multi-factor authentication",
+            "Optimized database queries reducing API response times by 60%"
+        ],
+        "stack": ["Node.js", "React", "PostgreSQL", "Redis", "AWS"]
+    },
+    {
+        "id": "exp-3",
+        "role": "Frontend Developer",
+        "company": "Digital Agency Co.",
+        "location": "New York, NY",
+        "type": "Full-time",
+        "startDate": "Aug 2019",
+        "endDate": "May 2021",
+        "description": "Delivered high-quality web applications for various clients across e-commerce, media, and healthcare industries.",
+        "responsibilities": [
+            "Built 15+ responsive websites and web applications for diverse clients",
+            "Collaborated with designers to implement pixel-perfect UI components",
+            "Integrated third-party APIs including payment gateways and CMS platforms",
+            "Maintained and improved legacy codebases while adding new features"
+        ],
+        "stack": ["JavaScript", "Vue.js", "SCSS", "WordPress", "Shopify"]
+    }
+]

@@ -1,0 +1,95 @@
+[
+    {
+        "id": "devflow",
+        "name": "DevFlow",
+        "description": "A modern developer productivity dashboard with real-time metrics and integrations.",
+        "detailedDescription": "DevFlow is a comprehensive developer productivity platform that aggregates data from GitHub, Jira, and Slack to provide actionable insights. Features include commit analytics, PR review times, sprint velocity tracking, and team collaboration metrics. Built with a focus on performance and real-time updates using WebSockets.",
+        "link": "https://devflow.example.com",
+        "repo": "https://github.com/username/devflow",
+        "status": "Active",
+        "startDate": "2024-03",
+        "endDate": null,
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Node.js", "color": "#339933" },
+            { "name": "PostgreSQL", "color": "#4169E1" },
+            { "name": "Redis", "color": "#DC382D" }
+        ],
+        "highlights": [
+            "Real-time dashboard with WebSocket updates",
+            "OAuth integrations with GitHub, Jira, Slack",
+            "Custom analytics engine for developer metrics",
+            "Team-based permissions and workspaces"
+        ]
+    },
+    {
+        "id": "pixelcraft",
+        "name": "PixelCraft",
+        "description": "Browser-based pixel art editor with collaborative features and export options.",
+        "detailedDescription": "PixelCraft is a web-based pixel art creation tool designed for game developers and artists. It supports real-time collaboration, layer management, animation timeline, and exports to various formats including sprite sheets. The canvas is implemented using WebGL for smooth performance even with large artworks.",
+        "link": "https://pixelcraft.example.com",
+        "repo": "https://github.com/username/pixelcraft",
+        "status": "Completed",
+        "startDate": "2023-08",
+        "endDate": "2024-02",
+        "stack": [
+            { "name": "Vue.js", "color": "#4FC08D" },
+            { "name": "WebGL", "color": "#990000" },
+            { "name": "Firebase", "color": "#FFCA28" },
+            { "name": "Tailwind", "color": "#06B6D4" }
+        ],
+        "highlights": [
+            "WebGL-powered canvas for 60fps performance",
+            "Real-time multiplayer collaboration",
+            "Animation timeline with onion skinning",
+            "Export to PNG, GIF, and sprite sheets"
+        ]
+    },
+    {
+        "id": "cloudnote",
+        "name": "CloudNote",
+        "description": "Markdown-first note-taking app with end-to-end encryption and offline support.",
+        "detailedDescription": "CloudNote is a privacy-focused note-taking application built for developers and writers. It features a distraction-free Markdown editor with live preview, end-to-end encryption, full offline support with background sync, and powerful organization through tags and nested folders.",
+        "link": null,
+        "repo": "https://github.com/username/cloudnote",
+        "status": "On Hold",
+        "startDate": "2023-01",
+        "endDate": "2023-06",
+        "stack": [
+            { "name": "Next.js", "color": "#000000" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Prisma", "color": "#2D3748" },
+            { "name": "SQLite", "color": "#003B57" }
+        ],
+        "highlights": [
+            "End-to-end encryption with Web Crypto API",
+            "PWA with full offline functionality",
+            "Real-time Markdown preview",
+            "Cross-device sync with conflict resolution"
+        ]
+    },
+    {
+        "id": "apiforge",
+        "name": "API Forge",
+        "description": "Visual API builder and testing tool with automatic documentation generation.",
+        "detailedDescription": "API Forge is a developer tool that simplifies API development workflow. It provides a visual interface for designing RESTful APIs, automatic OpenAPI spec generation, built-in testing with environment variables, and mock server capabilities. Perfect for prototyping and API-first development.",
+        "link": "https://apiforge.dev",
+        "repo": null,
+        "status": "Active",
+        "startDate": "2024-01",
+        "endDate": null,
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "Go", "color": "#00ADD8" },
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "MongoDB", "color": "#47A248" }
+        ],
+        "highlights": [
+            "Visual API endpoint designer",
+            "Auto-generated OpenAPI documentation",
+            "Built-in mock server for testing",
+            "Environment and variable management"
+        ]
+    }
+]
