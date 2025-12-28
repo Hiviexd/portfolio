@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Github01Icon, Linkedin01Icon, NewTwitterIcon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { Icon } from "@/components/icon";
+import { cn } from "@/lib/utils";
 import socialsData from "../../data/socials.json";
 
 type SocialLink = {
@@ -25,18 +26,25 @@ export function SocialLinks() {
         <div className="flex items-center gap-1">
             {socials.map((link) => {
                 const IconComponent = iconMap[link.icon];
-                if (!IconComponent) return null;
 
                 return (
                     <Tooltip key={link.name}>
                         <TooltipTrigger
                             render={
-                                <Button variant="ghost" size="icon" className="cursor-pointer">
-                                    <a href={link.href} target="_blank" rel="noopener noreferrer">
+                                <a
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={cn(
+                                        "inline-flex items-center justify-center size-8 rounded-lg border border-transparent hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                                    )}>
+                                    {IconComponent ? (
                                         <HugeiconsIcon icon={IconComponent} strokeWidth={2} className="size-[18px]" />
-                                        <span className="sr-only">{link.name}</span>
-                                    </a>
-                                </Button>
+                                    ) : (
+                                        <Icon src={link.icon} size={18} />
+                                    )}
+                                    <span className="sr-only">{link.name}</span>
+                                </a>
                             }
                         />
                         <TooltipContent>{link.name}</TooltipContent>

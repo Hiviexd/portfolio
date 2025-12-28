@@ -1,22 +1,27 @@
 [
     {
         "name": "GitHub",
-        "href": "https://github.com/johndoe",
+        "href": "https://github.com/Hiviexd",
         "icon": "github"
     },
     {
         "name": "LinkedIn",
-        "href": "https://linkedin.com/in/johndoe",
+        "href": "https://linkedin.com/in/rayenattia",
         "icon": "linkedin"
     },
     {
-        "name": "X (Twitter)",
-        "href": "https://x.com/johndoe",
-        "icon": "twitter"
+        "name": "Email",
+        "href": "mailto:me@hivie.tn",
+        "icon": "email"
     },
     {
-        "name": "Email",
-        "href": "mailto:hello@johndoe.dev",
-        "icon": "email"
+        "name": "osu!",
+        "href": "https://osu.ppy.sh/users/14102976",
+        "icon": "osu.svg"
+    },
+    {
+        "name": "X (Twitter)",
+        "href": "https://x.com/_Hivie",
+        "icon": "twitter"
     }
 ]
