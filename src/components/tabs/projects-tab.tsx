@@ -33,22 +33,54 @@ export function ProjectsTab({ initialProject }: ProjectsTabProps) {
     const selectedProject = initialProject || projects.find((p) => p.id === projectIdFromRoute) || null;
 
     const handleProjectClick = (project: Project) => {
+        // Save scroll position before navigation
+        const scrollY = window.scrollY;
+        sessionStorage.setItem("project-dialog-scroll", scrollY.toString());
+
         if (document.startViewTransition) {
             document.startViewTransition(() => {
-                navigate({ to: `/projects/${project.id}` });
+                navigate({
+                    to: `/projects/${project.id}`,
+                    replace: true,
+                    resetScroll: false,
+                });
             });
         } else {
-            navigate({ to: `/projects/${project.id}` });
+            navigate({
+                to: `/projects/${project.id}`,
+                replace: true,
+                resetScroll: false,
+            });
         }
     };
 
     const handleClose = () => {
+        // Restore scroll position after closing
+        const savedScroll = sessionStorage.getItem("project-dialog-scroll");
+        const scrollY = savedScroll ? parseInt(savedScroll, 10) : 0;
+
         if (document.startViewTransition) {
             document.startViewTransition(() => {
-                navigate({ to: "/" });
+                navigate({
+                    to: "/",
+                    replace: true,
+                    resetScroll: false,
+                });
+                // Restore scroll position after navigation
+                requestAnimationFrame(() => {
+                    window.scrollTo(0, scrollY);
+                });
             });
         } else {
-            navigate({ to: "/" });
+            navigate({
+                to: "/",
+                replace: true,
+                resetScroll: false,
+            });
+            // Restore scroll position after navigation
+            requestAnimationFrame(() => {
+                window.scrollTo(0, scrollY);
+            });
         }
     };
 
