@@ -11,24 +11,24 @@ export function ProjectCard({ project, onClick, isSelected }: ProjectCardProps) 
     return (
         <button
             onClick={onClick}
-            className="group relative text-left w-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
+            className="group relative flex flex-col text-left w-full h-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
             style={{
                 viewTransitionName: isSelected ? `project-${project.id}` : undefined,
             }}>
-            <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                 <h3 className="font-medium text-foreground">{project.name}</h3>
             </div>
 
-            <p className="mt-1.5 text-sm text-muted-foreground line-clamp-2">{project.description}</p>
+            <p className="mt-1.5 text-sm text-muted-foreground line-clamp-2 flex-1">{project.description}</p>
 
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-                {project.stack.slice(0, 4).map((tech) => (
+            <div className="mt-auto pt-3 flex flex-wrap items-center gap-2">
+                {project.stack.slice(0, 6).map((tech) => (
                     <div key={tech.name} className="flex items-center gap-1.5">
                         <span className="size-2 rounded-full" style={{ backgroundColor: tech.color }} />
                         <span className="text-xs text-muted-foreground">{tech.name}</span>
                     </div>
                 ))}
-                {project.stack.length > 4 && (
+                {project.stack.length > 6 && (
                     <span className="text-xs text-muted-foreground">+{project.stack.length - 4}</span>
                 )}
             </div>

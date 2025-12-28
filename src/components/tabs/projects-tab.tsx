@@ -54,7 +54,7 @@ export function ProjectsTab({ initialProject }: ProjectsTabProps) {
 
     return (
         <div className="space-y-4">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 items-start">
                 {projects.map((project) => (
                     <ProjectCard
                         key={project.id}
