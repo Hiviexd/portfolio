@@ -1,19 +1,19 @@
+import { createFileRoute, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { Header } from "@/components/header";
 import { SocialLinks } from "@/components/social-links";
 import { Description } from "@/components/description";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Folder02Icon, Briefcase01Icon, CodeIcon, Edit02Icon } from "@hugeicons/core-free-icons";
-import { useRouter, useNavigate } from "@tanstack/react-router";
 
-type PortfolioLayoutProps = {
-    children: React.ReactNode;
-    activeTab?: string;
-};
+export const Route = createFileRoute("/_layout")({
+    component: LayoutComponent,
+});
 
-export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
-    const router = useRouter();
+function LayoutComponent() {
     const navigate = useNavigate();
+    // Use useRouterState for reactive pathname updates
+    const currentPath = useRouterState({ select: (s) => s.location.pathname });
 
     const handleTabChange = (value: string) => {
         const routes: Record<string, string> = {
@@ -30,7 +30,6 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
     };
 
     // Determine active tab from current route
-    const currentPath = router.state.location.pathname;
     const tabFromRoute =
         currentPath === "/" || currentPath.startsWith("/projects/")
             ? "projects"
@@ -40,7 +39,7 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
                 ? "skills"
                 : currentPath === "/blog"
                   ? "blogs"
-                  : activeTab || "projects";
+                  : "projects";
 
     return (
         <main className="relative z-10 mx-auto max-w-2xl px-4 py-12 sm:py-16 w-full">
@@ -77,10 +76,8 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
                         </TabsTrigger>
                     </TabsList>
 
-                    <TabsContent value="projects">{children}</TabsContent>
-                    <TabsContent value="experience">{children}</TabsContent>
-                    <TabsContent value="skills">{children}</TabsContent>
-                    <TabsContent value="blogs">{children}</TabsContent>
+                    {/* Content from child routes */}
+                    <Outlet />
                 </Tabs>
             </section>
 

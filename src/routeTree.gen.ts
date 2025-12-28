@@ -9,169 +9,153 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SkillsRouteImport } from './routes/skills'
-import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as ExperienceRouteImport } from './routes/experience'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
+import { Route as LayoutRouteImport } from './routes/_layout'
+import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
+import { Route as LayoutSkillsRouteImport } from './routes/_layout/skills'
+import { Route as LayoutExperienceRouteImport } from './routes/_layout/experience'
+import { Route as LayoutBlogRouteImport } from './routes/_layout/blog'
+import { Route as LayoutProjectsProjectIdRouteImport } from './routes/_layout/projects.$projectId'
 
-const SkillsRoute = SkillsRouteImport.update({
-  id: '/skills',
-  path: '/skills',
+const LayoutRoute = LayoutRouteImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExperienceRoute = ExperienceRouteImport.update({
-  id: '/experience',
-  path: '/experience',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
+const LayoutIndexRoute = LayoutIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => LayoutRoute,
 } as any)
-const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
-  id: '/$projectId',
-  path: '/$projectId',
-  getParentRoute: () => ProjectsRoute,
+const LayoutSkillsRoute = LayoutSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutExperienceRoute = LayoutExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutBlogRoute = LayoutBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutProjectsProjectIdRoute = LayoutProjectsProjectIdRouteImport.update({
+  id: '/projects/$projectId',
+  path: '/projects/$projectId',
+  getParentRoute: () => LayoutRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
-  '/experience': typeof ExperienceRoute
-  '/projects': typeof ProjectsRouteWithChildren
-  '/skills': typeof SkillsRoute
-  '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/blog': typeof LayoutBlogRoute
+  '/experience': typeof LayoutExperienceRoute
+  '/skills': typeof LayoutSkillsRoute
+  '/': typeof LayoutIndexRoute
+  '/projects/$projectId': typeof LayoutProjectsProjectIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
-  '/experience': typeof ExperienceRoute
-  '/projects': typeof ProjectsRouteWithChildren
-  '/skills': typeof SkillsRoute
-  '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/blog': typeof LayoutBlogRoute
+  '/experience': typeof LayoutExperienceRoute
+  '/skills': typeof LayoutSkillsRoute
+  '/': typeof LayoutIndexRoute
+  '/projects/$projectId': typeof LayoutProjectsProjectIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
-  '/experience': typeof ExperienceRoute
-  '/projects': typeof ProjectsRouteWithChildren
-  '/skills': typeof SkillsRoute
-  '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/_layout': typeof LayoutRouteWithChildren
+  '/_layout/blog': typeof LayoutBlogRoute
+  '/_layout/experience': typeof LayoutExperienceRoute
+  '/_layout/skills': typeof LayoutSkillsRoute
+  '/_layout/': typeof LayoutIndexRoute
+  '/_layout/projects/$projectId': typeof LayoutProjectsProjectIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog'
-    | '/experience'
-    | '/projects'
-    | '/skills'
-    | '/projects/$projectId'
+  fullPaths: '/blog' | '/experience' | '/skills' | '/' | '/projects/$projectId'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/blog'
-    | '/experience'
-    | '/projects'
-    | '/skills'
-    | '/projects/$projectId'
+  to: '/blog' | '/experience' | '/skills' | '/' | '/projects/$projectId'
   id:
     | '__root__'
-    | '/'
-    | '/blog'
-    | '/experience'
-    | '/projects'
-    | '/skills'
-    | '/projects/$projectId'
+    | '/_layout'
+    | '/_layout/blog'
+    | '/_layout/experience'
+    | '/_layout/skills'
+    | '/_layout/'
+    | '/_layout/projects/$projectId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
-  ExperienceRoute: typeof ExperienceRoute
-  ProjectsRoute: typeof ProjectsRouteWithChildren
-  SkillsRoute: typeof SkillsRoute
+  LayoutRoute: typeof LayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/skills': {
-      id: '/skills'
-      path: '/skills'
-      fullPath: '/skills'
-      preLoaderRoute: typeof SkillsRouteImport
+    '/_layout': {
+      id: '/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof LayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/experience': {
-      id: '/experience'
-      path: '/experience'
-      fullPath: '/experience'
-      preLoaderRoute: typeof ExperienceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
+    '/_layout/': {
+      id: '/_layout/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof LayoutIndexRouteImport
+      parentRoute: typeof LayoutRoute
     }
-    '/projects/$projectId': {
-      id: '/projects/$projectId'
-      path: '/$projectId'
+    '/_layout/skills': {
+      id: '/_layout/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof LayoutSkillsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/experience': {
+      id: '/_layout/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof LayoutExperienceRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/blog': {
+      id: '/_layout/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof LayoutBlogRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/projects/$projectId': {
+      id: '/_layout/projects/$projectId'
+      path: '/projects/$projectId'
       fullPath: '/projects/$projectId'
-      preLoaderRoute: typeof ProjectsProjectIdRouteImport
-      parentRoute: typeof ProjectsRoute
+      preLoaderRoute: typeof LayoutProjectsProjectIdRouteImport
+      parentRoute: typeof LayoutRoute
     }
   }
 }
 
-interface ProjectsRouteChildren {
-  ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
+interface LayoutRouteChildren {
+  LayoutBlogRoute: typeof LayoutBlogRoute
+  LayoutExperienceRoute: typeof LayoutExperienceRoute
+  LayoutSkillsRoute: typeof LayoutSkillsRoute
+  LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutProjectsProjectIdRoute: typeof LayoutProjectsProjectIdRoute
 }
 
-const ProjectsRouteChildren: ProjectsRouteChildren = {
-  ProjectsProjectIdRoute: ProjectsProjectIdRoute,
+const LayoutRouteChildren: LayoutRouteChildren = {
+  LayoutBlogRoute: LayoutBlogRoute,
+  LayoutExperienceRoute: LayoutExperienceRoute,
+  LayoutSkillsRoute: LayoutSkillsRoute,
+  LayoutIndexRoute: LayoutIndexRoute,
+  LayoutProjectsProjectIdRoute: LayoutProjectsProjectIdRoute,
 }
 
-const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
-  ProjectsRouteChildren,
-)
+const LayoutRouteWithChildren =
+  LayoutRoute._addFileChildren(LayoutRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
-  ExperienceRoute: ExperienceRoute,
-  ProjectsRoute: ProjectsRouteWithChildren,
-  SkillsRoute: SkillsRoute,
+  LayoutRoute: LayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
