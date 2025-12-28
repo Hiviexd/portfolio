@@ -10,7 +10,7 @@ export function ProjectCard({ project, onClick, isSelected }: ProjectCardProps) 
     return (
         <button
             onClick={onClick}
-            className="group relative text-left w-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group relative text-left w-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
             style={{
                 viewTransitionName: isSelected ? `project-${project.id}` : undefined,
             }}>

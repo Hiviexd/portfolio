@@ -31,7 +31,7 @@ export function SocialLinks() {
                     <Tooltip key={link.name}>
                         <TooltipTrigger
                             render={
-                                <Button variant="ghost" size="icon">
+                                <Button variant="ghost" size="icon" className="cursor-pointer">
                                     <a href={link.href} target="_blank" rel="noopener noreferrer">
                                         <HugeiconsIcon icon={IconComponent} strokeWidth={2} className="size-[18px]" />
                                         <span className="sr-only">{link.name}</span>
