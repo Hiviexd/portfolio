@@ -1,9 +1,15 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Github01Icon, Linkedin01Icon, NewTwitterIcon, Mail01Icon, DocumentAttachmentIcon } from "@hugeicons/core-free-icons";
-import { Icon } from "@/components/icon";
+import {
+    Github01Icon,
+    Linkedin01Icon,
+    NewTwitterIcon,
+    Mail01Icon,
+    DocumentAttachmentIcon,
+} from "@hugeicons/core-free-icons";
+import { Icon } from "@/components/misc/icon";
 import { cn } from "@/lib/utils";
-import socialsData from "../../data/socials.json";
+import socialsData from "../../../data/socials.json";
 
 type SocialLink = {
     name: string;

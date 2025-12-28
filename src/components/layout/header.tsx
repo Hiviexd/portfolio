@@ -1,7 +1,7 @@
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { FlipWords } from "@/components/ui/shadcn-io/flip-words";
-import { Icon } from "@/components/icon";
-import { SpotifyPresence } from "@/components/spotify-presence";
+import { Icon } from "@/components/misc/icon";
+import { SpotifyPresence } from "@/components/misc/spotify-presence";
 
 export function Header() {
     return (

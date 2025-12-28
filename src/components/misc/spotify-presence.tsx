@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { useSpotifyPresence } from "@/hooks/use-spotify-presence";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { MusicNote01Icon } from "@hugeicons/core-free-icons";
-import metadata from "../../data/metadata.json";
+import metadata from "../../../data/metadata.json";
 
 type SpotifyPresenceProps = {
     className?: string;

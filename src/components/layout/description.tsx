@@ -1,5 +1,5 @@
-import { AgeCounter } from "@/components/age-counter";
-import metadata from "../../data/metadata.json";
+import { AgeCounter } from "@/components/misc/age-counter";
+import metadata from "../../../data/metadata.json";
 
 export function Description() {
     return (

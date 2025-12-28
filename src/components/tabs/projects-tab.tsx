@@ -1,5 +1,5 @@
-import { ProjectCard } from "@/components/project-card";
-import { ProjectDetail } from "@/components/project-detail";
+import { ProjectCard } from "@/components/projects/project-card";
+import { ProjectDetails } from "@/components/projects/project-details";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import projectsData from "../../../data/projects.json";
 
@@ -69,7 +69,7 @@ export function ProjectsTab({ initialProject }: ProjectsTabProps) {
                 ))}
             </div>
 
-            <ProjectDetail project={selectedProject} onClose={handleClose} />
+            <ProjectDetails project={selectedProject} onClose={handleClose} />
         </div>
     );
 }

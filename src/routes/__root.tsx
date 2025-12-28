@@ -1,7 +1,7 @@
 import { HeadContent, Scripts, createRootRoute, Outlet } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { BackgroundBeamsWithCollision } from "@/components/ui/shadcn-io/background-beams-with-collision";
 
 export const Route = createRootRoute({

@@ -4,16 +4,16 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { buttonVariants } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon, Github01Icon, Calendar03Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
-import { ProjectStatus } from "@/components/project-status";
+import { ProjectStatus } from "@/components/projects/project-status";
 import { cn } from "@/lib/utils";
-import { Markdown } from "@/components/markdown";
+import { Markdown } from "@/components/misc/markdown";
 
 type ProjectDetailProps = {
     project: Project | null;
     onClose: () => void;
 };
 
-export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
+export function ProjectDetails({ project, onClose }: ProjectDetailProps) {
     const [displayProject, setDisplayProject] = useState<Project | null>(project);
     const [isOpen, setIsOpen] = useState(!!project);
     const closingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
