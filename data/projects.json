@@ -167,7 +167,7 @@
             { "name": "TypeScript", "color": "#3178C6" },
             { "name": "Express.js", "color": "#fbfbfb" },
             { "name": "MongoDB", "color": "#08ee69" },
-            { "name": "Sass", "color": "#cc6699" }
+            { "name": "Material UI", "color": "#007bff" }
         ],
         "highlights": [
             "OAuth integration with Google",

@@ -1,53 +1,69 @@
 [
     {
         "id": "exp-1",
-        "role": "Senior Frontend Engineer",
-        "company": "TechCorp Inc.",
+        "role": "Core Team Member",
+        "company": "osu!",
         "location": "Remote",
         "type": "Full-time",
-        "startDate": "Jan 2023",
+        "startDate": "Nov 2022",
         "endDate": "Present",
-        "description": "Leading frontend development for the company's flagship SaaS platform, focusing on performance optimization and developer experience.",
+        "description": "I handle management of multiple staff teams, many official & community projects, customer support, platform moderation, and development of internal tooling.",
         "responsibilities": [
-            "Architected and implemented a design system used across 5 product teams",
-            "Reduced bundle size by 40% through code splitting and lazy loading strategies",
-            "Mentored junior developers and conducted code reviews",
-            "Led migration from JavaScript to TypeScript improving code reliability"
-        ],
-        "stack": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL"]
+            "Managed multiple official staff teams, coordinating 20+ members, conducting regular performance reviews, and spearheading leadership efforts to ensure content curation and quality assurance systems operate efficiently and meet high standards.",
+            "Led official and community-driven projects and events, coordinating activities for hundreds of users to enhance engagement and collaboration within the community.",
+            "Developed and maintained internal tools, primarily using JavaScript, TypeScript, React, and Vue, optimizing workflows and increasing team productivity",
+            "Maintained high on-call availability, smoothly handling any time-sensitive tasks and critical issues to ensure the community's needs were met promptly."
+        ]
     },
     {
         "id": "exp-2",
-        "role": "Full Stack Developer",
-        "company": "StartupXYZ",
-        "location": "San Francisco, CA",
-        "type": "Full-time",
-        "startDate": "Jun 2021",
-        "endDate": "Dec 2022",
-        "description": "Built and maintained core product features for an early-stage fintech startup, working across the entire stack.",
+        "role": "Full-stack Developer",
+        "company": "Mobelite",
+        "location": "Monastir, Tunisia",
+        "type": "Internship",
+        "startDate": "Aug 2025",
+        "endDate": "Sep 2025",
+        "description": "Built kanban-board, a web platform designated for real-time collaborative project management, inspired by Trello.",
         "responsibilities": [
-            "Developed real-time payment processing system handling 10k+ daily transactions",
-            "Built responsive dashboard for financial analytics and reporting",
-            "Implemented OAuth 2.0 authentication with multi-factor authentication",
-            "Optimized database queries reducing API response times by 60%"
+            "Developed the web platform using Next.js, shadcn/ui, and Tailwind CSS, ensuring a responsive and user-friendly interface.",
+            "Implemented OAuth 2.0 authentication with Auth0, ensuring a secure and reliable authentication system.",
+            "Implemented real-time collaboration using Socket.io, ensuring a smooth and seamless experience for users.",
+            "Implemented a MongoDB database to store user data and project information, ensuring a reliable and scalable database system."
         ],
-        "stack": ["Node.js", "React", "PostgreSQL", "Redis", "AWS"]
+        "stack": ["Next.js", "shadcn/ui", "Tailwind CSS", "Auth0", "Socket.io", "MongoDB"]
     },
     {
         "id": "exp-3",
-        "role": "Frontend Developer",
-        "company": "Digital Agency Co.",
-        "location": "New York, NY",
-        "type": "Full-time",
-        "startDate": "Aug 2019",
-        "endDate": "May 2021",
-        "description": "Delivered high-quality web applications for various clients across e-commerce, media, and healthcare industries.",
+        "role": "Backend Developer",
+        "company": "Alidade",
+        "location": "Ariana, Tunisia",
+        "type": "Internship",
+        "startDate": "Jun 2024",
+        "endDate": "Jul 2024",
+        "description": "Maintained and implemented various features and fixes to the company's internal ERP system.",
         "responsibilities": [
-            "Built 15+ responsive websites and web applications for diverse clients",
-            "Collaborated with designers to implement pixel-perfect UI components",
-            "Integrated third-party APIs including payment gateways and CMS platforms",
-            "Maintained and improved legacy codebases while adding new features"
+            "Did multiple database aggregations and migrations to optimize data storage and modeling",
+            "Maintained and improved legacy codebases while adding new features",
+            "Refactored deployment pipelines to improve efficiency and reliability"
         ],
-        "stack": ["JavaScript", "Vue.js", "SCSS", "WordPress", "Shopify"]
+        "stack": ["PHP", "Laravel", "MySQL", "Docker", "GitHub Actions"]
+    },
+    {
+        "id": "exp-4",
+        "role": "Full-stack Developer",
+        "company": "Mobelite",
+        "location": "Monastir, Tunisia",
+        "type": "Internship",
+        "startDate": "Feb 2023",
+        "endDate": "Jun 2023",
+        "description": "Built Unisson, a service sharing platform designated for special events and parties.",
+        "responsibilities": [
+            "Developed the web platform using React, TypeScript, and Material UI, ensuring a modern and user-friendly interface.",
+            "Implemented comprehensive social media features (comments, reviews, etc.)",
+            "Implemented a collaboration system among vendors",
+            "Implemented customizable user and vendor profiles",
+            "Implemented admin panel for managing users and content"
+        ],
+        "stack": ["React", "TypeScript", "Material UI", "MongoDB", "Express.js"]
     }
 ]
