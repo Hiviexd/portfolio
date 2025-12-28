@@ -15,11 +15,36 @@ export const Route = createRootRoute({
                 content: "width=device-width, initial-scale=1",
             },
             {
-                title: "John Doe | Developer Portfolio",
+                title: "Hivie",
             },
             {
                 name: "description",
-                content: "Software Engineer passionate about building great products",
+                content:
+                    "Personal website of Hivie — osu!team member and software engineer. Portfolio and professional information.",
+            },
+            {
+                name: "theme-color",
+                content: "#e6e6e6",
+            },
+            {
+                name: "og:title",
+                content: "Hivie",
+            },
+            {
+                name: "og:description",
+                content: "dev and osu!",
+            },
+            {
+                name: "og:url",
+                content: "https://hivie.tn",
+            },
+            {
+                name: "og:type",
+                content: "website",
+            },
+            {
+                name: "og:image",
+                content: "https://hivie.tn/logo-transparent.png",
             },
         ],
         links: [
