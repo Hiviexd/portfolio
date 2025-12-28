@@ -1,95 +1,299 @@
 [
     {
-        "id": "devflow",
-        "name": "DevFlow",
-        "description": "A modern developer productivity dashboard with real-time metrics and integrations.",
-        "detailedDescription": "DevFlow is a comprehensive developer productivity platform that aggregates data from GitHub, Jira, and Slack to provide actionable insights. Features include commit analytics, PR review times, sprint velocity tracking, and team collaboration metrics. Built with a focus on performance and real-time updates using WebSockets.",
-        "link": "https://devflow.example.com",
-        "repo": "https://github.com/username/devflow",
+        "id": "tournament-tracker",
+        "name": "Tournament Tracker",
+        "description": "The one-stop shop for all official osu! tournament correspondence and information",
+        "detailedDescription": "Tournament Tracker is a comprehensive platform for tracking osu! tournaments and managing official tournament support. It also serves as a central hub for all tournament information, resources, and communication between the Tournament Committee and the community.",
+        "link": "https://tcomm.hivie.tn/",
+        "repo": "https://github.com/Hiviexd/tournament-tracker",
         "status": "Active",
-        "startDate": "2024-03",
+        "startDate": "2024-11",
         "endDate": null,
         "stack": [
             { "name": "React", "color": "#61DAFB" },
             { "name": "TypeScript", "color": "#3178C6" },
-            { "name": "Node.js", "color": "#339933" },
-            { "name": "PostgreSQL", "color": "#4169E1" },
-            { "name": "Redis", "color": "#DC382D" }
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Sass", "color": "#cc6699" },
+            { "name": "React Router", "color": "#f44855" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "Cloudflare R2", "color": "#f78100" },
+            { "name": "GitHub Actions", "color": "#24292E" }
         ],
         "highlights": [
-            "Real-time dashboard with WebSocket updates",
-            "OAuth integrations with GitHub, Jira, Slack",
-            "Custom analytics engine for developer metrics",
-            "Team-based permissions and workspaces"
+            "OAuth integrations with osu! and Discord",
+            "Sophisticated tournament management system",
+            "Comprehensive internal voting platform with many vote formats",
+            "Tickets platform for general inquiries and tournament reports",
+            "External API support via keys",
+            "Extensive documentation and resources",
+            "Global search functionality",
+            "A collection of useful tools for tournament staff"
         ]
     },
     {
-        "id": "pixelcraft",
-        "name": "PixelCraft",
-        "description": "Browser-based pixel art editor with collaborative features and export options.",
-        "detailedDescription": "PixelCraft is a web-based pixel art creation tool designed for game developers and artists. It supports real-time collaboration, layer management, animation timeline, and exports to various formats including sprite sheets. The canvas is implemented using WebGL for smooth performance even with large artworks.",
-        "link": "https://pixelcraft.example.com",
-        "repo": "https://github.com/username/pixelcraft",
+        "id": "axerbot",
+        "name": "AxerBot",
+        "description": "General-purpose Discord bot with osu! features related to mapping & modding",
+        "detailedDescription": "AxerBot is an open-source Discord bot that's oriented towards the osu! community, providing a wide range of features related to mapping & modding.\nIt's used by +100,000 users across +2,000 servers.",
+        "repo": "https://github.com/Hiviexd/AxerBot",
         "status": "Completed",
-        "startDate": "2023-08",
-        "endDate": "2024-02",
+        "startDate": "2022-02",
+        "endDate": "2024-06",
+        "stack": [
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Discord.js", "color": "#5865F2" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Docker", "color": "#2496ED" }
+        ],
+        "highlights": [
+            "OAuth integration with osu! for authenticating new server members",
+            "Many server moderation commands",
+            "A reliable reminder system",
+            "Automatic role assignment based on osu! roles",
+            "A message logging system for edits and deletions",
+            "Many osu! related commands using the osu! API"
+        ]
+    },
+    {
+        "id": "qat",
+        "name": "BN Management",
+        "description": "Management platform for the osu! mapping and modding ecosystem",
+        "detailedDescription": "Platform for managing Beatmap Nominator (BN) applications, nominations, and Nomination Assessment Team (NATs) internal operations.",
+        "link": "https://bn.mappersguild.com/",
+        "repo": "https://github.com/pishifat/qat",
+        "status": "Maintainer",
+        "startDate": "2022-01",
+        "endDate": null,
         "stack": [
             { "name": "Vue.js", "color": "#4FC08D" },
-            { "name": "WebGL", "color": "#990000" },
-            { "name": "Firebase", "color": "#FFCA28" },
-            { "name": "Tailwind", "color": "#06B6D4" }
-        ],
-        "highlights": [
-            "WebGL-powered canvas for 60fps performance",
-            "Real-time multiplayer collaboration",
-            "Animation timeline with onion skinning",
-            "Export to PNG, GIF, and sprite sheets"
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Docker", "color": "#2496ED" }
         ]
     },
     {
-        "id": "cloudnote",
-        "name": "CloudNote",
-        "description": "Markdown-first note-taking app with end-to-end encryption and offline support.",
-        "detailedDescription": "CloudNote is a privacy-focused note-taking application built for developers and writers. It features a distraction-free Markdown editor with live preview, end-to-end encryption, full offline support with background sync, and powerful organization through tags and nested folders.",
-        "link": null,
-        "repo": "https://github.com/username/cloudnote",
-        "status": "On Hold",
-        "startDate": "2023-01",
-        "endDate": "2023-06",
-        "stack": [
-            { "name": "Next.js", "color": "#000000" },
-            { "name": "TypeScript", "color": "#3178C6" },
-            { "name": "Prisma", "color": "#2D3748" },
-            { "name": "SQLite", "color": "#003B57" }
-        ],
-        "highlights": [
-            "End-to-end encryption with Web Crypto API",
-            "PWA with full offline functionality",
-            "Real-time Markdown preview",
-            "Cross-device sync with conflict resolution"
-        ]
-    },
-    {
-        "id": "apiforge",
-        "name": "API Forge",
-        "description": "Visual API builder and testing tool with automatic documentation generation.",
-        "detailedDescription": "API Forge is a developer tool that simplifies API development workflow. It provides a visual interface for designing RESTful APIs, automatic OpenAPI spec generation, built-in testing with environment variables, and mock server capabilities. Perfect for prototyping and API-first development.",
-        "link": "https://apiforge.dev",
-        "repo": null,
+        "id": "daily-challenge",
+        "name": "Daily Challenge",
+        "description": "Web application for managing osu! daily challenges",
+        "detailedDescription": "Daily Challenge is a web application for organizing [osu! daily challenges](https://osu.ppy.sh/wiki/en/Gameplay/Daily_challenge), where staff members can create and manage 'weeks' of daily beatmaps.",
+        "link": "https://dc.hivie.tn",
+        "repo": "https://github.com/Hiviexd/daily-challenge",
         "status": "Active",
-        "startDate": "2024-01",
+        "startDate": "2025-05",
         "endDate": null,
         "stack": [
             { "name": "React", "color": "#61DAFB" },
-            { "name": "Go", "color": "#00ADD8" },
-            { "name": "Docker", "color": "#2496ED" },
-            { "name": "MongoDB", "color": "#47A248" }
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Express", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" }
+        ]
+    },
+    {
+        "id": "loved-cli",
+        "name": "Project Loved CLI",
+        "description": "A command-line tool for managing Project Loved operations",
+        "detailedDescription": "A command-line tool for managing [Project Loved](https://osu.ppy.sh/wiki/en/Community/Project_Loved) operations including news generation, forum thread management, mapper notifications, and voting results processing.\nThis project is the successor to clayton's [Project Loved CLI](https://github.com/cl8n/project-loved), rewritten with safety, flexibility, and code readability in mind.",
+        "repo": "https://github.com/Hiviexd/loved-cli",
+        "status": "Active",
+        "startDate": "2025-11",
+        "endDate": null,
+        "stack": [
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Node.js", "color": "#84bf08" },
+            { "name": "Commander", "color": "#fbfbfb" }
         ],
         "highlights": [
-            "Visual API endpoint designer",
-            "Auto-generated OpenAPI documentation",
-            "Built-in mock server for testing",
-            "Environment and variable management"
+            "Integration with 3 distinct API clients",
+            "Very modular architecture",
+            "Extensive options for customizing outputs",
+            "Object-oriented approach (inheritance, polymorphism, design patterns)",
+            "Robust type safety"
+        ]
+    },
+    {
+        "id": "mapset-verifier",
+        "name": "Mapset Verifier",
+        "description": "The #1 osu! modding tool",
+        "detailedDescription": "Mapset Verifier (MV) is a desktop app which tests quantifyable issues in [beatmapsets](https://osu.ppy.sh/help/wiki/Beatmaps) from [osu!](https://en.wikipedia.org/wiki/Osu!), such as unsnapped objects and unused files. Many of these issues would otherwise disqualify the map from being [ranked](https://osu.ppy.sh/help/wiki/Beatmap_ranking_procedure#ranked). Although mainly aimed at [Beatmap Nominators](https://osu.ppy.sh/help/wiki/Beatmap%20Nominators), this can also be used by mapset creators and reviewers to speed up [the ranking process](https://osu.ppy.sh/help/wiki/Beatmap_ranking_procedure).",
+        "repo": "https://github.com/Naxesss/MapsetVerifier",
+        "status": "Maintainer",
+        "startDate": "2025-11",
+        "endDate": null,
+        "stack": [
+            { "name": "C#", "color": "#239120" },
+            { "name": ".NET", "color": "#512bd4" },
+            { "name": "Electron", "color": "#a3ebfc" },
+            { "name": "React", "color": "#61DAFB" }
+        ]
+    },
+    {
+        "id": "mapset-verifier-taiko-plugin",
+        "name": "MVTaikoChecks",
+        "description": "A set of osu!taiko-specific Mapset Verifier checks",
+        "detailedDescription": "MVTaikoChecks is a plugin for [Mapset Verifier](https://github.com/Naxesss/MapsetVerifier) that adds a collection of checks specific to osu!taiko beatmapsets.\nThis plugin is widely used by the [osu!taiko](https://osu.ppy.sh/wiki/en/Game_mode/osu!taiko) community to ensure that all taiko beatmapsets are up to standard.\nThis plugin has been ported to the official Mapset Verifier project. ",
+        "repo": "https://github.com/Hiviexd/MVTaikoChecks",
+        "status": "Completed",
+        "startDate": "2023-08",
+        "endDate": "2024-05",
+        "stack": [
+            { "name": "C#", "color": "#239120" },
+            { "name": ".NET", "color": "#512bd4" }
+        ]
+    },
+    {
+        "id": "osu-wiki",
+        "name": "osu! wiki",
+        "description": "The open-source knowledge base containing a wide range of information related to osu!",
+        "detailedDescription": "The osu! wiki is a collaborative knowledge base for the osu! community, containing a wide range of information related to osu!. It also serves as the source for the osu! news articles.",
+        "repo": "https://github.com/ppy/osu-wiki",
+        "link": "https://osu.ppy.sh/wiki/en/Main_page",
+        "status": "Maintainer",
+        "startDate": "2023-06",
+        "endDate": null,
+        "stack": [{ "name": "Markdown", "color": "#083fa1" }]
+    },
+    {
+        "id": "unisson",
+        "name": "Unisson",
+        "description": "Service sharing platform designated for special events and parties",
+        "detailedDescription": "Service sharing platform designated for special events and parties, made as a graduation project for my computer science bachelor's degree.",
+        "repo": "https://github.com/Hiviexd/Unisson",
+        "status": "Completed",
+        "startDate": "2023-02",
+        "endDate": "2023-07",
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Sass", "color": "#cc6699" }
+        ],
+        "highlights": [
+            "OAuth integration with Google",
+            "Reliable users management system",
+            "Comprehensive social media features (comments, reviews, etc.)",
+            "Collaboration system among vendors",
+            "Contract management system",
+            "Customizable user and vendor profiles",
+            "File upload support",
+            "Admin panel for managing users and content"
+        ]
+    },
+    {
+        "id": "seibooru",
+        "name": "Seibooru",
+        "description": "A tag-based image hosting platform",
+        "detailedDescription": "A tag-based image hosting platform, inspired by [Danbooru](https://danbooru.donmai.us/), made as a graduation project for the [GOMYCODE](https://gomycode.com/) Fullstack Web Development Bootcamp.",
+        "repo": "https://github.com/Hiviexd/Seibooru",
+        "status": "Completed",
+        "startDate": "2022-09",
+        "endDate": "2022-11",
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Sass", "color": "#cc6699" },
+            { "name": "Heroku", "color": "#430098" }
+        ],
+        "highlights": [
+            "Social media features (comments, reviews, etc.)",
+            "Image upload support",
+            "Tag-based image search",
+            "Trending tags algorithms",
+            "User profiles",
+            "User-friendly interface",
+            "Admin panel for managing users and content"
+        ]
+    },
+    {
+        "id": "alert-service",
+        "name": "Alert Service",
+        "description": "A web application serving as a pager",
+        "detailedDescription": "A web application serving as a pager for sending very loud alerts to my phone.",
+        "repo": "https://github.com/Hiviexd/alert-service",
+        "status": "Completed",
+        "startDate": "2025-02",
+        "endDate": "2025-03",
+        "stack": [
+            { "name": "Next.js", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Tailwind CSS", "color": "#06b6d4" },
+            { "name": "Framer Motion", "color": "#ffeb0e" },
+            { "name": "Vercel", "color": "#000000" }
+        ]
+    },
+    {
+        "id": "kanban-board",
+        "name": "kanban-board",
+        "description": "A web platform designated for collaborative project management",
+        "detailedDescription": "A web platform designated for collaborative project management, inspired by [Trello](https://trello.com/), and made for my Summer 2025 internship at [Mobelite](https://www.mobelite.fr/en/).",
+        "repo": "https://github.com/Hiviexd/kanban-board",
+        "status": "Completed",
+        "startDate": "2025-08",
+        "endDate": "2025-09",
+        "stack": [
+            { "name": "Next.js", "color": "#080808" },
+            { "name": "shadcn/ui", "color": "#080808" },
+            { "name": "Auth0", "color": "#080808" },
+            { "name": "Socket.io", "color": "#080808" },
+            { "name": "MongoDB", "color": "#08ee69" }
+        ],
+        "highlights": [
+            "OAuth integration with Auth0",
+            "Reliable users management system",
+            "Real-time collaboration",
+            "Kanban board management",
+            "Admin panel for user management",
+            "Role-based access control"
+        ]
+    },
+    {
+        "id": "cve-tracker",
+        "name": "CVE Tracker",
+        "description": "A web platform for tracking and analyzing CVEs",
+        "detailedDescription": "A hackathon React/Vite app for analyzing CVEs and vendor risk using live NVD, EPSS, and CISA KEV data.\nThis project was made during the [Nuit de l'info 2025](https://www.nuitdelinfo.com/) hackathon.",
+        "repo": "https://github.com/Hiviexd/cve-tracker",
+        "status": "Completed",
+        "startDate": "2025-12",
+        "endDate": "2025-12",
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "JavaScript", "color": "#f1e05a" },
+            { "name": "Express.js", "color": "#fbfbfb" }
+        ],
+        "highlights": [
+            "React/Vite hackathon app for CVE and vendor risk analysis using live NVD, EPSS, and CISA KEV data",
+            "Clean frontend architecture with React Router, reusable UI components, and feature-based folders",
+            "CVE analysis view with summary stats plus detailed per-CVE risk, exploitability, and impact data",
+            "Vendor overview dashboard with time-based filtering, key risk metrics, and CVSS trends"
+        ]
+    },
+    {
+        "id": "book-lending-system",
+        "name": "Book Lending System",
+        "description": "A microservices-based backend system for managing users, books, loans, and late return penalties",
+        "detailedDescription": "A microservices-based backend system for managing users, books, loans, and late return penalties. Demonstrates REST, GraphQL, gRPC, and Kafka. ",
+        "repo": "https://github.com/Hiviexd/book-lending-system",
+        "status": "Completed",
+        "startDate": "2025-05",
+        "endDate": "2025-05",
+        "stack": [
+            { "name": "Node.js", "color": "#84bf08" },
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Kafka", "color": "#2f2f2f" },
+            { "name": "GraphQL", "color": "#e10098" },
+            { "name": "gRPC", "color": "#5772d7" }
+        ],
+        "highlights": [
+            "Microservices-based backend system for managing users, books, loans, and late return penalties",
+            "Demonstrates REST, GraphQL, gRPC, and Kafka",
+            "User management system with role-based access control",
+            "Book and loan management system with CRUD operations",
+            "Late return penalty management system with CRUD operations"
         ]
     }
 ]
