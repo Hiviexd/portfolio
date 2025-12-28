@@ -1,8 +1,9 @@
 import type { Project } from "@/components/tabs/projects-tab";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon, Github01Icon, Calendar03Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
+import { cn } from "@/lib/utils";
 
 type ProjectDetailProps = {
     project: Project | null;
@@ -89,20 +90,30 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                 {(project.link || project.repo) && (
                     <div className="flex items-center gap-2 pt-2">
                         {project.link && (
-                            <Button size="sm">
-                                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                    <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={2} />
-                                    Live Demo
-                                </a>
-                            </Button>
+                            <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={cn(
+                                    buttonVariants({ variant: "default", size: "sm" }),
+                                    "flex items-center gap-1.5",
+                                )}>
+                                <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={2} className="size-3.5" />
+                                Website
+                            </a>
                         )}
                         {project.repo && (
-                            <Button variant="outline" size="sm">
-                                <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                                    <HugeiconsIcon icon={Github01Icon} strokeWidth={2} />
-                                    Source Code
-                                </a>
-                            </Button>
+                            <a
+                                href={project.repo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={cn(
+                                    buttonVariants({ variant: "outline", size: "sm" }),
+                                    "flex items-center gap-1.5",
+                                )}>
+                                <HugeiconsIcon icon={Github01Icon} strokeWidth={2} className="size-3.5" />
+                                Source Code
+                            </a>
                         )}
                     </div>
                 )}
