@@ -9,6 +9,7 @@ type SpotifyData = {
 export function useSpotifyPresence(discordId: string) {
     const [spotifyData, setSpotifyData] = useState<SpotifyData>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
     const socketRef = useRef<WebSocket | null>(null);
     const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -18,6 +19,7 @@ export function useSpotifyPresence(discordId: string) {
 
         socket.onopen = () => {
             console.log("Spotify socket opened");
+            setIsConnected(true);
             socket.send(
                 JSON.stringify({
                     op: 2,
@@ -61,6 +63,7 @@ export function useSpotifyPresence(discordId: string) {
 
         socket.onclose = () => {
             console.log("Spotify socket closed");
+            setIsConnected(false);
             if (heartbeatIntervalRef.current) {
                 clearInterval(heartbeatIntervalRef.current);
             }
@@ -89,5 +92,5 @@ export function useSpotifyPresence(discordId: string) {
         };
     }, [discordId]);
 
-    return { spotifyData, isPlaying };
+    return { spotifyData, isPlaying, isConnected };
 }
