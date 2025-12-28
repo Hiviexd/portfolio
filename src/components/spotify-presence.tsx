@@ -16,10 +16,10 @@ export function SpotifyPresence({ className }: SpotifyPresenceProps) {
     // Delay showing "Not playing" to avoid flash on initial load
     useEffect(() => {
         if (isConnected && !isPlaying) {
-            // Wait 1.5 seconds before showing "Not playing"
+            // Wait .2 seconds before showing "Not playing"
             const timer = setTimeout(() => {
                 setShowNotPlaying(true);
-            }, 1500);
+            }, 200);
 
             return () => clearTimeout(timer);
         } else {
