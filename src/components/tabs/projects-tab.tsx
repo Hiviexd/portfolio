@@ -37,21 +37,11 @@ export function ProjectsTab({ initialProject }: ProjectsTabProps) {
         const scrollY = window.scrollY;
         sessionStorage.setItem("project-dialog-scroll", scrollY.toString());
 
-        if (document.startViewTransition) {
-            document.startViewTransition(() => {
-                navigate({
-                    to: `/projects/${project.id}`,
-                    replace: true,
-                    resetScroll: false,
-                });
-            });
-        } else {
-            navigate({
-                to: `/projects/${project.id}`,
-                replace: true,
-                resetScroll: false,
-            });
-        }
+        navigate({
+            to: `/projects/${project.id}`,
+            replace: true,
+            resetScroll: false,
+        });
     };
 
     const handleClose = () => {
@@ -59,41 +49,23 @@ export function ProjectsTab({ initialProject }: ProjectsTabProps) {
         const savedScroll = sessionStorage.getItem("project-dialog-scroll");
         const scrollY = savedScroll ? parseInt(savedScroll, 10) : 0;
 
-        if (document.startViewTransition) {
-            document.startViewTransition(() => {
-                navigate({
-                    to: "/",
-                    replace: true,
-                    resetScroll: false,
-                });
-                // Restore scroll position after navigation
-                requestAnimationFrame(() => {
-                    window.scrollTo(0, scrollY);
-                });
-            });
-        } else {
-            navigate({
-                to: "/",
-                replace: true,
-                resetScroll: false,
-            });
-            // Restore scroll position after navigation
-            requestAnimationFrame(() => {
-                window.scrollTo(0, scrollY);
-            });
-        }
+        navigate({
+            to: "/",
+            replace: true,
+            resetScroll: false,
+        });
+
+        // Restore scroll position after navigation
+        requestAnimationFrame(() => {
+            window.scrollTo(0, scrollY);
+        });
     };
 
     return (
         <div className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2 items-start">
                 {projects.map((project) => (
-                    <ProjectCard
-                        key={project.id}
-                        project={project}
-                        onClick={() => handleProjectClick(project)}
-                        isSelected={selectedProject?.id === project.id}
-                    />
+                    <ProjectCard key={project.id} project={project} onClick={() => handleProjectClick(project)} />
                 ))}
             </div>
 

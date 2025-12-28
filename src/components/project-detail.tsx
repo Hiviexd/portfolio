@@ -1,3 +1,4 @@
+import { useRef, useState, useLayoutEffect } from "react";
 import type { Project } from "@/components/tabs/projects-tab";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { buttonVariants } from "@/components/ui/button";
@@ -13,7 +14,40 @@ type ProjectDetailProps = {
 };
 
 export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
-    if (!project) return null;
+    const [displayProject, setDisplayProject] = useState<Project | null>(project);
+    const [isOpen, setIsOpen] = useState(!!project);
+    const closingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Sync state when project prop changes
+    useLayoutEffect(() => {
+        if (project) {
+            setDisplayProject(project);
+            setIsOpen(true);
+            // Clear any pending close
+            if (closingTimeoutRef.current) {
+                clearTimeout(closingTimeoutRef.current);
+                closingTimeoutRef.current = null;
+            }
+        }
+    }, [project]);
+
+    const handleOpenChange = (open: boolean) => {
+        if (!open && displayProject) {
+            // Start closing animation
+            setIsOpen(false);
+            // Clear any existing timeout
+            if (closingTimeoutRef.current) {
+                clearTimeout(closingTimeoutRef.current);
+            }
+            // Delay navigation until after animation completes (100ms duration + buffer)
+            closingTimeoutRef.current = setTimeout(() => {
+                setDisplayProject(null);
+                onClose();
+            }, 150);
+        }
+    };
+
+    if (!displayProject) return null;
 
     const formatDate = (dateStr: string) => {
         const [year, month] = dateStr.split("-");
@@ -22,41 +56,37 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
     };
 
     return (
-        <Dialog open={!!project} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent
-                className="sm:max-w-lg"
-                style={{
-                    viewTransitionName: `project-${project.id}`,
-                }}>
+        <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+            <DialogContent className="sm:max-w-lg">
                 <DialogHeader>
                     <div className="flex items-start justify-between gap-4 pr-8">
                         <div>
-                            <DialogTitle className="text-lg">{project.name}</DialogTitle>
+                            <DialogTitle className="text-lg">{displayProject.name}</DialogTitle>
                             <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
                                 <HugeiconsIcon icon={Calendar03Icon} className="size-3.5" strokeWidth={2} />
                                 <span>
-                                    {formatDate(project.startDate)} —{" "}
-                                    {project.endDate ? formatDate(project.endDate) : "Present"}
+                                    {formatDate(displayProject.startDate)} —{" "}
+                                    {displayProject.endDate ? formatDate(displayProject.endDate) : "Present"}
                                 </span>
                                 <span className="ml-1">
-                                    <ProjectStatus status={project.status} />
+                                    <ProjectStatus status={displayProject.status} />
                                 </span>
                             </div>
                         </div>
                     </div>
                     <DialogDescription className="mt-3 text-sm leading-relaxed">
-                        <Markdown className="text-primary">{project.detailedDescription}</Markdown>
+                        <Markdown className="text-primary">{displayProject.detailedDescription}</Markdown>
                     </DialogDescription>
                 </DialogHeader>
 
                 {/* Highlights */}
-                {project.highlights && (
+                {displayProject.highlights && (
                     <div className="space-y-2">
                         <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                             Highlights
                         </h4>
                         <ul className="space-y-1.5">
-                            {project.highlights.map((highlight, index) => (
+                            {displayProject.highlights.map((highlight, index) => (
                                 <li key={index} className="flex items-start gap-2 text-sm">
                                     <HugeiconsIcon
                                         icon={CheckmarkCircle02Icon}
@@ -74,7 +104,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                 <div className="space-y-2">
                     <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Tech Stack</h4>
                     <div className="flex flex-wrap gap-2">
-                        {project.stack.map((tech) => (
+                        {displayProject.stack.map((tech) => (
                             <div
                                 key={tech.name}
                                 className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1">
@@ -86,11 +116,11 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                 </div>
 
                 {/* Links */}
-                {(project.link || project.repo) && (
+                {(displayProject.link || displayProject.repo) && (
                     <div className="flex items-center gap-2 pt-2">
-                        {project.link && (
+                        {displayProject.link && (
                             <a
-                                href={project.link}
+                                href={displayProject.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={cn(
@@ -101,9 +131,9 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                                 Website
                             </a>
                         )}
-                        {project.repo && (
+                        {displayProject.repo && (
                             <a
-                                href={project.repo}
+                                href={displayProject.repo}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={cn(
