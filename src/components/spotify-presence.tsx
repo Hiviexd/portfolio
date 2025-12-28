@@ -59,8 +59,8 @@ export function SpotifyPresence({ className }: SpotifyPresenceProps) {
                 className,
             )}>
             <HugeiconsIcon icon={MusicNote01Icon} className="size-3.5 text-green-500" strokeWidth={2} />
-            <span className="text-xs">Listening to</span>
-            <div className="flex items-center gap-1.5">
+            <span className="text-xs flex-shrink-0">Listening to</span>
+            <div className="flex items-center gap-1.5 flex-1">
                 <div className="flex items-center gap-0.5">
                     <span className="inline-block w-0.5 h-3 bg-green-500 animate-[wave_1s_ease-in-out_infinite] [animation-delay:0s]" />
                     <span className="inline-block w-0.5 h-3 bg-green-500 animate-[wave_1s_ease-in-out_infinite] [animation-delay:0.1s]" />
