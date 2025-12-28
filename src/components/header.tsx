@@ -20,7 +20,7 @@ export function Header() {
                             />
                         </span>
                         <div className="min-h-[20px]">
-                            <SpotifyPresence discordId="341321481390784512" />
+                            <SpotifyPresence />
                         </div>
                     </div>
                 </div>

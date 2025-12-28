@@ -1,20 +1,24 @@
 import { cn } from "@/lib/utils";
 import { useSpotifyPresence } from "@/hooks/use-spotify-presence";
+import metadata from "../../data/metadata.json";
 
 type SpotifyPresenceProps = {
-    discordId: string;
     className?: string;
 };
 
-export function SpotifyPresence({ discordId, className }: SpotifyPresenceProps) {
-    const { spotifyData, isPlaying } = useSpotifyPresence(discordId);
+export function SpotifyPresence({ className }: SpotifyPresenceProps) {
+    const { spotifyData, isPlaying } = useSpotifyPresence(metadata.discordId);
 
     if (!spotifyData || !isPlaying) {
         return null;
     }
 
     return (
-        <div className={cn("flex items-center gap-2 text-sm text-muted-foreground", className)}>
+        <div
+            className={cn(
+                "flex items-center gap-2 text-sm text-muted-foreground animate-in fade-in duration-300",
+                className,
+            )}>
             <span className="text-xs">Listening to</span>
             <div className="flex items-center gap-1.5">
                 <div className="flex items-center gap-0.5">

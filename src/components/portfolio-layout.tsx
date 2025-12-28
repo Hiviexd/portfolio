@@ -1,10 +1,10 @@
 import { Header } from "@/components/header";
 import { SocialLinks } from "@/components/social-links";
+import { Description } from "@/components/description";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Folder02Icon, Briefcase01Icon, CodeIcon, Edit02Icon } from "@hugeicons/core-free-icons";
 import { useRouter, useNavigate } from "@tanstack/react-router";
-import { AgeCounter } from "@/components/age-counter";
 
 type PortfolioLayoutProps = {
     children: React.ReactNode;
@@ -49,21 +49,7 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
                 <Header />
 
                 {/* Description */}
-                <p className="text-muted-foreground text-[15px] leading-relaxed">
-                    Software Engineer and{" "}
-                    <a
-                        href="https://osu.ppy.sh/wiki/en/People/osu%21_team"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground link-fancy">
-                        osu!team
-                    </a>{" "}
-                    member.{" "}
-                    <code>
-                        <AgeCounter startDate={new Date("2002-02-10")} />
-                    </code>{" "}
-                    years old with a passion for open source, building awesome stuff, and the osu! community.
-                </p>
+                <Description />
 
                 {/* Social Links */}
                 <SocialLinks />
