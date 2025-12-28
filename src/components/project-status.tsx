@@ -18,9 +18,9 @@ export function ProjectStatus({ status, className }: ProjectStatusProps) {
             dot: "bg-blue-500",
         },
         Maintainer: {
-            bg: "bg-cyan-500/10",
-            text: "text-cyan-600 dark:text-cyan-400",
-            dot: "bg-cyan-500",
+            bg: "bg-lime-500/10",
+            text: "text-lime-600 dark:text-lime-400",
+            dot: "bg-lime-500",
         },
     };
 
