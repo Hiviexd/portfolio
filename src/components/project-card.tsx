@@ -10,7 +10,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
     return (
         <button
             onClick={onClick}
-            className="group relative flex flex-col text-left w-full h-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer">
+            className="group relative flex flex-col text-left w-full h-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer">
             <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                 <h3 className="font-medium text-foreground">{project.name}</h3>
             </div>

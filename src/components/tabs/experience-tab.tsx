@@ -46,6 +46,9 @@ export function ExperienceTab() {
                                     <HugeiconsIcon icon={Location01Icon} className="size-3.5" strokeWidth={2} />
                                     {exp.location}
                                 </span>
+                                <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                                    {exp.type}
+                                </span>
                                 <span className="text-xs text-muted-foreground/70">
                                     {exp.startDate} — {exp.endDate}
                                 </span>
@@ -66,16 +69,17 @@ export function ExperienceTab() {
                         </ul>
 
                         {/* Tech Stack */}
-                        <div className="flex flex-wrap gap-1.5">
-                            {exp.stack.map((tech) => (
-                                <span
-                                    key={tech}
-                                    className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
+                        {exp.stack && (
+                            <div className="flex flex-wrap gap-1.5">
+                                {exp.stack.map((tech) => (
+                                    <span
+                                        key={tech}
+                                        className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             ))}
