@@ -1,6 +1,6 @@
 import { ThemeToggle } from "@/components/theme-toggle";
 import { FlipWords } from "@/components/ui/shadcn-io/flip-words";
-import { Logo } from "@/components/logo";
+import { Icon } from "@/components/icon";
 import { SpotifyPresence } from "@/components/spotify-presence";
 
 export function Header() {
@@ -8,7 +8,7 @@ export function Header() {
         <header className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <Logo size={128} />
+                    <Icon src="/logo.svg" size={128} className="-ml-6" />
                     <div className="flex flex-col -mb-[20px]">
                         <span className="font-semibold text-lg">
                             Hi, I'm
