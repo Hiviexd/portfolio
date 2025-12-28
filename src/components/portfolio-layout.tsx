@@ -55,7 +55,7 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
                         href="https://osu.ppy.sh/wiki/en/People/osu%21_team"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary link-fancy">
+                        className="text-foreground link-fancy">
                         osu!team
                     </a>{" "}
                     member.{" "}

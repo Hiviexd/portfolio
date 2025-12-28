@@ -161,3 +161,14 @@
 .link-fancy:hover::after {
     transform: scaleX(1);
 }
+
+/* Spotify wave animation */
+@keyframes wave {
+    0%,
+    100% {
+        transform: scaleY(0.4);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+}
