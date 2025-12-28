@@ -1,4 +1,3 @@
-import * as React from "react";
 import type { Project } from "@/components/tabs/projects-tab";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -25,8 +24,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                 className="sm:max-w-lg"
                 style={{
                     viewTransitionName: `project-${project.id}`,
-                }}
-            >
+                }}>
                 <DialogHeader>
                     <div className="flex items-start justify-between gap-4 pr-8">
                         <div>
@@ -44,8 +42,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                                             : project.status === "Completed"
                                               ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
                                               : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                                    }`}
-                                >
+                                    }`}>
                                     {project.status}
                                 </span>
                             </div>
@@ -80,8 +77,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                         {project.stack.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1"
-                            >
+                                className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1">
                                 <span className="size-2 rounded-full" style={{ backgroundColor: tech.color }} />
                                 <span className="text-xs">{tech.name}</span>
                             </div>
@@ -93,7 +89,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                 {(project.link || project.repo) && (
                     <div className="flex items-center gap-2 pt-2">
                         {project.link && (
-                            <Button size="sm" asChild>
+                            <Button size="sm">
                                 <a href={project.link} target="_blank" rel="noopener noreferrer">
                                     <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={2} />
                                     Live Demo
@@ -101,7 +97,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                             </Button>
                         )}
                         {project.repo && (
-                            <Button variant="outline" size="sm" asChild>
+                            <Button variant="outline" size="sm">
                                 <a href={project.repo} target="_blank" rel="noopener noreferrer">
                                     <HugeiconsIcon icon={Github01Icon} strokeWidth={2} />
                                     Source Code

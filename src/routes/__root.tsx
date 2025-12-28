@@ -2,6 +2,7 @@ import { HeadContent, Scripts, createRootRoute, Outlet } from "@tanstack/react-r
 
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme-provider";
+import { BackgroundBeamsWithCollision } from "@/components/ui/shadcn-io/background-beams-with-collision";
 
 export const Route = createRootRoute({
     head: () => ({
@@ -60,7 +61,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             </head>
             <body className="min-h-screen antialiased">
                 <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-                    {children}
+                    <BackgroundBeamsWithCollision className="bg-background">{children}</BackgroundBeamsWithCollision>
                 </ThemeProvider>
                 <Scripts />
             </body>

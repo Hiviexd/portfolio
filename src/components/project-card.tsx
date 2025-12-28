@@ -1,6 +1,4 @@
 import type { Project } from "@/components/tabs/projects-tab";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 type ProjectCardProps = {
     project: Project;
@@ -15,17 +13,9 @@ export function ProjectCard({ project, onClick, isSelected }: ProjectCardProps) 
             className="group relative text-left w-full rounded-xl border border-border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             style={{
                 viewTransitionName: isSelected ? `project-${project.id}` : undefined,
-            }}
-        >
+            }}>
             <div className="flex items-start justify-between gap-2">
                 <h3 className="font-medium text-foreground">{project.name}</h3>
-                {project.link && (
-                    <HugeiconsIcon
-                        icon={ArrowUpRight01Icon}
-                        className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
-                        strokeWidth={2}
-                    />
-                )}
             </div>
 
             <p className="mt-1.5 text-sm text-muted-foreground line-clamp-2">{project.description}</p>
@@ -51,8 +41,7 @@ export function ProjectCard({ project, onClick, isSelected }: ProjectCardProps) 
                             : project.status === "Completed"
                               ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
                               : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                    }`}
-                >
+                    }`}>
                     <span
                         className={`size-1.5 rounded-full ${
                             project.status === "Active"

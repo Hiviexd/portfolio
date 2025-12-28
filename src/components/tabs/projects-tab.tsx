@@ -1,6 +1,6 @@
-import * as React from "react";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectDetail } from "@/components/project-detail";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import projectsData from "../../../data/projects.json";
 
 export type Project = {
@@ -17,27 +17,38 @@ export type Project = {
     highlights: string[];
 };
 
-export function ProjectsTab() {
-    const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
+type ProjectsTabProps = {
+    initialProject?: Project;
+};
+
+export function ProjectsTab({ initialProject }: ProjectsTabProps) {
+    const navigate = useNavigate();
+    const router = useRouter();
     const projects = projectsData as Project[];
+
+    // Get project from route params if on detail page
+    const currentPath = router.state.location.pathname;
+    const projectIdFromRoute = currentPath.startsWith("/projects/") ? currentPath.split("/projects/")[1] : null;
+
+    const selectedProject = initialProject || projects.find((p) => p.id === projectIdFromRoute) || null;
 
     const handleProjectClick = (project: Project) => {
         if (document.startViewTransition) {
             document.startViewTransition(() => {
-                setSelectedProject(project);
+                navigate({ to: `/projects/${project.id}` });
             });
         } else {
-            setSelectedProject(project);
+            navigate({ to: `/projects/${project.id}` });
         }
     };
 
     const handleClose = () => {
         if (document.startViewTransition) {
             document.startViewTransition(() => {
-                setSelectedProject(null);
+                navigate({ to: "/" });
             });
         } else {
-            setSelectedProject(null);
+            navigate({ to: "/" });
         }
     };
 
