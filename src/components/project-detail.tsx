@@ -5,6 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon, Github01Icon, Calendar03Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
 import { ProjectStatus } from "@/components/project-status";
 import { cn } from "@/lib/utils";
+import { Markdown } from "@/components/markdown";
 
 type ProjectDetailProps = {
     project: Project | null;
@@ -44,7 +45,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                         </div>
                     </div>
                     <DialogDescription className="mt-3 text-sm leading-relaxed">
-                        {project.detailedDescription}
+                        <Markdown className="text-primary">{project.detailedDescription}</Markdown>
                     </DialogDescription>
                 </DialogHeader>
 
