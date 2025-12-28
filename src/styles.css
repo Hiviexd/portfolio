@@ -144,3 +144,20 @@
         contain: layout;
     }
 }
+
+/* Fancy link underline effect */
+.link-fancy {
+    @apply relative inline-block;
+}
+
+.link-fancy::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-full h-px bg-current;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.link-fancy:hover::after {
+    transform: scaleX(1);
+}

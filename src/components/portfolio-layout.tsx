@@ -4,6 +4,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Folder02Icon, Briefcase01Icon, CodeIcon, Edit02Icon } from "@hugeicons/core-free-icons";
 import { useRouter, useNavigate } from "@tanstack/react-router";
+import { AgeCounter } from "@/components/age-counter";
 
 type PortfolioLayoutProps = {
     children: React.ReactNode;
@@ -49,8 +50,19 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
 
                 {/* Description */}
                 <p className="text-muted-foreground text-[15px] leading-relaxed">
-                    Software Engineer based in San Francisco. Passionate about building products that make a difference.
-                    Currently focused on developer tools and open source.
+                    Software Engineer and{" "}
+                    <a
+                        href="https://osu.ppy.sh/wiki/en/People/osu%21_team"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary link-fancy">
+                        osu!team
+                    </a>{" "}
+                    member.{" "}
+                    <code>
+                        <AgeCounter startDate={new Date("2002-02-10")} />
+                    </code>{" "}
+                    years old with a passion for open source, building awesome stuff, and the osu! community.
                 </p>
 
                 {/* Social Links */}
@@ -61,19 +73,19 @@ export function PortfolioLayout({ children, activeTab }: PortfolioLayoutProps) {
             <section className="mt-10">
                 <Tabs value={tabFromRoute} onValueChange={handleTabChange}>
                     <TabsList variant="line" className="mb-6">
-                        <TabsTrigger value="projects">
+                        <TabsTrigger value="projects" className="cursor-pointer">
                             <HugeiconsIcon icon={Folder02Icon} strokeWidth={2} />
                             Projects
                         </TabsTrigger>
-                        <TabsTrigger value="experience">
+                        <TabsTrigger value="experience" className="cursor-pointer">
                             <HugeiconsIcon icon={Briefcase01Icon} strokeWidth={2} />
                             Experience
                         </TabsTrigger>
-                        <TabsTrigger value="skills">
+                        <TabsTrigger value="skills" className="cursor-pointer">
                             <HugeiconsIcon icon={CodeIcon} strokeWidth={2} />
                             Skills
                         </TabsTrigger>
-                        <TabsTrigger value="blogs">
+                        <TabsTrigger value="blogs" className="cursor-pointer">
                             <HugeiconsIcon icon={Edit02Icon} strokeWidth={2} />
                             Blogs
                         </TabsTrigger>
