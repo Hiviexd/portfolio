@@ -1,14 +1,16 @@
 import { ThemeToggle } from "@/components/theme-toggle";
+import { FlipWords } from "@/components/ui/shadcn-io/flip-words";
+import { Logo } from "@/components/logo";
 
 export function Header() {
     return (
         <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-                {/* Logo placeholder */}
-                <div className="size-9 rounded-lg bg-foreground flex items-center justify-center">
-                    <span className="text-background font-bold text-sm">JD</span>
-                </div>
-                <span className="font-semibold text-lg">John Doe</span>
+                <Logo size={128} />
+                <span className="font-semibold text-lg">
+                    Hi, I'm
+                    <FlipWords words={["Hivie", "Rayen Attia"]} duration={3000} letterDelay={0.05} wordDelay={0.3} />
+                </span>
             </div>
             <ThemeToggle />
         </header>
