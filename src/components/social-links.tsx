@@ -1,6 +1,6 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Github01Icon, Linkedin01Icon, NewTwitterIcon, Mail01Icon } from "@hugeicons/core-free-icons";
+import { Github01Icon, Linkedin01Icon, NewTwitterIcon, Mail01Icon, DocumentAttachmentIcon } from "@hugeicons/core-free-icons";
 import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
 import socialsData from "../../data/socials.json";
@@ -11,12 +11,13 @@ type SocialLink = {
     icon: string;
 };
 
-// Map icon string identifiers to actual icon components
+// Map icon string identifiers to actual icon compon    ents
 const iconMap: Record<string, typeof Github01Icon> = {
     github: Github01Icon,
     linkedin: Linkedin01Icon,
     twitter: NewTwitterIcon,
     email: Mail01Icon,
+    file: DocumentAttachmentIcon,
 };
 
 export function SocialLinks() {

@@ -23,5 +23,10 @@
         "name": "X (Twitter)",
         "href": "https://x.com/_Hivie",
         "icon": "twitter"
+    },
+    {
+        "name": "Resume",
+        "href": "/resume.pdf",
+        "icon": "file"
     }
 ]
