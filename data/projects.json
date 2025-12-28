@@ -286,14 +286,16 @@
             { "name": "MongoDB", "color": "#08ee69" },
             { "name": "Kafka", "color": "#2f2f2f" },
             { "name": "GraphQL", "color": "#e10098" },
-            { "name": "gRPC", "color": "#5772d7" }
+            { "name": "gRPC", "color": "#5772d7" },
+            { "name": "Docker", "color": "#2496ED" }
         ],
         "highlights": [
             "Microservices-based backend system for managing users, books, loans, and late return penalties",
             "Demonstrates REST, GraphQL, gRPC, and Kafka",
             "User management system with role-based access control",
             "Book and loan management system with CRUD operations",
-            "Late return penalty management system with CRUD operations"
+            "Late return penalty management system with CRUD operations",
+            "Dockerized deployment pipeline"
         ]
     }
 ]
