@@ -1,4 +1,5 @@
 import type { Project } from "@/components/tabs/projects-tab";
+import { ProjectStatus } from "@/components/project-status";
 
 type ProjectCardProps = {
     project: Project;
@@ -34,25 +35,7 @@ export function ProjectCard({ project, onClick, isSelected }: ProjectCardProps) 
 
             {/* Status indicator */}
             <div className="absolute top-4 right-4">
-                <span
-                    className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
-                        project.status === "Active"
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                            : project.status === "Completed"
-                              ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                              : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                    }`}>
-                    <span
-                        className={`size-1.5 rounded-full ${
-                            project.status === "Active"
-                                ? "bg-emerald-500"
-                                : project.status === "Completed"
-                                  ? "bg-blue-500"
-                                  : "bg-amber-500"
-                        }`}
-                    />
-                    {project.status}
-                </span>
+                <ProjectStatus status={project.status} />
             </div>
         </button>
     );

@@ -10,7 +10,7 @@ export type Project = {
     detailedDescription: string;
     link: string | null;
     repo: string | null;
-    status: "Active" | "Completed" | "On Hold";
+    status: "Active" | "Completed" | "Maintainer";
     startDate: string;
     endDate: string | null;
     stack: Array<{ name: string; color: string }>;

@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { buttonVariants } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon, Github01Icon, Calendar03Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
+import { ProjectStatus } from "@/components/project-status";
 import { cn } from "@/lib/utils";
 
 type ProjectDetailProps = {
@@ -36,15 +37,8 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                                     {formatDate(project.startDate)} —{" "}
                                     {project.endDate ? formatDate(project.endDate) : "Present"}
                                 </span>
-                                <span
-                                    className={`ml-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
-                                        project.status === "Active"
-                                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                                            : project.status === "Completed"
-                                              ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                                              : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                                    }`}>
-                                    {project.status}
+                                <span className="ml-1">
+                                    <ProjectStatus status={project.status} />
                                 </span>
                             </div>
                         </div>
@@ -55,21 +49,25 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
                 </DialogHeader>
 
                 {/* Highlights */}
-                <div className="space-y-2">
-                    <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Highlights</h4>
-                    <ul className="space-y-1.5">
-                        {project.highlights.map((highlight, index) => (
-                            <li key={index} className="flex items-start gap-2 text-sm">
-                                <HugeiconsIcon
-                                    icon={CheckmarkCircle02Icon}
-                                    className="size-4 mt-0.5 text-emerald-500 shrink-0"
-                                    strokeWidth={2}
-                                />
-                                <span>{highlight}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                {project.highlights && (
+                    <div className="space-y-2">
+                        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                            Highlights
+                        </h4>
+                        <ul className="space-y-1.5">
+                            {project.highlights.map((highlight, index) => (
+                                <li key={index} className="flex items-start gap-2 text-sm">
+                                    <HugeiconsIcon
+                                        icon={CheckmarkCircle02Icon}
+                                        className="size-4 mt-0.5 text-emerald-500 shrink-0"
+                                        strokeWidth={2}
+                                    />
+                                    <span>{highlight}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
 
                 {/* Tech Stack */}
                 <div className="space-y-2">
