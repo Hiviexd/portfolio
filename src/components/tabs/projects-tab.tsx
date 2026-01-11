@@ -2,20 +2,7 @@ import { ProjectCard } from "@/components/projects/project-card";
 import { ProjectDetails } from "@/components/projects/project-details";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import projectsData from "../../../data/projects.json";
-
-export type Project = {
-    id: string;
-    name: string;
-    description: string;
-    detailedDescription: string;
-    link: string | null;
-    repo: string | null;
-    status: "Active" | "Completed" | "Maintainer";
-    startDate: string;
-    endDate: string | null;
-    stack: Array<{ name: string; color: string }>;
-    highlights: string[];
-};
+import type { Project } from "@/types";
 
 type ProjectsTabProps = {
     initialProject?: Project;

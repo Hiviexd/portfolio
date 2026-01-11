@@ -1,18 +1,6 @@
 import experienceData from "../../../data/experience.json";
 import { ExperienceEntry } from "@/components/experience/experience-entry";
-
-type Experience = {
-    id: string;
-    role: string;
-    company: string;
-    location: string;
-    type: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-    responsibilities: string[];
-    stack: string[];
-};
+import type { Experience } from "@/types";
 
 export function ExperienceTab() {
     const experiences = experienceData as Experience[];

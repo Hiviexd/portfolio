@@ -21,17 +21,17 @@ export function TabsSection() {
         }
     };
 
+    // Map routes to tab values
+    const routeToTab: Record<string, string> = {
+        "/": "projects",
+        "/experience": "experience",
+        "/skills": "skills",
+        "/blog": "blogs",
+    };
+
     // Determine active tab from current route
     const tabFromRoute =
-        currentPath === "/" || currentPath.startsWith("/projects/")
-            ? "projects"
-            : currentPath === "/experience"
-              ? "experience"
-              : currentPath === "/skills"
-                ? "skills"
-                : currentPath === "/blog"
-                  ? "blogs"
-                  : "projects";
+        routeToTab[currentPath] ?? (currentPath.startsWith("/projects/") ? "projects" : "projects");
 
     return (
         <section className="mt-10">

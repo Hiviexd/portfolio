@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { ProjectsTab } from "@/components/tabs/projects-tab";
 import projectsData from "../../../data/projects.json";
-import type { Project } from "@/components/tabs/projects-tab";
+import type { Project } from "@/types";
 
 export const Route = createFileRoute("/_layout/projects/$projectId")({
     component: ProjectDetailPage,

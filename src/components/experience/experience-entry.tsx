@@ -1,18 +1,6 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Building03Icon, Location01Icon } from "@hugeicons/core-free-icons";
-
-type Experience = {
-    id: string;
-    role: string;
-    company: string;
-    location: string;
-    type: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-    responsibilities: string[];
-    stack: string[];
-};
+import type { Experience } from "@/types";
 
 type ExperienceEntryProps = {
     experience: Experience;

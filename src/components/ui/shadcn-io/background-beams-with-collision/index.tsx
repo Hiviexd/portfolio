@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
 
 export const BackgroundBeamsWithCollision = ({
@@ -190,7 +190,7 @@ const CollisionMechanism = React.forwardRef<
                     repeatDelay: beamOptions.repeatDelay || 0,
                 }}
                 className={cn(
-                    "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-teal-300 to-blue-500 to-transparent",
+                    "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t dark:from-teal-300 dark:to-blue-500 dark:to-transparent from-gray-600 to-gray-900 to-transparent",
                     beamOptions.className,
                 )}
             />
@@ -229,7 +229,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-teal-300 to-transparent blur-sm"></motion.div>
+                className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r dark:from-transparent dark:via-teal-300 dark:to-transparent from-transparent via-gray-300 to-transparent blur-sm"></motion.div>
             {spans.map((span) => (
                 <motion.span
                     key={span.id}
@@ -240,7 +240,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
                         opacity: 0,
                     }}
                     transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-                    className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-teal-300 to-blue-500"
+                    className="absolute h-1 w-1 rounded-full bg-gradient-to-b dark:from-teal-300 dark:to-blue-500 from-gray-600 to-gray-900"
                 />
             ))}
         </div>

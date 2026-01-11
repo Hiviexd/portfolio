@@ -1,4 +1,4 @@
-import type { Project } from "@/components/tabs/projects-tab";
+import type { Project } from "@/types";
 import { ProjectStatus } from "@/components/projects/project-status";
 
 type ProjectCardProps = {

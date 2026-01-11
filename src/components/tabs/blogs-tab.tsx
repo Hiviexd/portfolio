@@ -7,9 +7,9 @@ export function BlogsTab() {
             <div className="size-16 rounded-2xl bg-muted flex items-center justify-center mb-4">
                 <HugeiconsIcon icon={Edit02Icon} className="size-8 text-muted-foreground" strokeWidth={1.5} />
             </div>
-            <h3 className="text-lg font-medium text-foreground">Coming Soon</h3>
+            <h3 className="text-lg font-medium text-foreground">Nothing yet..</h3>
             <p className="mt-2 text-sm text-muted-foreground max-w-xs">
-                I'm working on some articles to share my thoughts and experiences. Stay tuned!
+                Maybe one day I'll post my yapping sessions here whenever I get inspiration.
             </p>
         </div>
     );

@@ -3,51 +3,57 @@
         {
             "name": "Frontend",
             "skills": [
-                { "name": "React", "logo": "react", "note": "5+ years" },
-                { "name": "TypeScript", "logo": "typescript", "note": "4+ years" },
-                { "name": "Next.js", "logo": "nextjs" },
-                { "name": "Vue.js", "logo": "vue" },
-                {
-                    "name": "Tailwind CSS",
-                    "logo": "tailwind",
-                    "note": "Primary styling"
-                },
-                { "name": "HTML/CSS", "logo": "html" }
+                { "name": "React", "logo": "react.svg", "note": "5+ years", "favorite": true },
+                { "name": "TypeScript", "logo": "typescript.svg", "note": "4+ years", "favorite": true },
+                { "name": "Vite", "logo": "vite.svg" },
+                { "name": "Mantine", "logo": "mantine.svg", "favorite": true },
+                { "name": "Sass", "logo": "sass.svg", "favorite": true },
+                { "name": "TanStack Start", "logo": "tanstack.png" },
+                { "name": "Next.js", "logo": "nextjs.svg" },
+                { "name": "Vue.js", "logo": "vue.svg" },
+                { "name": "Tailwind CSS", "logo": "tailwind.svg" },
+                { "name": "Shadcn/ui", "logo": "shadcn", "libraryIcon": true }
             ]
         },
         {
             "name": "Backend",
             "skills": [
-                { "name": "Node.js", "logo": "nodejs", "note": "4+ years" },
-                { "name": "Python", "logo": "python" },
-                { "name": "Go", "logo": "go" },
-                { "name": "PostgreSQL", "logo": "postgresql" },
-                { "name": "MongoDB", "logo": "mongodb" },
-                { "name": "Redis", "logo": "redis" }
+                { "name": "Node.js", "logo": "nodejs.svg", "note": "5+ years", "favorite": true },
+                { "name": "Express.js", "logo": "express.svg", "favorite": true },
+                { "name": "MongoDB", "logo": "mongodb.svg", "favorite": true },
+                { "name": "Bun", "logo": "bun.svg" },
+                { "name": "NestJS", "logo": "nestjs.svg" },
+                { "name": "Spring", "logo": "spring.svg" },
+                { "name": "MySQL", "logo": "mysql.svg" },
+                { "name": "Prisma", "logo": "prisma.svg" },
+                { "name": "Redis", "logo": "redis.svg" }
             ]
         },
         {
             "name": "DevOps & Tools",
             "skills": [
-                { "name": "Git", "logo": "git", "note": "Daily driver" },
-                { "name": "Docker", "logo": "docker" },
-                { "name": "AWS", "logo": "aws" },
-                { "name": "Vercel", "logo": "vercel" },
-                { "name": "GitHub Actions", "logo": "github" },
-                { "name": "Linux", "logo": "linux" }
+                { "name": "Git & GitHub", "logo": "git.svg", "note": "Daily driver", "favorite": true },
+                { "name": "GitHub Actions", "logo": "github", "favorite": true, "libraryIcon": true },
+                { "name": "Cloudflare", "logo": "cloudflare.svg" },
+                { "name": "Docker", "logo": "docker.svg" },
+                { "name": "OVHCloud", "logo": "ovh.svg" },
+                { "name": "Vercel", "logo": "vercel.svg" },
+                { "name": "Linux", "logo": "linux.svg" },
+                { "name": "pnpm", "logo": "pnpm.svg" },
+                { "name": "Insomnia", "logo": "insomnia.svg" }
             ]
         },
         {
-            "name": "Design & Other",
+            "name": "Other",
             "skills": [
-                { "name": "Figma", "logo": "figma", "note": "Design handoff" },
-                { "name": "REST APIs", "logo": "api" },
-                { "name": "GraphQL", "logo": "graphql" },
-                {
-                    "name": "Testing",
-                    "logo": "testing",
-                    "note": "Jest, Vitest, Playwright"
-                }
+                { "name": "Figma", "logo": "figma.svg", "note": "Design handoff" },
+                { "name": "GraphQL", "logo": "graphql.svg" },
+                { "name": "Vitest", "logo": "vitest.svg" },
+                { "name": "C", "logo": "c.svg" },
+                { "name": "C#", "logo": "csharp.svg" },
+                { "name": "Python", "logo": "python.svg" },
+                { "name": "Java", "logo": "java.svg", "note": "Mobile/Backend" },
+                { "name": "React Native", "logo": "react.svg", "note": "Mobile" }
             ]
         }
     ]
