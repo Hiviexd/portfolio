@@ -45,7 +45,7 @@ export const Route = createRootRoute({
             },
             {
                 name: "og:image",
-                content: "https://hivie.tn/logo-transparent.png",
+                content: "/logo.png",
             },
         ],
         links: [
