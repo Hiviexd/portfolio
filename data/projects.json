@@ -93,7 +93,7 @@
         "id": "loved-cli",
         "name": "Project Loved CLI",
         "description": "A command-line tool for managing Project Loved operations",
-        "detailedDescription": "A command-line tool for managing [Project Loved](https://osu.ppy.sh/wiki/en/Community/Project_Loved) operations including news generation, forum thread management, mapper notifications, and voting results processing.\nThis project is the successor to clayton's [Project Loved CLI](https://github.com/cl8n/project-loved), rewritten with safety, flexibility, and code readability in mind.",
+        "detailedDescription": "A command-line tool for managing [Project Loved](https://osu.ppy.sh/wiki/en/Community/Project_Loved) operations including news generation, forum thread management, mapper notifications, and voting results processing.\n\nThis project is the successor to clayton's [Project Loved CLI](https://github.com/cl8n/project-loved), rewritten with safety, flexibility, and code readability in mind.",
         "repo": "https://github.com/Hiviexd/loved-cli",
         "status": "Active",
         "startDate": "2025-11",
