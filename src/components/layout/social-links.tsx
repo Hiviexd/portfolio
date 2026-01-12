@@ -6,10 +6,13 @@ import {
     NewTwitterIcon,
     Mail01Icon,
     DocumentAttachmentIcon,
+    DiscordIcon,
 } from "@hugeicons/core-free-icons";
 import { Icon } from "@/components/misc/icon";
+import { CopyActionIcon } from "@/components/ui/copy-action-icon";
 import { cn } from "@/lib/utils";
 import socialsData from "../../../data/socials.json";
+import metadata from "../../../data/metadata.json";
 
 type SocialLink = {
     name: string;
@@ -17,7 +20,7 @@ type SocialLink = {
     icon: string;
 };
 
-// Map icon string identifiers to actual icon compon    ents
+// Map icon string identifiers to actual icon components
 const iconMap: Record<string, typeof Github01Icon> = {
     github: Github01Icon,
     linkedin: Linkedin01Icon,
@@ -58,6 +61,9 @@ export function SocialLinks() {
                     </Tooltip>
                 );
             })}
+
+            {/* Discord copy button */}
+            <CopyActionIcon icon={DiscordIcon} value={metadata.discordUsername} tooltip="Copy Discord username" />
         </div>
     );
 }
