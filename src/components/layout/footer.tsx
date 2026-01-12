@@ -17,7 +17,8 @@ export function Footer() {
                     variant="ghost"
                     size="sm"
                     onClick={() => setGameOpen(true)}
-                    className="text-muted-foreground hover:text-foreground">
+                    className="text-muted-foreground hover:text-foreground"
+                >
                     <HugeiconsIcon icon={GameController02Icon} size={16} strokeWidth={2} />
                     Play 2048
                 </Button>

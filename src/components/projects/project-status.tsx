@@ -28,7 +28,8 @@ export function ProjectStatus({ status, className }: ProjectStatusProps) {
 
     return (
         <span
-            className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${config.bg} ${config.text} ${className || ""}`}>
+            className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${config.bg} ${config.text} ${className || ""}`}
+        >
             <span className={`size-1.5 rounded-full ${config.dot}`} />
             {status}
         </span>

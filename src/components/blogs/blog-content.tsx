@@ -29,11 +29,7 @@ export function BlogContent({ blog, onBack }: BlogContentProps) {
             {/* Banner image */}
             {blog.banner && (
                 <div className="rounded-xl overflow-hidden">
-                    <img
-                        src={blog.banner}
-                        alt={blog.title}
-                        className="w-full h-48 object-cover"
-                    />
+                    <img src={blog.banner} alt={blog.title} className="w-full h-48 object-cover" />
                 </div>
             )}
 

@@ -40,7 +40,8 @@ export function SpotifyPresence({ className }: SpotifyPresenceProps) {
                 className={cn(
                     "flex items-center gap-2 text-sm text-muted-foreground animate-in fade-in duration-300",
                     className,
-                )}>
+                )}
+            >
                 <HugeiconsIcon icon={MusicNote01Icon} className="size-3.5 text-green-500" strokeWidth={2} />
                 <span className="text-xs">Not playing</span>
             </div>
@@ -57,7 +58,8 @@ export function SpotifyPresence({ className }: SpotifyPresenceProps) {
             className={cn(
                 "flex items-center gap-2 text-sm text-muted-foreground animate-in fade-in duration-300",
                 className,
-            )}>
+            )}
+        >
             <HugeiconsIcon icon={MusicNote01Icon} className="size-3.5 text-green-500" strokeWidth={2} />
             <span className="text-xs flex-shrink-0">Listening to</span>
             <div className="flex items-center gap-1.5 flex-1">
@@ -70,7 +72,8 @@ export function SpotifyPresence({ className }: SpotifyPresenceProps) {
                     href={`https://open.spotify.com/track/${spotifyData.track_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-fancy text-foreground text-xs transition-colors">
+                    className="link-fancy text-foreground text-xs transition-colors"
+                >
                     {spotifyData.song} — {spotifyData.artist}
                 </a>
             </div>

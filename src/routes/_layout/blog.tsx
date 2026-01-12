@@ -8,4 +8,3 @@ export const Route = createFileRoute("/_layout/blog")({
 function BlogPage() {
     return <BlogsTab />;
 }
-

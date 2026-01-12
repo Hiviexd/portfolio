@@ -14,10 +14,12 @@ const blogModules = import.meta.glob<string>("../../../data/blogs/*.md", {
 });
 
 // Parse all blogs
-const blogs: Blog[] = Object.entries(blogModules).map(([path, content]) => {
-    const filename = path.split("/").pop() ?? "";
-    return parseBlog(filename, content);
-}).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const blogs: Blog[] = Object.entries(blogModules)
+    .map(([path, content]) => {
+        const filename = path.split("/").pop() ?? "";
+        return parseBlog(filename, content);
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 type BlogsTabProps = {
     initialBlog?: Blog;

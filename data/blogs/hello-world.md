@@ -12,6 +12,7 @@ This is my first blog post! I'm excited to finally set up a space where I can sh
 ## What to expect
 
 I'll be writing about:
+
 - **Tech stuff** — deep dives into problems I've solved, tools I'm exploring, and things I've learned
 - **osu! and gaming** — my journey as part of the osu!team and the beatmapping/modding community
 - **Random musings** — occasionally just vibes and life updates

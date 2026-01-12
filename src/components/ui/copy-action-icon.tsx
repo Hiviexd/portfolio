@@ -12,13 +12,7 @@ type CopyActionIconProps = {
     className?: string;
 };
 
-export function CopyActionIcon({
-    icon,
-    value,
-    tooltip,
-    copiedTooltip = "Copied!",
-    className,
-}: CopyActionIconProps) {
+export function CopyActionIcon({ icon, value, tooltip, copiedTooltip = "Copied!", className }: CopyActionIconProps) {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = async () => {
@@ -39,7 +33,8 @@ export function CopyActionIcon({
                                 ? "border-green-500/50 bg-green-500/10 text-green-600 dark:text-green-400"
                                 : "border-transparent hover:bg-muted hover:text-foreground dark:hover:bg-muted/50",
                             className,
-                        )}>
+                        )}
+                    >
                         <HugeiconsIcon
                             icon={icon}
                             strokeWidth={2}
@@ -64,4 +59,3 @@ export function CopyActionIcon({
         </Tooltip>
     );
 }
-

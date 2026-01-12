@@ -31,9 +31,9 @@ export function TabsSection() {
 
     // Determine active tab from current route
     const tabFromRoute =
-        routeToTab[currentPath]
-        ?? (currentPath.startsWith("/projects/") ? "projects" : null)
-        ?? (currentPath.startsWith("/blog/") ? "blogs" : "projects");
+        routeToTab[currentPath] ??
+        (currentPath.startsWith("/projects/") ? "projects" : null) ??
+        (currentPath.startsWith("/blog/") ? "blogs" : "projects");
 
     return (
         <section className="mt-10">

@@ -47,7 +47,8 @@ export function SocialLinks() {
                                     rel="noopener noreferrer"
                                     className={cn(
                                         "inline-flex items-center justify-center size-8 rounded-lg border border-transparent hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                                    )}>
+                                    )}
+                                >
                                     {IconComponent ? (
                                         <HugeiconsIcon icon={IconComponent} strokeWidth={2} className="size-[18px]" />
                                     ) : (

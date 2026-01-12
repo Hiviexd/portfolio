@@ -31,7 +31,8 @@ export function Markdown({ children, className }: MarkdownProps) {
                             {...props}
                         />
                     ),
-                }}>
+                }}
+            >
                 {children}
             </ReactMarkdown>
         </div>

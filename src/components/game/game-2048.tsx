@@ -41,7 +41,8 @@ export default function Game2048() {
             ref={containerRef}
             tabIndex={0}
             onKeyDown={handleKeyDown}
-            className="flex flex-col items-center gap-4 outline-none">
+            className="flex flex-col items-center gap-4 outline-none"
+        >
             {/* Header with scores */}
             <div className="flex w-full items-center justify-between gap-3 pr-8">
                 <div className="text-xl font-bold">2048</div>

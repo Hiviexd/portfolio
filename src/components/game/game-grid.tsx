@@ -24,7 +24,8 @@ export default function GameGrid({ tiles, gameStatus, onNewGame, onContinue, swi
     return (
         <div
             className="relative cursor-grab select-none rounded-lg bg-muted/70 p-2 active:cursor-grabbing"
-            {...swipeHandlers}>
+            {...swipeHandlers}
+        >
             {/* Background grid */}
             <div className="grid grid-cols-4 gap-1.5">
                 {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => (
@@ -37,14 +38,9 @@ export default function GameGrid({ tiles, gameStatus, onNewGame, onContinue, swi
                 {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => {
                     const gridRow = Math.floor(i / GRID_SIZE);
                     const gridCol = i % GRID_SIZE;
-                    const tile = tiles.find(
-                        (t) => t.row === gridRow && t.col === gridCol && !t.mergingInto,
-                    );
+                    const tile = tiles.find((t) => t.row === gridRow && t.col === gridCol && !t.mergingInto);
                     const mergingTile = tiles.find(
-                        (t) =>
-                            t.mergingInto &&
-                            t.mergingInto.row === gridRow &&
-                            t.mergingInto.col === gridCol,
+                        (t) => t.mergingInto && t.mergingInto.row === gridRow && t.mergingInto.col === gridCol,
                     );
 
                     return (

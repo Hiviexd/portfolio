@@ -17,14 +17,9 @@ export default function Game2048Dialog({ open, onOpenChange }: Game2048DialogPro
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent
-                className="sm:max-w-sm"
-                onKeyDown={handleKeyDown}
-                showCloseButton={true}>
+            <DialogContent className="sm:max-w-sm" onKeyDown={handleKeyDown} showCloseButton={true}>
                 <DialogTitle className="sr-only">2048 Game</DialogTitle>
-                <DialogDescription className="sr-only">
-                    Play 2048 - Use arrow keys to move tiles
-                </DialogDescription>
+                <DialogDescription className="sr-only">Play 2048 - Use arrow keys to move tiles</DialogDescription>
                 <Game2048 />
             </DialogContent>
         </Dialog>

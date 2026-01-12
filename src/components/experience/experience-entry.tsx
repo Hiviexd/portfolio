@@ -60,7 +60,8 @@ export function ExperienceEntry({ experience: exp, isLast }: ExperienceEntryProp
                         {exp.stack.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="flex items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-0.5">
+                                className="flex items-center gap-1 rounded-full border border-border bg-muted/50 px-2 py-0.5"
+                            >
                                 <span className="size-1.5 rounded-full" style={{ backgroundColor: tech.color }} />
                                 <span className="text-xs">{tech.name}</span>
                             </div>

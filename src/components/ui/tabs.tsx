@@ -36,13 +36,7 @@ interface AnimatedTabsListProps extends TabsPrimitive.List.Props, VariantProps<t
     activeValue?: string | number | null;
 }
 
-function TabsList({
-    className,
-    variant = "default",
-    activeValue,
-    children,
-    ...props
-}: AnimatedTabsListProps) {
+function TabsList({ className, variant = "default", activeValue, children, ...props }: AnimatedTabsListProps) {
     const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
     const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
     const [mounted, setMounted] = useState(false);

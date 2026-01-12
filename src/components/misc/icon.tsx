@@ -12,7 +12,8 @@ export function Icon({ src, size = 36, className }: IconProps) {
     return (
         <div
             className={cn("inline-flex items-center justify-center", className)}
-            style={{ width: sizeValue, height: sizeValue }}>
+            style={{ width: sizeValue, height: sizeValue }}
+        >
             <img
                 src={src}
                 alt={`icon-${src}`}

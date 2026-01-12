@@ -55,7 +55,8 @@ export default function GameTile({ tile }: GameTileProps) {
                           "--slide-from-y": `${translateY}px`,
                       } as React.CSSProperties)
                     : undefined
-            }>
+            }
+        >
             {value > 0 ? value : ""}
         </div>
     );

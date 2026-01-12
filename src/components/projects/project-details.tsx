@@ -97,7 +97,8 @@ export function ProjectDetails({ project, onClose }: ProjectDetailProps) {
                         {displayedProject.stack.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1">
+                                className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1"
+                            >
                                 <span className="size-2 rounded-full" style={{ backgroundColor: tech.color }} />
                                 <span className="text-xs">{tech.name}</span>
                             </div>
@@ -116,7 +117,8 @@ export function ProjectDetails({ project, onClose }: ProjectDetailProps) {
                                 className={cn(
                                     buttonVariants({ variant: "default", size: "sm" }),
                                     "flex items-center gap-1.5",
-                                )}>
+                                )}
+                            >
                                 <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={2} className="size-3.5" />
                                 Website
                             </a>
@@ -129,7 +131,8 @@ export function ProjectDetails({ project, onClose }: ProjectDetailProps) {
                                 className={cn(
                                     buttonVariants({ variant: "outline", size: "sm" }),
                                     "flex items-center gap-1.5",
-                                )}>
+                                )}
+                            >
                                 <HugeiconsIcon icon={Github01Icon} strokeWidth={2} className="size-3.5" />
                                 Source Code
                             </a>

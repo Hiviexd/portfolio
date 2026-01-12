@@ -13,9 +13,7 @@ export function setTileIdCounter(value: number): void {
 }
 
 export function getGridFromTiles(tiles: TileData[]): (TileData | null)[][] {
-    const grid: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () =>
-        Array(GRID_SIZE).fill(null),
-    );
+    const grid: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(null));
     for (const tile of tiles) {
         if (tile.value > 0 && !tile.mergingInto) {
             grid[tile.row][tile.col] = tile;
@@ -101,9 +99,7 @@ export function moveTiles(tiles: TileData[], direction: Direction, currentHighes
     const orderedTiles = getProcessOrder(direction);
 
     // Track the new grid state
-    const newGrid: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () =>
-        Array(GRID_SIZE).fill(null),
-    );
+    const newGrid: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(null));
 
     // Track which positions have already merged (can only merge once per move)
     const mergedPositions = new Set<string>();

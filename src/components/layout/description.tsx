@@ -9,7 +9,8 @@ export function Description() {
                 href="https://osu.ppy.sh/wiki/en/People/osu%21_team"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground link-fancy transition-all">
+                className="text-foreground link-fancy transition-all"
+            >
                 osu!team
             </a>{" "}
             member.{" "}
