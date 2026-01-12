@@ -1,7 +1,7 @@
 [
     {
         "id": "tournament-tracker",
-        "name": "Tournament Tracker",
+        "name": "Tournament Tracker test",
         "description": "The one-stop shop for all official osu! tournament correspondence and information",
         "detailedDescription": "Tournament Tracker is a comprehensive platform for tracking osu! tournaments and managing official tournament support. It also serves as a central hub for all tournament information, resources, and communication between the Tournament Committee and the community.",
         "link": "https://tcomm.hivie.tn/",
