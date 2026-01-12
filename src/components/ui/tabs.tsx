@@ -90,7 +90,7 @@ function TabsList({ className, variant = "default", activeValue, children, ...pr
 
             {variant === "line" && mounted && underlineStyle.width > 0 && (
                 <motion.div
-                    className="bg-foreground absolute bottom-0 z-20 h-0.5"
+                    className="bg-foreground absolute bottom-0 z-20 h-0.5 transition-colors"
                     layoutId="tabs-underline"
                     animate={{
                         left: underlineStyle.left,
