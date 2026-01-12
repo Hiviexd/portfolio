@@ -15,6 +15,7 @@ import { Route as LayoutSkillsRouteImport } from './routes/_layout/skills'
 import { Route as LayoutExperienceRouteImport } from './routes/_layout/experience'
 import { Route as LayoutBlogRouteImport } from './routes/_layout/blog'
 import { Route as LayoutProjectsProjectIdRouteImport } from './routes/_layout/projects.$projectId'
+import { Route as LayoutBlogBlogIdRouteImport } from './routes/_layout/blog.$blogId'
 
 const LayoutRoute = LayoutRouteImport.update({
   id: '/_layout',
@@ -45,35 +46,55 @@ const LayoutProjectsProjectIdRoute = LayoutProjectsProjectIdRouteImport.update({
   path: '/projects/$projectId',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutBlogBlogIdRoute = LayoutBlogBlogIdRouteImport.update({
+  id: '/$blogId',
+  path: '/$blogId',
+  getParentRoute: () => LayoutBlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/blog': typeof LayoutBlogRoute
+  '/blog': typeof LayoutBlogRouteWithChildren
   '/experience': typeof LayoutExperienceRoute
   '/skills': typeof LayoutSkillsRoute
   '/': typeof LayoutIndexRoute
+  '/blog/$blogId': typeof LayoutBlogBlogIdRoute
   '/projects/$projectId': typeof LayoutProjectsProjectIdRoute
 }
 export interface FileRoutesByTo {
-  '/blog': typeof LayoutBlogRoute
+  '/blog': typeof LayoutBlogRouteWithChildren
   '/experience': typeof LayoutExperienceRoute
   '/skills': typeof LayoutSkillsRoute
   '/': typeof LayoutIndexRoute
+  '/blog/$blogId': typeof LayoutBlogBlogIdRoute
   '/projects/$projectId': typeof LayoutProjectsProjectIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_layout': typeof LayoutRouteWithChildren
-  '/_layout/blog': typeof LayoutBlogRoute
+  '/_layout/blog': typeof LayoutBlogRouteWithChildren
   '/_layout/experience': typeof LayoutExperienceRoute
   '/_layout/skills': typeof LayoutSkillsRoute
   '/_layout/': typeof LayoutIndexRoute
+  '/_layout/blog/$blogId': typeof LayoutBlogBlogIdRoute
   '/_layout/projects/$projectId': typeof LayoutProjectsProjectIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/blog' | '/experience' | '/skills' | '/' | '/projects/$projectId'
+  fullPaths:
+    | '/blog'
+    | '/experience'
+    | '/skills'
+    | '/'
+    | '/blog/$blogId'
+    | '/projects/$projectId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/blog' | '/experience' | '/skills' | '/' | '/projects/$projectId'
+  to:
+    | '/blog'
+    | '/experience'
+    | '/skills'
+    | '/'
+    | '/blog/$blogId'
+    | '/projects/$projectId'
   id:
     | '__root__'
     | '/_layout'
@@ -81,6 +102,7 @@ export interface FileRouteTypes {
     | '/_layout/experience'
     | '/_layout/skills'
     | '/_layout/'
+    | '/_layout/blog/$blogId'
     | '/_layout/projects/$projectId'
   fileRoutesById: FileRoutesById
 }
@@ -132,11 +154,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutProjectsProjectIdRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/blog/$blogId': {
+      id: '/_layout/blog/$blogId'
+      path: '/$blogId'
+      fullPath: '/blog/$blogId'
+      preLoaderRoute: typeof LayoutBlogBlogIdRouteImport
+      parentRoute: typeof LayoutBlogRoute
+    }
   }
 }
 
+interface LayoutBlogRouteChildren {
+  LayoutBlogBlogIdRoute: typeof LayoutBlogBlogIdRoute
+}
+
+const LayoutBlogRouteChildren: LayoutBlogRouteChildren = {
+  LayoutBlogBlogIdRoute: LayoutBlogBlogIdRoute,
+}
+
+const LayoutBlogRouteWithChildren = LayoutBlogRoute._addFileChildren(
+  LayoutBlogRouteChildren,
+)
+
 interface LayoutRouteChildren {
-  LayoutBlogRoute: typeof LayoutBlogRoute
+  LayoutBlogRoute: typeof LayoutBlogRouteWithChildren
   LayoutExperienceRoute: typeof LayoutExperienceRoute
   LayoutSkillsRoute: typeof LayoutSkillsRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
@@ -144,7 +185,7 @@ interface LayoutRouteChildren {
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
-  LayoutBlogRoute: LayoutBlogRoute,
+  LayoutBlogRoute: LayoutBlogRouteWithChildren,
   LayoutExperienceRoute: LayoutExperienceRoute,
   LayoutSkillsRoute: LayoutSkillsRoute,
   LayoutIndexRoute: LayoutIndexRoute,

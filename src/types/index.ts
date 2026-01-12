@@ -37,3 +37,12 @@ export type SkillCategory = {
     name: string;
     skills: Skill[];
 };
+
+export type Blog = {
+    id: string;
+    title: string;
+    date: string;
+    banner?: string;
+    readTime?: string;
+    content: string;
+};

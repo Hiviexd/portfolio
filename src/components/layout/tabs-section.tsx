@@ -31,7 +31,9 @@ export function TabsSection() {
 
     // Determine active tab from current route
     const tabFromRoute =
-        routeToTab[currentPath] ?? (currentPath.startsWith("/projects/") ? "projects" : "projects");
+        routeToTab[currentPath]
+        ?? (currentPath.startsWith("/projects/") ? "projects" : null)
+        ?? (currentPath.startsWith("/blog/") ? "blogs" : "projects");
 
     return (
         <section className="mt-10">
@@ -52,7 +54,7 @@ export function TabsSection() {
                         </TabsTrigger>
                         <TabsTrigger value="blogs" className="cursor-pointer">
                             <HugeiconsIcon icon={Edit02Icon} strokeWidth={2} className="sm:mr-1.5" />
-                            <span className="hidden sm:inline">Blogs</span>
+                            <span className="hidden sm:inline">Blog</span>
                         </TabsTrigger>
                     </TabsList>
                 </div>
