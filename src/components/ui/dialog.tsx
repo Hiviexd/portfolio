@@ -112,6 +112,7 @@ function DialogDescription({ className, ...props }: DialogPrimitive.Description.
     return (
         <DialogPrimitive.Description
             data-slot="dialog-description"
+            render={<div />}
             className={cn(
                 "text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3",
                 className,
