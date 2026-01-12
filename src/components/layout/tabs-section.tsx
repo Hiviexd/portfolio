@@ -37,7 +37,7 @@ export function TabsSection() {
         <section className="mt-10">
             <Tabs value={tabFromRoute} onValueChange={handleTabChange}>
                 <div className="mb-6 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                    <TabsList variant="line" className="w-full sm:w-fit">
+                    <TabsList variant="line" activeValue={tabFromRoute} className="w-full sm:w-fit">
                         <TabsTrigger value="projects" className="cursor-pointer">
                             <HugeiconsIcon icon={Folder02Icon} strokeWidth={2} className="sm:mr-1.5" />
                             <span className="hidden sm:inline">Projects</span>
