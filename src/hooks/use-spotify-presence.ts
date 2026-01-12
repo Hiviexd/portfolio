@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 type SpotifyData = {
     song: string;
@@ -6,20 +6,45 @@ type SpotifyData = {
     track_id: string;
 } | null;
 
+const MAX_RETRIES = 5;
+const BASE_RETRY_DELAY = 1000; // 1 second
+
 export function useSpotifyPresence(discordId: string) {
     const [spotifyData, setSpotifyData] = useState<SpotifyData>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isConnected, setIsConnected] = useState(false);
     const socketRef = useRef<WebSocket | null>(null);
     const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
+    const retryCountRef = useRef(0);
+    const retryTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const isCleaningUpRef = useRef(false);
 
-    useEffect(() => {
+    const clearHeartbeat = useCallback(() => {
+        if (heartbeatIntervalRef.current) {
+            clearInterval(heartbeatIntervalRef.current);
+            heartbeatIntervalRef.current = null;
+        }
+    }, []);
+
+    const clearRetryTimeout = useCallback(() => {
+        if (retryTimeoutRef.current) {
+            clearTimeout(retryTimeoutRef.current);
+            retryTimeoutRef.current = null;
+        }
+    }, []);
+
+    const connect = useCallback(() => {
+        // Don't connect if we're cleaning up
+        if (isCleaningUpRef.current) return;
+
         const socket = new WebSocket("wss://api.lanyard.rest/socket");
         socketRef.current = socket;
 
         socket.onopen = () => {
             console.log("Spotify socket opened");
             setIsConnected(true);
+            // Reset retry count on successful connection
+            retryCountRef.current = 0;
             socket.send(
                 JSON.stringify({
                     op: 2,
@@ -35,9 +60,7 @@ export function useSpotifyPresence(discordId: string) {
 
             if (receivedPayload.op === 1) {
                 // Heartbeat interval received
-                if (heartbeatIntervalRef.current) {
-                    clearInterval(heartbeatIntervalRef.current);
-                }
+                clearHeartbeat();
                 heartbeatIntervalRef.current = setInterval(() => {
                     if (socket.readyState === WebSocket.OPEN) {
                         socket.send(JSON.stringify({ op: 3 }));
@@ -64,33 +87,41 @@ export function useSpotifyPresence(discordId: string) {
         socket.onclose = () => {
             console.log("Spotify socket closed");
             setIsConnected(false);
-            if (heartbeatIntervalRef.current) {
-                clearInterval(heartbeatIntervalRef.current);
+            clearHeartbeat();
+
+            // Don't retry if we're cleaning up
+            if (isCleaningUpRef.current) return;
+
+            // Attempt to reconnect with exponential backoff
+            if (retryCountRef.current < MAX_RETRIES) {
+                const delay = BASE_RETRY_DELAY * Math.pow(2, retryCountRef.current);
+                console.log(`Retrying Spotify connection in ${delay}ms (attempt ${retryCountRef.current + 1}/${MAX_RETRIES})`);
+                retryCountRef.current++;
+                retryTimeoutRef.current = setTimeout(connect, delay);
+            } else {
+                console.log("Max retry attempts reached for Spotify connection");
             }
-            // Attempt to reconnect after a delay
-            setTimeout(() => {
-                if (socketRef.current?.readyState === WebSocket.CLOSED) {
-                    // Reconnect logic could go here if needed
-                }
-            }, 5000);
         };
 
         socket.onerror = (error) => {
             console.error("Spotify socket error:", error);
-            if (heartbeatIntervalRef.current) {
-                clearInterval(heartbeatIntervalRef.current);
-            }
+            // The socket will also fire onclose after onerror, so retry logic is handled there
         };
+    }, [discordId, clearHeartbeat]);
+
+    useEffect(() => {
+        isCleaningUpRef.current = false;
+        connect();
 
         return () => {
-            if (heartbeatIntervalRef.current) {
-                clearInterval(heartbeatIntervalRef.current);
-            }
-            if (socket.readyState === WebSocket.OPEN) {
-                socket.close();
+            isCleaningUpRef.current = true;
+            clearHeartbeat();
+            clearRetryTimeout();
+            if (socketRef.current?.readyState === WebSocket.OPEN) {
+                socketRef.current.close();
             }
         };
-    }, [discordId]);
+    }, [connect, clearHeartbeat, clearRetryTimeout]);
 
     return { spotifyData, isPlaying, isConnected };
 }
