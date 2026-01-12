@@ -44,7 +44,7 @@ export function CopyActionIcon({
                             icon={icon}
                             strokeWidth={2}
                             className={cn(
-                                "size-[18px] transition-all",
+                                "size-[18px] transition-all transition-colors",
                                 copied ? "rotate-90 scale-0" : "rotate-0 scale-100",
                             )}
                         />

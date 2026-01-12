@@ -22,7 +22,7 @@ export type Experience = {
     endDate: string;
     description: string;
     responsibilities: string[];
-    stack?: string[];
+    stack?: Array<{ name: string; color: string }>;
 };
 
 export type Skill = {

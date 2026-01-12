@@ -47,13 +47,13 @@
             "name": "Other",
             "skills": [
                 { "name": "Figma", "logo": "figma.svg", "note": "Design handoff" },
-                { "name": "GraphQL", "logo": "graphql.svg" },
-                { "name": "Vitest", "logo": "vitest.svg" },
+                { "name": "Java", "logo": "java.svg", "note": "Mobile/Backend" },
+                { "name": "React Native", "logo": "react.svg", "note": "Mobile" },
                 { "name": "C", "logo": "c.svg" },
                 { "name": "C#", "logo": "csharp.svg" },
                 { "name": "Python", "logo": "python.svg" },
-                { "name": "Java", "logo": "java.svg", "note": "Mobile/Backend" },
-                { "name": "React Native", "logo": "react.svg", "note": "Mobile" }
+                { "name": "GraphQL", "logo": "graphql.svg" },
+                { "name": "Vitest", "logo": "vitest.svg" }
             ]
         }
     ]
