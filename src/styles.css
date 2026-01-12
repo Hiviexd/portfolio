@@ -221,32 +221,45 @@
     }
 }
 
-/* Merge animation - pop effect */
+/* Merge animation - the resulting tile appears after merging tiles slide in */
 .game-2048-merge {
-    animation: tile-merge 0.2s ease-out;
+    animation: tile-merge-appear 0.25s ease-out forwards;
 }
 
-@keyframes tile-merge {
+@keyframes tile-merge-appear {
     0% {
-        transform: scale(1);
+        transform: scale(0);
+        opacity: 0;
     }
-    50% {
+    /* Stay invisible while merging tiles slide in (first 48% = ~0.12s) */
+    48% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    /* Then pop in */
+    70% {
         transform: scale(1.2);
+        opacity: 1;
     }
     100% {
         transform: scale(1);
+        opacity: 1;
     }
 }
 
 /* Merge-away animation - tiles that slide into another tile and disappear */
 .game-2048-merge-away {
     animation:
-        tile-slide 0.12s ease-out,
+        tile-slide 0.12s ease-out forwards,
         tile-merge-away 0.12s ease-out forwards;
 }
 
 @keyframes tile-merge-away {
     0% {
+        opacity: 1;
+    }
+    /* Stay visible during slide */
+    80% {
         opacity: 1;
     }
     100% {
@@ -312,6 +325,7 @@
 
 .game-2048-tile-8 {
     background-color: oklch(0.9 0.15 50);
+    color: oklch(0.141 0.005 285.823);
 }
 
 .game-2048-tile-16 {

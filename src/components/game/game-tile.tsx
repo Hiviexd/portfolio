@@ -8,15 +8,18 @@ interface GameTileProps {
 export default function GameTile({ tile }: GameTileProps) {
     const { value, prevRow, prevCol, row, col, isNew, isMerged, isMilestone, mergingInto } = tile;
 
-    // Calculate slide animation
-    const deltaRow = prevRow !== undefined ? prevRow - row : 0;
-    const deltaCol = prevCol !== undefined ? prevCol - col : 0;
-    const hasSlide = deltaRow !== 0 || deltaCol !== 0;
+    // For tiles that are merging away, use their target position for grid placement
+    const targetRow = mergingInto ? mergingInto.row : row;
+    const targetCol = mergingInto ? mergingInto.col : col;
 
-    const tileSize = 64; // Approximate size for calculations
+    // Calculate slide animation offset (from previous position to current)
+    // Cell size is 56px (h-14/w-14) on mobile, 64px on sm+, gap is 6px
+    const cellSize = 56;
     const gap = 6;
-    const translateX = deltaCol * (tileSize + gap);
-    const translateY = deltaRow * (tileSize + gap);
+
+    const hasSlide = prevRow !== undefined && prevCol !== undefined && (prevRow !== row || prevCol !== col);
+    const slideFromX = hasSlide ? (prevCol! - col) * (cellSize + gap) : 0;
+    const slideFromY = hasSlide ? (prevRow! - row) * (cellSize + gap) : 0;
 
     // Merging tiles fade out after sliding
     const isMergingAway = !!mergingInto;
@@ -48,14 +51,14 @@ export default function GameTile({ tile }: GameTileProps) {
                 value >= 128 && value < 1024 && "text-base text-white",
                 value >= 1024 && "text-sm text-white",
             )}
-            style={
-                hasSlide
-                    ? ({
-                          "--slide-from-x": `${translateX}px`,
-                          "--slide-from-y": `${translateY}px`,
-                      } as React.CSSProperties)
-                    : undefined
-            }
+            style={{
+                gridRow: targetRow + 1,
+                gridColumn: targetCol + 1,
+                ...(hasSlide && {
+                    "--slide-from-x": `${slideFromX}px`,
+                    "--slide-from-y": `${slideFromY}px`,
+                }),
+            } as React.CSSProperties}
         >
             {value > 0 ? value : ""}
         </div>

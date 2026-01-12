@@ -33,25 +33,11 @@ export default function GameGrid({ tiles, gameStatus, onNewGame, onContinue, swi
                 ))}
             </div>
 
-            {/* Tile layer (grid positioned) */}
-            <div className="pointer-events-none absolute inset-0 grid grid-cols-4 gap-1.5 p-2">
-                {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => {
-                    const gridRow = Math.floor(i / GRID_SIZE);
-                    const gridCol = i % GRID_SIZE;
-                    const tile = tiles.find((t) => t.row === gridRow && t.col === gridCol && !t.mergingInto);
-                    const mergingTile = tiles.find(
-                        (t) => t.mergingInto && t.mergingInto.row === gridRow && t.mergingInto.col === gridCol,
-                    );
-
-                    return (
-                        <div key={i} className="relative h-14 w-14 sm:h-16 sm:w-16">
-                            {/* Merging tile (slides in and fades) */}
-                            {mergingTile && <GameTile tile={mergingTile} />}
-                            {/* Main tile */}
-                            {tile && <GameTile tile={tile} />}
-                        </div>
-                    );
-                })}
+            {/* Tile layer - grid positioned by tile ID to preserve animations */}
+            <div className="pointer-events-none absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1.5 p-2">
+                {tiles.map((tile) => (
+                    <GameTile key={tile.id} tile={tile} />
+                ))}
             </div>
 
             {/* Game over overlay */}
