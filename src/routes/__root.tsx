@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { HeadContent, Scripts, createRootRoute, Outlet } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
@@ -67,6 +68,12 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
+
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
@@ -85,9 +92,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 />
             </head>
             <body className="min-h-screen antialiased">
-                <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-                    <BackgroundBeamsWithCollision className="bg-background">{children}</BackgroundBeamsWithCollision>
-                </ThemeProvider>
+                <div
+                    className="transition-opacity duration-500 ease-out"
+                    style={{ opacity: isHydrated ? 1 : 0 }}
+                >
+                    <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+                        <BackgroundBeamsWithCollision className="bg-background">{children}</BackgroundBeamsWithCollision>
+                    </ThemeProvider>
+                </div>
                 <Scripts />
             </body>
         </html>
