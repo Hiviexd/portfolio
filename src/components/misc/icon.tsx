@@ -16,7 +16,7 @@ export function Icon({ src, size = 36, className }: IconProps) {
             <img
                 src={src}
                 alt={`icon-${src}`}
-                className="w-full h-full object-contain [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)]"
+                className="w-full h-full object-contain [filter:brightness(0)] dark:[filter:brightness(0)_invert(1)] transition-[filter] duration-400"
             />
         </div>
     );

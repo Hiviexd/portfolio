@@ -25,7 +25,7 @@ export function SkillsTab() {
                                 key={skill.name}
                                 className={cn(
                                     "flex items-center gap-3 rounded-lg border bg-card p-3 transition-colors hover:bg-muted/50",
-                                    skill.favorite ? "border-teal-400 dark:border-teal-500/80" : "border-border",
+                                    skill.favorite ? "border-gray-800 dark:border-teal-500/80" : "border-border",
                                 )}>
                                 {skill.libraryIcon && iconMap[skill.logo] ? (
                                     <HugeiconsIcon icon={iconMap[skill.logo]} strokeWidth={2} className="size-5" />

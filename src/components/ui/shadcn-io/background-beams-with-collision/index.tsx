@@ -67,7 +67,7 @@ export const BackgroundBeamsWithCollision = ({
     ];
 
     return (
-        <div ref={parentRef} className={cn("min-h-screen relative w-full overflow-x-hidden", className)}>
+        <div ref={parentRef} className={cn("min-h-screen relative w-full overflow-x-hidden transition-colors", className)}>
             {/* Beams container - fixed to viewport */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
                 {beams.map((beam) => (

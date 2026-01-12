@@ -10,7 +10,7 @@ export function Header() {
                 <div className="flex items-center gap-3">
                     <Icon src="/logo.svg" size={128} className="-ml-6" />
                     <div className="flex flex-col -mb-[20px]">
-                        <span className="font-semibold text-lg">
+                        <span className="font-semibold text-lg transition-all">
                             Hi, I'm
                             <FlipWords
                                 words={["Hivie", "Rayen Attia"]}
