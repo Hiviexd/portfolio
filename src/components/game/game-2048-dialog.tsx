@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Game2048 } from "@/components/misc/game-2048";
+import Game2048 from "./game-2048";
 
 interface Game2048DialogProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
 }
 
-export function Game2048Dialog({ open, onOpenChange }: Game2048DialogProps) {
+export default function Game2048Dialog({ open, onOpenChange }: Game2048DialogProps) {
     // Prevent dialog from closing on arrow key press
     const handleKeyDown = React.useCallback((e: React.KeyboardEvent) => {
         if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
