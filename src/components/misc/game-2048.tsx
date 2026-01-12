@@ -17,6 +17,8 @@ interface TileData {
     isNew?: boolean;
     isMerged?: boolean;
     isMilestone?: boolean;
+    // For tiles that are merging into another tile (will be removed after animation)
+    mergingInto?: { row: number; col: number };
 }
 
 interface GameState {
@@ -28,7 +30,7 @@ interface GameState {
 }
 
 interface StoredGameState {
-    tiles: TileData[];
+    tiles: { id: number; value: TileValue; row: number; col: number }[];
     score: number;
     bestScore: number;
     gameStatus: GameStatus;
@@ -50,7 +52,7 @@ function getGridFromTiles(tiles: TileData[]): (TileData | null)[][] {
         Array(GRID_SIZE).fill(null),
     );
     for (const tile of tiles) {
-        if (tile.value > 0) {
+        if (tile.value > 0 && !tile.mergingInto) {
             grid[tile.row][tile.col] = tile;
         }
     }
@@ -71,7 +73,9 @@ function getRandomEmptyCell(tiles: TileData[]): { row: number; col: number } | n
 }
 
 function addRandomTile(tiles: TileData[]): TileData[] {
-    const cell = getRandomEmptyCell(tiles);
+    // Remove any tiles that were merging (cleanup)
+    const cleanedTiles = tiles.filter((t) => !t.mergingInto);
+    const cell = getRandomEmptyCell(cleanedTiles);
     if (cell) {
         const newTile: TileData = {
             id: getNextTileId(),
@@ -80,9 +84,9 @@ function addRandomTile(tiles: TileData[]): TileData[] {
             col: cell.col,
             isNew: true,
         };
-        return [...tiles, newTile];
+        return [...cleanedTiles, newTile];
     }
-    return tiles;
+    return cleanedTiles;
 }
 
 function initializeTiles(): TileData[] {
@@ -100,117 +104,146 @@ interface MoveResult {
 }
 
 function moveTiles(tiles: TileData[], direction: Direction, currentHighest: TileValue): MoveResult {
-    // Clear animation flags
-    let workingTiles = tiles.map((t) => ({
-        ...t,
-        isNew: false,
-        isMerged: false,
-        isMilestone: false,
-        prevRow: t.row,
-        prevCol: t.col,
-    }));
+    // Clean up old animation flags and remove old merging tiles
+    const cleanTiles = tiles
+        .filter((t) => !t.mergingInto)
+        .map((t) => ({
+            ...t,
+            isNew: false,
+            isMerged: false,
+            isMilestone: false,
+            prevRow: t.row,
+            prevCol: t.col,
+        }));
 
-    // Transform direction to work with left-slide logic
-    const transforms: Record<Direction, (r: number, c: number) => [number, number]> = {
-        left: (r, c) => [r, c],
-        right: (r, c) => [r, GRID_SIZE - 1 - c],
-        up: (r, c) => [c, r],
-        down: (r, c) => [GRID_SIZE - 1 - c, r],
+    // Get delta for each direction (how tiles move in the grid)
+    const deltas: Record<Direction, { dr: number; dc: number }> = {
+        left: { dr: 0, dc: -1 },
+        right: { dr: 0, dc: 1 },
+        up: { dr: -1, dc: 0 },
+        down: { dr: 1, dc: 0 },
     };
 
-    const inverseTransforms: Record<Direction, (r: number, c: number) => [number, number]> = {
-        left: (r, c) => [r, c],
-        right: (r, c) => [r, GRID_SIZE - 1 - c],
-        up: (r, c) => [c, r],
-        down: (r, c) => [GRID_SIZE - 1 - r, c],
+    // Order to process tiles based on direction
+    const getProcessOrder = (direction: Direction): TileData[] => {
+        const sorted = [...cleanTiles];
+        switch (direction) {
+            case "left":
+                return sorted.sort((a, b) => a.col - b.col);
+            case "right":
+                return sorted.sort((a, b) => b.col - a.col);
+            case "up":
+                return sorted.sort((a, b) => a.row - b.row);
+            case "down":
+                return sorted.sort((a, b) => b.row - a.row);
+        }
     };
 
-    const transform = transforms[direction];
-    const inverseTransform = inverseTransforms[direction];
+    const { dr, dc } = deltas[direction];
+    const orderedTiles = getProcessOrder(direction);
 
-    // Build transformed grid
-    const grid: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () =>
+    // Track the new grid state
+    const newGrid: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () =>
         Array(GRID_SIZE).fill(null),
     );
 
-    for (const tile of workingTiles) {
-        const [tr, tc] = transform(tile.row, tile.col);
-        grid[tr][tc] = tile;
-    }
+    // Track which positions have already merged (can only merge once per move)
+    const mergedPositions = new Set<string>();
 
     let totalScore = 0;
     let moved = false;
-    const newTiles: TileData[] = [];
+    const resultTiles: TileData[] = [];
     const mergedValues: TileValue[] = [];
+    const mergingTiles: TileData[] = []; // Tiles that slide into a merge
 
-    // Process each row (in transformed space)
-    for (let row = 0; row < GRID_SIZE; row++) {
-        const rowTiles = grid[row].filter((t): t is TileData => t !== null);
-        const resultTiles: TileData[] = [];
-        let writeCol = 0;
+    for (const tile of orderedTiles) {
+        let { row, col } = tile;
+        const startRow = row;
+        const startCol = col;
 
-        for (let i = 0; i < rowTiles.length; i++) {
-            const tile = rowTiles[i];
+        // Move tile as far as possible
+        while (true) {
+            const nextRow = row + dr;
+            const nextCol = col + dc;
 
-            // Check if can merge with next tile
-            if (i < rowTiles.length - 1 && rowTiles[i + 1].value === tile.value) {
-                const nextTile = rowTiles[i + 1];
+            // Check bounds
+            if (nextRow < 0 || nextRow >= GRID_SIZE || nextCol < 0 || nextCol >= GRID_SIZE) {
+                break;
+            }
+
+            const targetTile = newGrid[nextRow][nextCol];
+
+            // Empty cell - keep moving
+            if (!targetTile) {
+                row = nextRow;
+                col = nextCol;
+                continue;
+            }
+
+            // Check for merge
+            const posKey = `${nextRow},${nextCol}`;
+            if (targetTile.value === tile.value && !mergedPositions.has(posKey)) {
+                // Merge!
+                mergedPositions.add(posKey);
                 const mergedValue = (tile.value * 2) as TileValue;
                 const isMilestone = mergedValue > currentHighest;
 
-                // Create merged tile (keep the first tile's id)
-                const [realRow, realCol] = inverseTransform(row, writeCol);
-                resultTiles.push({
-                    ...tile,
-                    value: mergedValue,
-                    row: realRow,
-                    col: realCol,
-                    isMerged: true,
-                    isMilestone,
-                });
-
-                // The second tile disappears (will be filtered out)
-                // Track its movement to the merge position for animation
-                nextTile.row = realRow;
-                nextTile.col = realCol;
+                // Update the target tile to be the merged result
+                targetTile.value = mergedValue;
+                targetTile.isMerged = true;
+                targetTile.isMilestone = isMilestone;
 
                 totalScore += mergedValue;
                 mergedValues.push(mergedValue);
-                i++; // Skip next tile
-                writeCol++;
-            } else {
-                const [realRow, realCol] = inverseTransform(row, writeCol);
-                if (tile.row !== realRow || tile.col !== realCol) {
-                    moved = true;
-                }
-                resultTiles.push({
-                    ...tile,
-                    row: realRow,
-                    col: realCol,
-                });
-                writeCol++;
-            }
-        }
-
-        newTiles.push(...resultTiles);
-    }
-
-    // Check if any tile position changed
-    if (mergedValues.length > 0) moved = true;
-    if (!moved) {
-        for (const tile of newTiles) {
-            if (tile.prevRow !== tile.row || tile.prevCol !== tile.col) {
                 moved = true;
+
+                // Add this tile as sliding into the merge position
+                mergingTiles.push({
+                    ...tile,
+                    prevRow: startRow,
+                    prevCol: startCol,
+                    row: nextRow,
+                    col: nextCol,
+                    mergingInto: { row: nextRow, col: nextCol },
+                });
+
+                // Don't add this tile to result (it's consumed)
+                row = -1; // Mark as merged
                 break;
             }
+
+            // Can't move further
+            break;
+        }
+
+        // If tile wasn't merged, add it to result
+        if (row >= 0) {
+            if (row !== startRow || col !== startCol) {
+                moved = true;
+            }
+            const newTile: TileData = {
+                ...tile,
+                prevRow: startRow,
+                prevCol: startCol,
+                row,
+                col,
+            };
+            newGrid[row][col] = newTile;
+            resultTiles.push(newTile);
         }
     }
 
-    return { tiles: newTiles, score: totalScore, moved, mergedValues };
+    // Combine result tiles with merging tiles (for animation)
+    return {
+        tiles: [...resultTiles, ...mergingTiles],
+        score: totalScore,
+        moved,
+        mergedValues,
+    };
 }
 
 function hasWon(tiles: TileData[]): boolean {
-    return tiles.some((t) => t.value >= 2048);
+    return tiles.some((t) => t.value >= 2048 && !t.mergingInto);
 }
 
 function canMove(tiles: TileData[]): boolean {
@@ -243,8 +276,16 @@ function loadGameState(): GameState | null {
             // Restore tile ID counter
             tileIdCounter = Math.max(...parsed.tiles.map((t) => t.id), 0);
             return {
-                ...parsed,
-                tiles: parsed.tiles.map((t) => ({ ...t, isNew: false, isMerged: false, isMilestone: false })),
+                tiles: parsed.tiles.map((t) => ({
+                    ...t,
+                    isNew: false,
+                    isMerged: false,
+                    isMilestone: false,
+                })),
+                score: parsed.score,
+                bestScore: parsed.bestScore,
+                gameStatus: parsed.gameStatus,
+                highestTile: parsed.highestTile,
             };
         }
     } catch {
@@ -256,12 +297,14 @@ function loadGameState(): GameState | null {
 function saveGameState(state: GameState): void {
     try {
         const toSave: StoredGameState = {
-            tiles: state.tiles.map((t) => ({
-                id: t.id,
-                value: t.value,
-                row: t.row,
-                col: t.col,
-            })) as TileData[],
+            tiles: state.tiles
+                .filter((t) => !t.mergingInto)
+                .map((t) => ({
+                    id: t.id,
+                    value: t.value,
+                    row: t.row,
+                    col: t.col,
+                })),
             score: state.score,
             bestScore: state.bestScore,
             gameStatus: state.gameStatus,
@@ -275,17 +318,20 @@ function saveGameState(state: GameState): void {
 
 // Tile component with animations
 function Tile({ tile }: { tile: TileData }) {
-    const { value, row, col, prevRow, prevCol, isNew, isMerged, isMilestone } = tile;
+    const { value, prevRow, prevCol, row, col, isNew, isMerged, isMilestone, mergingInto } = tile;
 
     // Calculate slide animation
     const deltaRow = prevRow !== undefined ? prevRow - row : 0;
     const deltaCol = prevCol !== undefined ? prevCol - col : 0;
     const hasSlide = deltaRow !== 0 || deltaCol !== 0;
 
-    const tileSize = 64; // Base size for calculations (actual size is responsive)
+    const tileSize = 64; // Approximate size for calculations
     const gap = 6;
     const translateX = deltaCol * (tileSize + gap);
     const translateY = deltaRow * (tileSize + gap);
+
+    // Merging tiles fade out after sliding
+    const isMergingAway = !!mergingInto;
 
     return (
         <div
@@ -296,8 +342,9 @@ function Tile({ tile }: { tile: TileData }) {
                 isNew && "game-2048-appear",
                 isMerged && !isMilestone && "game-2048-merge",
                 isMilestone && "game-2048-milestone",
+                isMergingAway && "game-2048-merge-away",
                 value === 0 && "bg-muted/50",
-                value === 2 && "bg-secondary text-secondary-foreground",
+                value === 2 && ":dark:bg-secondary bg-gray-600/50 text-secondary-foreground",
                 value === 4 && "game-2048-tile-4",
                 value === 8 && "game-2048-tile-8",
                 value === 16 && "game-2048-tile-16",
@@ -321,6 +368,7 @@ function Tile({ tile }: { tile: TileData }) {
                       } as React.CSSProperties)
                     : undefined
             }>
+            {/* Show original value for merging-away tiles, new value for merged tiles */}
             {value > 0 ? value : ""}
         </div>
     );
@@ -328,7 +376,7 @@ function Tile({ tile }: { tile: TileData }) {
 
 // Grid cell background
 function GridCell() {
-    return <div className="h-14 w-14 rounded-md bg-muted/50 sm:h-16 sm:w-16" />;
+    return <div className="h-14 w-14 rounded-md dark:bg-muted/50 bg-gray-300/50 sm:h-16 sm:w-16" />;
 }
 
 // Main game component
@@ -517,17 +565,6 @@ export function Game2048() {
         containerRef.current?.focus();
     }, []);
 
-    // Build positioned tiles for rendering
-    const positionedTiles = React.useMemo(() => {
-        const result: (TileData | null)[][] = Array.from({ length: GRID_SIZE }, () =>
-            Array(GRID_SIZE).fill(null),
-        );
-        for (const tile of tiles) {
-            result[tile.row][tile.col] = tile;
-        }
-        return result;
-    }, [tiles]);
-
     return (
         <div
             ref={containerRef}
@@ -535,7 +572,7 @@ export function Game2048() {
             onKeyDown={handleKeyDown}
             className="flex flex-col items-center gap-4 outline-none">
             {/* Header with scores */}
-            <div className="flex w-full items-center gap-3 pr-8">
+            <div className="flex w-full items-center justify-between gap-3 pr-8">
                 <div className="text-xl font-bold">2048</div>
                 <div className="flex gap-2">
                     <div className="flex flex-col items-center rounded-md bg-muted px-3 py-1">
@@ -564,15 +601,31 @@ export function Game2048() {
                     ))}
                 </div>
 
-                {/* Tile layer (absolute positioned on top) */}
-                <div className="absolute inset-2 grid grid-cols-4 gap-1.5">
-                    {positionedTiles.flat().map((tile, i) =>
-                        tile ? (
-                            <Tile key={tile.id} tile={tile} />
-                        ) : (
-                            <div key={`empty-${i}`} className="h-14 w-14 sm:h-16 sm:w-16" />
-                        ),
-                    )}
+                {/* Tile layer (grid positioned) */}
+                <div className="pointer-events-none absolute inset-0 grid grid-cols-4 gap-1.5 p-2">
+                    {/* Render tiles in grid positions */}
+                    {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => {
+                        const gridRow = Math.floor(i / GRID_SIZE);
+                        const gridCol = i % GRID_SIZE;
+                        const tile = tiles.find(
+                            (t) => t.row === gridRow && t.col === gridCol && !t.mergingInto,
+                        );
+                        const mergingTile = tiles.find(
+                            (t) =>
+                                t.mergingInto &&
+                                t.mergingInto.row === gridRow &&
+                                t.mergingInto.col === gridCol,
+                        );
+
+                        return (
+                            <div key={i} className="relative h-14 w-14 sm:h-16 sm:w-16">
+                                {/* Merging tile (slides in and fades) */}
+                                {mergingTile && <Tile tile={mergingTile} />}
+                                {/* Main tile */}
+                                {tile && <Tile tile={tile} />}
+                            </div>
+                        );
+                    })}
                 </div>
 
                 {/* Game over overlay */}

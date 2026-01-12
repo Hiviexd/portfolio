@@ -238,6 +238,22 @@
     }
 }
 
+/* Merge-away animation - tiles that slide into another tile and disappear */
+.game-2048-merge-away {
+    animation:
+        tile-slide 0.12s ease-out,
+        tile-merge-away 0.12s ease-out forwards;
+}
+
+@keyframes tile-merge-away {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 /* Milestone animation - special star burst for new highest tile */
 .game-2048-milestone {
     animation: tile-milestone 0.4s ease-out;
@@ -312,21 +328,25 @@
 
 .game-2048-tile-128 {
     background-color: oklch(0.72 0.18 85);
+    box-shadow: 0 0 5px oklch(0.72 0.18 85 / 50%);
 }
 
 .game-2048-tile-256 {
     background-color: oklch(0.7 0.19 80);
+    box-shadow: 0 0 10px oklch(0.7 0.19 80 / 50%);
 }
 
 .game-2048-tile-512 {
     background-color: oklch(0.68 0.2 75);
+    box-shadow: 0 0 15px oklch(0.68 0.2 75 / 50%);
 }
 
 .game-2048-tile-1024 {
     background-color: oklch(0.66 0.21 70);
+    box-shadow: 0 0 20px oklch(0.66 0.21 70 / 50%);
 }
 
 .game-2048-tile-2048 {
     background-color: oklch(0.64 0.22 65);
-    box-shadow: 0 0 20px oklch(0.64 0.22 65 / 50%);
+    box-shadow: 0 0 40px oklch(0.64 0.22 65 / 50%);
 }
