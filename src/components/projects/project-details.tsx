@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useRef } from "react";
 import type { Project } from "@/types";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,26 +20,25 @@ function formatDate(dateStr: string) {
 }
 
 export function ProjectDetails({ project, onClose }: ProjectDetailProps) {
-    // Keep displayed project in state so we can show it during close animation
-    const [displayedProject, setDisplayedProject] = useState<Project | null>(project);
-    const [isOpen, setIsOpen] = useState(!!project);
-
-    // Sync when a new project comes in (opening)
-    useEffect(() => {
-        if (project) {
-            setDisplayedProject(project);
-            setIsOpen(true);
-        }
-    }, [project]);
+    // Use a ref to keep the last project for animation purposes
+    // This avoids useEffect by deriving state from the current render
+    const lastProjectRef = useRef<Project | null>(null);
+    
+    // Update ref when we have a valid project
+    if (project) {
+        lastProjectRef.current = project;
+    }
+    
+    // Use the current project if available, otherwise fall back to the last one
+    // This keeps content visible during close animation
+    const displayedProject = project ?? lastProjectRef.current;
+    
+    // Dialog is open when project prop is truthy
+    const isOpen = !!project;
 
     const handleOpenChange = (open: boolean) => {
-        if (!open && displayedProject) {
-            setIsOpen(false); // Start close animation
-            // Delay navigation until animation completes
-            setTimeout(() => {
-                setDisplayedProject(null);
-                onClose();
-            }, 150);
+        if (!open) {
+            onClose();
         }
     };
 
