@@ -27,6 +27,7 @@
         "clsx": "^2.1.1",
         "motion": "^12.23.26",
         "nitro": "latest",
+        "nuqs": "^2.8.6",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
         "react-markdown": "^10.1.0",

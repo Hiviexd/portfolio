@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { HeadContent, Scripts, createRootRoute, Outlet } from "@tanstack/react-router";
+import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -62,7 +63,9 @@ export const Route = createRootRoute({
 function RootComponent() {
     return (
         <RootDocument>
-            <Outlet />
+            <NuqsAdapter>
+                <Outlet />
+            </NuqsAdapter>
         </RootDocument>
     );
 }

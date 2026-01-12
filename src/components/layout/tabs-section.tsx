@@ -1,45 +1,25 @@
-import { Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Folder02Icon, Briefcase01Icon, CodeIcon, Edit02Icon } from "@hugeicons/core-free-icons";
+import { useNavigationParams } from "@/hooks/use-search-params";
+import { type TabValue } from "@/lib/search-params";
+import { ProjectsTab } from "@/components/tabs/projects-tab";
+import { ExperienceTab } from "@/components/tabs/experience-tab";
+import { SkillsTab } from "@/components/tabs/skills-tab";
+import { BlogsTab } from "@/components/tabs/blogs-tab";
 
 export function TabsSection() {
-    const navigate = useNavigate();
-    const currentPath = useRouterState({ select: (s) => s.location.pathname });
+    const { activeTab, setTab } = useNavigationParams();
 
     const handleTabChange = (value: string) => {
-        const routes: Record<string, string> = {
-            projects: "/",
-            experience: "/experience",
-            skills: "/skills",
-            blogs: "/blog",
-        };
-
-        const route = routes[value];
-        if (route) {
-            navigate({ to: route });
-        }
+        setTab(value as TabValue);
     };
-
-    // Map routes to tab values
-    const routeToTab: Record<string, string> = {
-        "/": "projects",
-        "/experience": "experience",
-        "/skills": "skills",
-        "/blog": "blogs",
-    };
-
-    // Determine active tab from current route
-    const tabFromRoute =
-        routeToTab[currentPath] ??
-        (currentPath.startsWith("/projects/") ? "projects" : null) ??
-        (currentPath.startsWith("/blog/") ? "blogs" : "projects");
 
     return (
         <section className="mt-10">
-            <Tabs value={tabFromRoute} onValueChange={handleTabChange}>
+            <Tabs value={activeTab} onValueChange={handleTabChange}>
                 <div className="mb-6 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                    <TabsList variant="line" activeValue={tabFromRoute} className="w-full sm:w-fit">
+                    <TabsList variant="line" activeValue={activeTab} className="w-full sm:w-fit">
                         <TabsTrigger value="projects" className="cursor-pointer">
                             <HugeiconsIcon icon={Folder02Icon} strokeWidth={2} className="sm:mr-1.5" />
                             <span className="hidden sm:inline">Projects</span>
@@ -59,8 +39,11 @@ export function TabsSection() {
                     </TabsList>
                 </div>
 
-                {/* Content from child routes */}
-                <Outlet />
+                {/* Render tab content inline based on active tab */}
+                {activeTab === "projects" && <ProjectsTab />}
+                {activeTab === "experience" && <ExperienceTab />}
+                {activeTab === "skills" && <SkillsTab />}
+                {activeTab === "blogs" && <BlogsTab />}
             </Tabs>
         </section>
     );

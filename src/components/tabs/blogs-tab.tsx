@@ -1,6 +1,6 @@
 import { BlogCard } from "@/components/blogs/blog-card";
 import { BlogContent } from "@/components/blogs/blog-content";
-import { useNavigate, useRouterState } from "@tanstack/react-router";
+import { useQueryStates, parseAsString } from "nuqs";
 import { parseBlog } from "@/lib/parse-blog";
 import type { Blog } from "@/types";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -21,32 +21,24 @@ const blogs: Blog[] = Object.entries(blogModules)
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-type BlogsTabProps = {
-    initialBlog?: Blog;
-};
+export function BlogsTab() {
+    // Use nuqs for blog selection - ?b= param
+    // Using useQueryStates to clear ?t= when setting ?b= (since b implies blogs tab)
+    const [{ b: blogId }, setParams] = useQueryStates(
+        { t: parseAsString, b: parseAsString },
+        { history: "replace", shallow: false }
+    );
 
-export function BlogsTab({ initialBlog }: BlogsTabProps) {
-    const navigate = useNavigate();
-    // Use useRouterState for reactive pathname (re-renders on route change)
-    const currentPath = useRouterState({ select: (s) => s.location.pathname });
-
-    // Get blog from route params if on detail page
-    const blogIdFromRoute = currentPath.startsWith("/blog/") ? currentPath.split("/blog/")[1] : null;
-
-    const selectedBlog = initialBlog || blogs.find((b) => b.id === blogIdFromRoute) || null;
+    const selectedBlog = blogs.find((b) => b.id === blogId) || null;
 
     const handleBlogClick = (blog: Blog) => {
-        navigate({
-            to: `/blog/${blog.id}`,
-            resetScroll: true,
-        });
+        // Clear t and set b - the b param implies blogs tab
+        setParams({ t: null, b: blog.id });
     };
 
     const handleBack = () => {
-        navigate({
-            to: "/blog",
-            resetScroll: true,
-        });
+        // Set t=blogs and clear b to return to blog listing
+        setParams({ t: "blogs", b: null });
     };
 
     // Show empty state if no blogs
@@ -79,5 +71,5 @@ export function BlogsTab({ initialBlog }: BlogsTabProps) {
     );
 }
 
-// Export blogs for route loader
+// Export blogs for potential use elsewhere
 export { blogs };
