@@ -154,6 +154,38 @@
         "stack": [{ "name": "Markdown", "color": "#083fa1" }]
     },
     {
+        "id": "book-lending-system",
+        "name": "Book Lending System",
+        "description": "A microservices-based backend system deployed to Kubernetes via CI/CD pipelines",
+        "detailedDescription": "A microservices-based backend system for managing users, books, loans, and late return penalties. Demonstrates REST, GraphQL, gRPC, and Kafka. \nThe project is deployed to Kubernetes via CI/CD pipelines using Helm charts, ArgoCD, and Jenkins.",
+        "repo": "https://github.com/Hiviexd/book-lending-system",
+        "status": "Completed",
+        "startDate": "2025-05",
+        "endDate": "2025-05",
+        "stack": [
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "Kubernetes", "color": "#425deb" },
+            { "name": "Helm", "color": "#171d8d" },
+            { "name": "ArgoCD", "color": "#fe7744" },
+            { "name": "Jenkins", "color": "#d13e38" },
+            { "name": "Node.js", "color": "#84bf08" },
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Kafka", "color": "#2f2f2f" },
+            { "name": "GraphQL", "color": "#e10098" },
+            { "name": "gRPC", "color": "#5772d7" }
+        ],
+        "highlights": [
+            "Microservices-based backend system for managing users, books, loans, and late return penalties",
+            "Demonstrates REST, GraphQL, gRPC, and Kafka",
+            "User management system with role-based access control",
+            "Book and loan management system with CRUD operations",
+            "Late return penalty management system with CRUD operations",
+            "Dockerized deployment pipeline",
+            "CI/CD pipelines for deployment to Kubernetes"
+        ]
+    },
+    {
         "id": "unisson",
         "name": "Unisson",
         "description": "Service sharing platform designated for special events and parties",
@@ -269,33 +301,6 @@
             "Clean frontend architecture with React Router, reusable UI components, and feature-based folders",
             "CVE analysis view with summary stats plus detailed per-CVE risk, exploitability, and impact data",
             "Vendor overview dashboard with time-based filtering, key risk metrics, and CVSS trends"
-        ]
-    },
-    {
-        "id": "book-lending-system",
-        "name": "Book Lending System",
-        "description": "A microservices-based backend system for managing users, books, loans, and late return penalties",
-        "detailedDescription": "A microservices-based backend system for managing users, books, loans, and late return penalties. Demonstrates REST, GraphQL, gRPC, and Kafka. ",
-        "repo": "https://github.com/Hiviexd/book-lending-system",
-        "status": "Completed",
-        "startDate": "2025-05",
-        "endDate": "2025-05",
-        "stack": [
-            { "name": "Node.js", "color": "#84bf08" },
-            { "name": "Express.js", "color": "#fbfbfb" },
-            { "name": "MongoDB", "color": "#08ee69" },
-            { "name": "Kafka", "color": "#2f2f2f" },
-            { "name": "GraphQL", "color": "#e10098" },
-            { "name": "gRPC", "color": "#5772d7" },
-            { "name": "Docker", "color": "#2496ED" }
-        ],
-        "highlights": [
-            "Microservices-based backend system for managing users, books, loans, and late return penalties",
-            "Demonstrates REST, GraphQL, gRPC, and Kafka",
-            "User management system with role-based access control",
-            "Book and loan management system with CRUD operations",
-            "Late return penalty management system with CRUD operations",
-            "Dockerized deployment pipeline"
         ]
     }
 ]
