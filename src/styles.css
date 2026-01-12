@@ -183,3 +183,150 @@
     background-color: oklch(0.985 0 0);
     color: oklch(0.141 0.005 285.823);
 }
+/* 2048 Game Tile Animations */
+.game-2048-tile {
+    position: relative;
+}
+
+/* Slide animation - uses CSS custom properties set in JS */
+.game-2048-slide {
+    animation: tile-slide 0.12s ease-out;
+}
+
+@keyframes tile-slide {
+    0% {
+        transform: translate(var(--slide-from-x, 0), var(--slide-from-y, 0));
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* New tile appear animation */
+.game-2048-appear {
+    animation: tile-appear 0.15s ease-out;
+}
+
+@keyframes tile-appear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Merge animation - pop effect */
+.game-2048-merge {
+    animation: tile-merge 0.2s ease-out;
+}
+
+@keyframes tile-merge {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Milestone animation - special star burst for new highest tile */
+.game-2048-milestone {
+    animation: tile-milestone 0.4s ease-out;
+}
+
+.game-2048-milestone::before,
+.game-2048-milestone::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: star-burst 0.5s ease-out forwards;
+}
+
+.game-2048-milestone::before {
+    background: radial-gradient(circle, oklch(0.9 0.2 85 / 60%) 0%, transparent 70%);
+    animation-delay: 0s;
+}
+
+.game-2048-milestone::after {
+    background: radial-gradient(circle, oklch(0.95 0.15 60 / 50%) 0%, transparent 60%);
+    animation-delay: 0.1s;
+}
+
+@keyframes tile-milestone {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.3);
+    }
+    60% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes star-burst {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.game-2048-tile-4 {
+    background-color: oklch(0.88 0.05 85);
+    color: oklch(0.141 0.005 285.823);
+}
+
+.game-2048-tile-8 {
+    background-color: oklch(0.75 0.15 50);
+}
+
+.game-2048-tile-16 {
+    background-color: oklch(0.7 0.17 45);
+}
+
+.game-2048-tile-32 {
+    background-color: oklch(0.65 0.19 35);
+}
+
+.game-2048-tile-64 {
+    background-color: oklch(0.6 0.22 30);
+}
+
+.game-2048-tile-128 {
+    background-color: oklch(0.72 0.18 85);
+}
+
+.game-2048-tile-256 {
+    background-color: oklch(0.7 0.19 80);
+}
+
+.game-2048-tile-512 {
+    background-color: oklch(0.68 0.2 75);
+}
+
+.game-2048-tile-1024 {
+    background-color: oklch(0.66 0.21 70);
+}
+
+.game-2048-tile-2048 {
+    background-color: oklch(0.64 0.22 65);
+    box-shadow: 0 0 20px oklch(0.64 0.22 65 / 50%);
+}
