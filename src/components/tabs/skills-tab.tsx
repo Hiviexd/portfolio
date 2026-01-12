@@ -1,8 +1,8 @@
 import skillsData from "../../../data/skills.json";
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
-import { GithubIcon, ShadcnIcon } from "@hugeicons/core-free-icons";
+import { GithubIcon, ShadcnIcon, StarIcon } from "@hugeicons/core-free-icons";
 import type { Skill, SkillCategory } from "@/types";
-import { cn } from "@/lib/utils";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 
 export function SkillsTab() {
     const { categories } = skillsData as { categories: SkillCategory[] };
@@ -23,10 +23,7 @@ export function SkillsTab() {
                         {category.skills.map((skill: Skill) => (
                             <div
                                 key={skill.name}
-                                className={cn(
-                                    "flex items-center gap-3 rounded-lg border bg-card p-3 transition-colors hover:bg-muted/50",
-                                    skill.favorite ? "border-gray-800 dark:border-teal-500/80" : "border-border",
-                                )}
+                                className="flex items-center gap-3 rounded-lg border border-border bg-card p-3 transition-colors hover:bg-muted/50"
                             >
                                 {skill.libraryIcon && iconMap[skill.logo] ? (
                                     <HugeiconsIcon icon={iconMap[skill.logo]} strokeWidth={2} className="size-5" />
@@ -39,6 +36,22 @@ export function SkillsTab() {
                                         <div className="text-xs text-muted-foreground truncate">{skill.note}</div>
                                     )}
                                 </div>
+                                {skill.favorite && (
+                                    <Tooltip>
+                                        <TooltipTrigger
+                                            render={
+                                                <span className="shrink-0">
+                                                    <HugeiconsIcon
+                                                        icon={StarIcon}
+                                                        strokeWidth={1}
+                                                        className="size-4 text-amber-500 fill-amber-500"
+                                                    />
+                                                </span>
+                                            }
+                                        />
+                                        <TooltipContent>Favorite</TooltipContent>
+                                    </Tooltip>
+                                )}
                             </div>
                         ))}
                     </div>
