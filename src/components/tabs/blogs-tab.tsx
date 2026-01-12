@@ -58,7 +58,7 @@ export function BlogsTab({ initialBlog }: BlogsTabProps) {
                 </div>
                 <h3 className="text-lg font-medium text-foreground">Nothing yet..</h3>
                 <p className="mt-2 text-sm text-muted-foreground max-w-xs">
-                    Maybe one day I'll post my yapp sessions here whenever I get inspiration.
+                    Maybe one day I'll post my yap sessions here whenever I get inspiration.
                 </p>
             </div>
         );
