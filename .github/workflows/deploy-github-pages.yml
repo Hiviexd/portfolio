@@ -1,0 +1,79 @@
+# Deploy statically generated site to GitHub Pages.
+# Enable in repo: Settings → Pages → Build and deployment → Source: GitHub Actions.
+
+name: Deploy to GitHub Pages
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [main]
+
+jobs:
+    check-deploy:
+        runs-on: ubuntu-latest
+        outputs:
+            skip: ${{ steps.skip_check.outputs.skip }}
+        steps:
+            - name: Check for --skip-deploy flag
+              id: skip_check
+              run: |
+                  if echo "$GITHUB_EVENT_HEAD_COMMIT_MESSAGE" | grep -q -- "--skip-deploy"; then
+                      echo "skip=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "skip=false" >> "$GITHUB_OUTPUT"
+                  fi
+              env:
+                  GITHUB_EVENT_HEAD_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+
+    build:
+        needs: check-deploy
+        if: needs.check-deploy.outputs.skip == 'false'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10.17.0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "pnpm"
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Build
+              run: pnpm build
+              env:
+                  # Custom domain hivie.tn is served at root
+                  BASE: /
+
+            - name: Add CNAME for custom domain
+              run: echo hivie.tn > .output/public/CNAME
+
+            - name: Upload GitHub Pages artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: .output/public
+
+    deploy:
+        needs: build
+        if: needs.check-deploy.outputs.skip == 'false'
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deploy.outputs.page_url }}
+        permissions:
+            pages: write
+            id-token: write
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deploy
+              uses: actions/deploy-pages@v4
