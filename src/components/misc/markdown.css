@@ -164,6 +164,18 @@
     z-index: 1;
 }
 
+/* Code block is always dark — force copy icon white only */
+.markdown-text .markdown-code-block-copy:not([data-copied]) {
+    color: hsl(0 0% 95%);
+}
+.markdown-text .markdown-code-block-copy:not([data-copied]):hover {
+    color: hsl(220 10% 12%);
+}
+
+.dark .markdown-text .markdown-code-block-copy:not([data-copied]):hover {
+    color: hsl(0 0% 100%);
+}
+
 .markdown-text pre {
     background-color: hsl(220 10% 12%);
     border-radius: 0.5rem;

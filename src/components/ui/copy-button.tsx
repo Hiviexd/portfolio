@@ -36,6 +36,7 @@ export function CopyButton({ icon, tooltip = "Copy", copiedTooltip = "Copied!", 
                     <button
                         type="button"
                         onClick={handleCopy}
+                        data-copied={copied ? "" : undefined}
                         className={cn(
                             "relative inline-flex items-center justify-center size-8 rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer",
                             copied
