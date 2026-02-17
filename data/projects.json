@@ -249,7 +249,7 @@
         "startDate": "2025-02",
         "endDate": "2025-03",
         "stack": [
-            { "name": "Next.js", "color": "#61DAFB" },
+            { "name": "Next.js", "color": "#080808" },
             { "name": "TypeScript", "color": "#3178C6" },
             { "name": "Tailwind CSS", "color": "#06b6d4" },
             { "name": "Framer Motion", "color": "#ffeb0e" },
