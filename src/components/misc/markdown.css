@@ -175,6 +175,85 @@
     background: transparent;
 }
 
+/* Modern, clean syntax highlight overrides (scoped to markdown code blocks) */
+.markdown-text .hljs {
+    color: hsl(220 15% 95%);
+}
+
+.markdown-text .hljs-comment,
+.markdown-text .hljs-quote {
+    color: hsl(220 18% 55%);
+    font-style: italic;
+}
+
+.markdown-text .hljs-keyword,
+.markdown-text .hljs-selector-tag,
+.markdown-text .hljs-meta .hljs-keyword,
+.markdown-text .hljs-doctag {
+    color: hsl(262 92% 70%);
+}
+
+.markdown-text .hljs-string,
+.markdown-text .hljs-regexp,
+.markdown-text .hljs-meta .hljs-string,
+.markdown-text .hljs-template-variable {
+    color: hsl(142 88% 62%);
+}
+
+.markdown-text .hljs-number,
+.markdown-text .hljs-literal,
+.markdown-text .hljs-built_in {
+    color: hsl(38 96% 66%);
+}
+
+.markdown-text .hljs-title,
+.markdown-text .hljs-title.class_,
+.markdown-text .hljs-title.function_ {
+    color: hsl(199 96% 68%);
+}
+
+.markdown-text .hljs-attr,
+.markdown-text .hljs-attribute,
+.markdown-text .hljs-variable,
+.markdown-text .hljs-template-tag {
+    color: hsl(0, 72%, 65%);
+}
+
+.markdown-text .hljs-type,
+.markdown-text .hljs-selector-class,
+.markdown-text .hljs-selector-id {
+    color: hsl(199 96% 68%);
+}
+
+.markdown-text .hljs-symbol,
+.markdown-text .hljs-bullet,
+.markdown-text .hljs-link,
+.markdown-text .hljs-selector-attr,
+.markdown-text .hljs-selector-pseudo {
+    color: hsl(142 88% 62%);
+}
+
+.markdown-text .hljs-addition {
+    color: hsl(142 88% 50%);
+}
+
+.markdown-text .hljs-deletion {
+    color: hsl(0, 85%, 60%);
+}
+
+.markdown-text .hljs-meta,
+.markdown-text .hljs-section {
+    color: hsl(38 96% 66%);
+}
+
+.markdown-text .hljs-emphasis {
+    font-style: italic;
+}
+
+.markdown-text .hljs-strong {
+    font-weight: 600;
+}
+
 /* Horizontal Rules */
 .markdown-text hr {
     border: none;
