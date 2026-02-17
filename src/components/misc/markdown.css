@@ -264,32 +264,42 @@
 /* Tables */
 .markdown-text table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
     font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
 }
 
-.markdown-text th,
-.markdown-text td {
-    padding: 0.5rem 0.75rem;
+.markdown-text thead {
+    background: hsl(220 14% 96%);
+}
+
+.dark .markdown-text thead {
+    background: hsl(220 10% 18%);
+}
+
+.markdown-text th {
+    padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid var(--muted-foreground);
+    font-weight: 600;
+    color: var(--foreground);
+    letter-spacing: 0.01em;
+    border-bottom: 1px solid var(--border);
 }
 
-.markdown-text thead tr {
-    border-bottom: 2px solid var(--muted-foreground);
-}
-
-.markdown-text thead th {
-    border-bottom: none;
+.markdown-text td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    color: var(--foreground);
 }
 
 .markdown-text tbody tr:last-child td {
     border-bottom: none;
-}
-
-.markdown-text th {
-    font-weight: 600;
 }
 
 /* Images */
