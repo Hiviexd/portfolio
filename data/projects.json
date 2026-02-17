@@ -85,7 +85,7 @@
         "stack": [
             { "name": "React", "color": "#61DAFB" },
             { "name": "TypeScript", "color": "#3178C6" },
-            { "name": "Express", "color": "#fbfbfb" },
+            { "name": "Express.js", "color": "#fbfbfb" },
             { "name": "MongoDB", "color": "#08ee69" }
         ]
     },
