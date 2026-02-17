@@ -52,8 +52,8 @@ jobs:
             - name: Build
               run: pnpm build
               env:
-                  # Custom domain hivie.tn is served at root
-                  BASE: /
+                  # Relative base so assets work at any URL (hivie.tn, old.hivie.tn, or .../portfolio/)
+                  BASE: ./
 
             - name: Add CNAME for custom domain
               run: echo hivie.tn > .output/public/CNAME
