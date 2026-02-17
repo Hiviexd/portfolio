@@ -9,7 +9,7 @@ import {
     DiscordIcon,
 } from "@hugeicons/core-free-icons";
 import { Icon } from "@/components/misc/icon";
-import { CopyActionIcon } from "@/components/ui/copy-action-icon";
+import { CopyButton } from "@/components/ui/copy-button";
 import { cn } from "@/lib/utils";
 import socialsData from "../../../data/socials.json";
 import metadata from "../../../data/metadata.json";
@@ -64,7 +64,11 @@ export function SocialLinks() {
             })}
 
             {/* Discord copy button */}
-            <CopyActionIcon icon={DiscordIcon} value={metadata.discordUsername} tooltip="Copy Discord username" />
+            <CopyButton
+                icon={DiscordIcon}
+                value={metadata.discordUsername}
+                tooltip="Copy Discord username"
+            />
         </div>
     );
 }
