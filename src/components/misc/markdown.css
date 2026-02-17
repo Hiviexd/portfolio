@@ -141,22 +141,38 @@
     font-size: 0.875em;
 }
 
-/* Code Blocks */
+/* Code Blocks (syntax highlighting via rehype-highlight + highlight.js) */
+.markdown-text .markdown-code-block-wrapper {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.markdown-text .markdown-code-block-copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+}
+
 .markdown-text pre {
     background-color: hsl(220 10% 12%);
     border-radius: 0.5rem;
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 0;
     overflow-x: auto;
 }
 
 .markdown-text pre code {
     background-color: transparent;
-    color: hsl(220 10% 90%);
     padding: 0;
     border-radius: 0;
     font-size: 0.875rem;
     line-height: 1.6;
+}
+
+.markdown-text pre code.hljs {
+    padding: 0;
+    background: transparent;
 }
 
 /* Horizontal Rules */
