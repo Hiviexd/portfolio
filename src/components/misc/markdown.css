@@ -323,7 +323,28 @@
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
-    margin: 1rem 0;
+}
+
+/* Inline images (same paragraph as text or multiple images): stay inline */
+.markdown-text p:not(:has(> img:only-child)) > img {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.25rem 0.125rem 0;
+}
+
+/* Single image in its block: center horizontally, block layout */
+.markdown-text p:has(> img:only-child) {
+    text-align: center;
+}
+
+.markdown-text p:has(> img:only-child) > img {
+    display: block;
+    margin: 1rem auto;
+}
+
+/* Two or more images in the same block: align left */
+.markdown-text p:has(> img:nth-of-type(2)) {
+    text-align: left;
 }
 
 /* Task Lists (GFM) — shadcn-style checkboxes */
