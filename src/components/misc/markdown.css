@@ -293,26 +293,22 @@
     line-height: 1.5;
     border-radius: 0.5rem;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
 }
 
-/* Light theme: dark header with white text */
 .markdown-text thead {
-    background: hsl(220 14% 20%);
+    background: var(--border);
 }
 
 .markdown-text th {
     padding: 0.75rem 1rem;
     text-align: left;
     font-weight: 600;
-    color: hsl(220 10% 98%);
     letter-spacing: 0.01em;
-    border-bottom: 1px solid var(--border);
 }
 
-/* Dark theme: subtle header */
 .dark .markdown-text thead {
-    background: hsl(220 10% 18%);
+    background: var(--border);
 }
 
 .dark .markdown-text th {
