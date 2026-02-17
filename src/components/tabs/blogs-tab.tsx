@@ -1,5 +1,6 @@
 import { BlogCard } from "@/components/blogs/blog-card";
 import { BlogContent } from "@/components/blogs/blog-content";
+import { AnimatePresence, motion } from "motion/react";
 import { useQueryStates, parseAsString } from "nuqs";
 import { parseBlog } from "@/lib/parse-blog";
 import type { Blog } from "@/types";
@@ -26,7 +27,7 @@ export function BlogsTab() {
     // Using useQueryStates to clear ?t= when setting ?b= (since b implies blogs tab)
     const [{ b: blogId }, setParams] = useQueryStates(
         { t: parseAsString, b: parseAsString },
-        { history: "replace", shallow: false }
+        { history: "replace", shallow: false },
     );
 
     const selectedBlog = blogs.find((b) => b.id === blogId) || null;
@@ -56,18 +57,34 @@ export function BlogsTab() {
         );
     }
 
-    // Show blog content if a blog is selected
-    if (selectedBlog) {
-        return <BlogContent blog={selectedBlog} onBack={handleBack} />;
-    }
+    const transition = { duration: 0.15, ease: "easeInOut" as const };
 
-    // Show blog listing
     return (
-        <div className="space-y-3">
-            {blogs.map((blog) => (
-                <BlogCard key={blog.id} blog={blog} onClick={() => handleBlogClick(blog)} />
-            ))}
-        </div>
+        <AnimatePresence mode="wait" initial={false}>
+            {selectedBlog ? (
+                <motion.div
+                    key={`blog-${selectedBlog.id}`}
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -24 }}
+                    transition={transition}
+                    className="overflow-hidden">
+                    <BlogContent blog={selectedBlog} onBack={handleBack} />
+                </motion.div>
+            ) : (
+                <motion.div
+                    key="list"
+                    initial={{ opacity: 0, x: -24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 24 }}
+                    transition={transition}
+                    className="space-y-3 overflow-hidden">
+                    {blogs.map((blog) => (
+                        <BlogCard key={blog.id} blog={blog} onClick={() => handleBlogClick(blog)} />
+                    ))}
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 }
 

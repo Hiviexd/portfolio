@@ -1,6 +1,7 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Folder02Icon, Briefcase01Icon, CodeIcon, Edit02Icon } from "@hugeicons/core-free-icons";
+import { AnimatePresence, motion } from "motion/react";
 import { useNavigationParams } from "@/hooks/use-search-params";
 import { type TabValue } from "@/lib/search-params";
 import { ProjectsTab } from "@/components/tabs/projects-tab";
@@ -39,11 +40,21 @@ export function TabsSection() {
                     </TabsList>
                 </div>
 
-                {/* Render tab content inline based on active tab */}
-                {activeTab === "projects" && <ProjectsTab />}
-                {activeTab === "experience" && <ExperienceTab />}
-                {activeTab === "skills" && <SkillsTab />}
-                {activeTab === "blogs" && <BlogsTab />}
+                {/* Render tab content with transition */}
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.15, ease: "easeInOut" }}
+                        className="min-h-0">
+                        {activeTab === "projects" && <ProjectsTab />}
+                        {activeTab === "experience" && <ExperienceTab />}
+                        {activeTab === "skills" && <SkillsTab />}
+                        {activeTab === "blogs" && <BlogsTab />}
+                    </motion.div>
+                </AnimatePresence>
             </Tabs>
         </section>
     );
