@@ -318,33 +318,51 @@
     border-bottom: none;
 }
 
-/* Images */
-.markdown-text img {
+/* Images (via MarkdownImage wrapper) */
+.markdown-text .markdown-image-wrapper img {
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
+    display: block;
 }
 
-/* Inline images (same paragraph as text or multiple images): stay inline */
-.markdown-text p:not(:has(> img:only-child)) > img {
+/* Inline: wrapper(s) with siblings — stay inline */
+.markdown-text p > .markdown-image-wrapper:not(:only-child) {
     display: inline-block;
     vertical-align: middle;
     margin: 0 0.25rem 0.125rem 0;
 }
 
-/* Single image in its block: center horizontally, block layout */
-.markdown-text p:has(> img:only-child) {
+.markdown-text p > .markdown-image-wrapper:not(:only-child) img {
+    margin: 0;
+}
+
+/* Single image in its block: center */
+.markdown-text p:has(> .markdown-image-wrapper:only-child) {
     text-align: center;
 }
 
-.markdown-text p:has(> img:only-child) > img {
-    display: block;
+.markdown-text p:has(> .markdown-image-wrapper:only-child) > .markdown-image-wrapper {
+    display: inline-block;
     margin: 1rem auto;
 }
 
 /* Two or more images in the same block: align left */
-.markdown-text p:has(> img:nth-of-type(2)) {
+.markdown-text p:has(> .markdown-image-wrapper:nth-of-type(2)) {
     text-align: left;
+}
+
+/* Caption under image: show only when image is standalone (only child) */
+.markdown-text .markdown-image-caption {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    text-align: center;
+}
+
+.markdown-text p:has(> .markdown-image-wrapper:only-child) .markdown-image-caption {
+    display: block;
 }
 
 /* Task Lists (GFM) — shadcn-style checkboxes */
