@@ -95,9 +95,9 @@
         "description": "A command-line tool for managing Project Loved operations",
         "detailedDescription": "A command-line tool for managing [Project Loved](https://osu.ppy.sh/wiki/en/Community/Project_Loved) operations including news generation, forum thread management, mapper notifications, and voting results processing.\n\nThis project is the successor to clayton's [Project Loved CLI](https://github.com/cl8n/project-loved), rewritten with safety, flexibility, and code readability in mind.",
         "repo": "https://github.com/Hiviexd/loved-cli",
-        "status": "Active",
+        "status": "Completed",
         "startDate": "2025-11",
-        "endDate": null,
+        "endDate": "2025-12",
         "stack": [
             { "name": "TypeScript", "color": "#3178C6" },
             { "name": "Node.js", "color": "#84bf08" },
@@ -125,20 +125,6 @@
             { "name": ".NET", "color": "#512bd4" },
             { "name": "Electron", "color": "#a3ebfc" },
             { "name": "React", "color": "#61DAFB" }
-        ]
-    },
-    {
-        "id": "mapset-verifier-taiko-plugin",
-        "name": "MVTaikoChecks",
-        "description": "A set of osu!taiko-specific Mapset Verifier checks",
-        "detailedDescription": "MVTaikoChecks is a plugin for [Mapset Verifier](https://github.com/Naxesss/MapsetVerifier) that adds a collection of checks specific to osu!taiko beatmapsets.\nThis plugin is widely used by the [osu!taiko](https://osu.ppy.sh/wiki/en/Game_mode/osu!taiko) community to ensure that all taiko beatmapsets are up to standard.\nThis plugin has been ported to the official Mapset Verifier project. ",
-        "repo": "https://github.com/Hiviexd/MVTaikoChecks",
-        "status": "Completed",
-        "startDate": "2023-08",
-        "endDate": "2024-05",
-        "stack": [
-            { "name": "C#", "color": "#239120" },
-            { "name": ".NET", "color": "#512bd4" }
         ]
     },
     {
@@ -183,6 +169,53 @@
             "Late return penalty management system with CRUD operations",
             "Dockerized deployment pipeline",
             "CI/CD pipelines for deployment to Kubernetes"
+        ]
+    },
+    {
+        "id": "patient-intake-orchestrator",
+        "name": "Patient Intake Orchestrator",
+        "link": null,
+        "description": "WhatsApp & email medical chatbot with local LLM extraction and a staff dashboard",
+        "detailedDescription": "Node.js intake for WhatsApp and email: local LLM structured extraction, MongoDB workflow state, JWT-protected dashboard, and on-demand PDF/JSON export.",
+        "repo": null,
+        "status": "Completed",
+        "startDate": "2026-04",
+        "endDate": "2026-04",
+        "stack": [
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Express.js", "color": "#fbfbfb" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "Playwright", "color": "#2EAD33" },
+            { "name": "Ollama", "color": "#080808" },
+            { "name": "Resend", "color": "#080808" },
+            { "name": "Vitest", "color": "#6E9F18" },
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "Tailwind CSS", "color": "#06b6d4" }
+        ],
+        "highlights": [
+            "Unified intake orchestrator for WhatsApp (Meta webhooks) and inbound email via Resend",
+            "Conversational chatbot coordinates multi-turn patient threads on WhatsApp and email with persistent context",
+            "Hybrid message classification (rules + LLM) with persisted workflow state for clinical resumability",
+            "Structured extraction with local Ollama and schema-validated outputs",
+            "JWT-protected dashboard API with patient listing and on-demand PDF/JSON export",
+            "Docker Compose stack (Mongo, API, Nginx + React client) for local and deployment workflows",
+            "Unit and real-infrastructure integration tests (MongoDB + Ollama)"
+        ]
+    },
+    {
+        "id": "mapset-verifier-taiko-plugin",
+        "name": "MVTaikoChecks",
+        "description": "A set of osu!taiko-specific Mapset Verifier checks",
+        "detailedDescription": "MVTaikoChecks is a plugin for [Mapset Verifier](https://github.com/Naxesss/MapsetVerifier) that adds a collection of checks specific to osu!taiko beatmapsets.\nThis plugin is widely used by the [osu!taiko](https://osu.ppy.sh/wiki/en/Game_mode/osu!taiko) community to ensure that all taiko beatmapsets are up to standard.\nThis plugin has been ported to the official Mapset Verifier project. ",
+        "repo": "https://github.com/Hiviexd/MVTaikoChecks",
+        "status": "Completed",
+        "startDate": "2023-08",
+        "endDate": "2024-05",
+        "stack": [
+            { "name": "C#", "color": "#239120" },
+            { "name": ".NET", "color": "#512bd4" }
         ]
     },
     {
