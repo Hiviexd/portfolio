@@ -56,3 +56,43 @@ export function useTheme() {
     }
     return context;
 }
+
+/** Resolved appearance: explicit `light` / `dark`, or OS preference when `theme` is `system`. */
+export function useResolvedTheme(): "light" | "dark" {
+    const { theme } = useTheme();
+
+    const getSnapshot = (): "light" | "dark" => {
+        if (typeof document === "undefined") {
+            return "dark";
+        }
+        if (theme === "light" || theme === "dark") {
+            return theme;
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    };
+
+    return React.useSyncExternalStore(
+        (onStoreChange) => {
+            if (typeof window === "undefined") {
+                return () => {};
+            }
+            const root = document.documentElement;
+            const observer = new MutationObserver(() => onStoreChange());
+            observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+            if (theme !== "system") {
+                return () => observer.disconnect();
+            }
+
+            const mq = window.matchMedia("(prefers-color-scheme: dark)");
+            const onMq = () => onStoreChange();
+            mq.addEventListener("change", onMq);
+            return () => {
+                observer.disconnect();
+                mq.removeEventListener("change", onMq);
+            };
+        },
+        getSnapshot,
+        getSnapshot,
+    );
+}

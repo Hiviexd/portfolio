@@ -4,7 +4,7 @@ import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { BackgroundBeamsWithCollision } from "@/components/ui/shadcn-io/background-beams-with-collision";
+import { Particles } from "@/components/ui/shadcn-io/particles";
 
 export const Route = createRootRoute({
     head: () => ({
@@ -100,7 +100,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                     style={{ opacity: isHydrated ? 1 : 0 }}
                 >
                     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-                        <BackgroundBeamsWithCollision className="bg-background">{children}</BackgroundBeamsWithCollision>
+                        <Particles className="bg-background">{children}</Particles>
                     </ThemeProvider>
                 </div>
                 <Scripts />
