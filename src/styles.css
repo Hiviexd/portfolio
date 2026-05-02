@@ -125,6 +125,10 @@
     }
     html {
         @apply font-sans;
+        /* Keeps layout width stable when body scroll is locked (modals / expandable cards) */
+        scrollbar-gutter: stable;
+        /* Avoids transient horizontal overflow during layout / FLIP animations */
+        overflow-x: clip;
     }
 }
 
