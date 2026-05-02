@@ -123,6 +123,9 @@ importers:
       jsdom:
         specifier: ^27.0.0
         version: 27.4.0
+      portless:
+        specifier: ^0.12.0
+        version: 0.12.0
       prettier:
         specifier: ^3.5.3
         version: 3.7.4
@@ -3358,6 +3361,12 @@ packages:
   pkce-challenge@5.0.1:
     resolution: {integrity: sha512-wQ0b/W4Fr01qtpHlqSqspcj3EhBvimsdh0KlHhH8HRZnMsEa0ea2fTULOXOS9ccQr3om+GcGRk4e+isrZWV8qQ==}
     engines: {node: '>=16.20.0'}
+
+  portless@0.12.0:
+    resolution: {integrity: sha512-zE8EYJ5xIEtKEBu1wnD+FavOE90/GNxRixF4Mu2hxMvDuVx1ftUbA6VbjbxI9sP9LUt0L26l6OiENGo4EFtLfw==}
+    engines: {node: '>=20'}
+    os: [darwin, linux, win32]
+    hasBin: true
 
   postcss-selector-parser@7.1.1:
     resolution: {integrity: sha512-orRsuYpJVw8LdAwqqLykBj9ecS5/cRHlI5+nvTo8LcCKmzDmqVORXtOIYEEQuL9D4BxtA1lm5isAqzQZCoQ6Eg==}
@@ -7692,6 +7701,8 @@ snapshots:
   picomatch@4.0.3: {}
 
   pkce-challenge@5.0.1: {}
+
+  portless@0.12.0: {}
 
   postcss-selector-parser@7.1.1:
     dependencies:
