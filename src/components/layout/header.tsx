@@ -13,6 +13,7 @@ export function Header() {
                         <span className="font-semibold text-lg transition-all">
                             Hi, I'm
                             <FlipWords
+                                className="px-1"
                                 words={["Hivie", "Rayen Attia"]}
                                 duration={3000}
                                 letterDelay={0.05}

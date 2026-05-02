@@ -123,10 +123,10 @@
 .markdown-text blockquote {
     margin: 1.25rem 0;
     padding: 1rem 1.25rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     border-left-width: 3px;
-    border-left-color: hsl(220 55% 52%);
+    border-left-color: hsl(220 10% 15%);
     background: hsl(220 12% 94%);
     color: var(--foreground);
     font-style: normal;
@@ -135,7 +135,7 @@
 
 .dark .markdown-text blockquote {
     background: hsl(220 10% 15%);
-    border-left-color: hsl(220 55% 58%);
+    border-left-color: hsl(220 12% 94%);
 }
 
 .markdown-text blockquote p:last-child {

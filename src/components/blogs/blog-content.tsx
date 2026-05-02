@@ -51,7 +51,7 @@ export function BlogContent({ blog, onBack }: BlogContentProps) {
             </div>
 
             {/* Content */}
-            <div className="prose prose-sm dark:prose-invert max-w-none">
+            <div className="prose prose-sm dark:prose-invert max-w-none mt-10">
                 <Markdown>{blog.content}</Markdown>
             </div>
         </div>
