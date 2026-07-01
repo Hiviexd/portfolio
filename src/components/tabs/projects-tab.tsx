@@ -2,7 +2,10 @@ import { ProjectCard } from "@/components/projects/project-card";
 import { ProjectDetails } from "@/components/projects/project-details";
 import { useQueryState } from "nuqs";
 import projectsData from "../../../data/projects.json";
+import socialsData from "../../../data/socials.json";
 import type { Project } from "@/types";
+
+const githubHref = (socialsData as { name: string; href: string }[]).find((link) => link.name === "GitHub")?.href;
 
 export function ProjectsTab() {
     const projects = projectsData as Project[];
@@ -30,6 +33,20 @@ export function ProjectsTab() {
                     <ProjectCard key={project.id} project={project} onClick={() => handleProjectClick(project)} />
                 ))}
             </div>
+
+            {githubHref && (
+                <p className="text-center text-sm text-muted-foreground">
+                    and many more on my{" "}
+                    <a
+                        href={githubHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground text-sm underline-offset-4 link-fancy"
+                    >
+                        GitHub
+                    </a>
+                </p>
+            )}
 
             <ProjectDetails project={selectedProject} onClose={handleClose} />
         </div>
