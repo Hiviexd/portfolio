@@ -12,6 +12,8 @@
                 { "name": "Next.js", "logo": "nextjs.svg" },
                 { "name": "Vue.js", "logo": "vue.svg" },
                 { "name": "Tailwind CSS", "logo": "tailwind.svg" },
+                { "name": "TanStack Query", "logo": "tanstack.png" },
+                { "name": "React Router", "logo": "reactrouter.svg" },
                 { "name": "Shadcn/ui", "logo": "shadcn", "libraryIcon": true }
             ]
         },
@@ -20,13 +22,16 @@
             "skills": [
                 { "name": "Node.js", "logo": "nodejs.svg", "note": "5+ years", "favorite": true },
                 { "name": "Express.js", "logo": "express.svg", "favorite": true },
+                { "name": "Hono", "logo": "hono.svg" },
+                { "name": ".NET", "logo": "dotnet.svg" },
                 { "name": "MongoDB", "logo": "mongodb.svg", "favorite": true },
                 { "name": "Bun", "logo": "bun.svg" },
                 { "name": "NestJS", "logo": "nestjs.svg" },
                 { "name": "Spring", "logo": "spring.svg" },
                 { "name": "MySQL", "logo": "mysql.svg" },
                 { "name": "Prisma", "logo": "prisma.svg" },
-                { "name": "Redis", "logo": "redis.svg" }
+                { "name": "Redis", "logo": "redis.svg" },
+                { "name": "RabbitMQ", "logo": "rabbitmq.svg" }
             ]
         },
         {
@@ -36,6 +41,9 @@
                 { "name": "GitHub Actions", "logo": "github", "favorite": true, "libraryIcon": true },
                 { "name": "Cloudflare", "logo": "cloudflare.svg" },
                 { "name": "Docker", "logo": "docker.svg" },
+                { "name": "Kubernetes", "logo": "kubernetes.svg" },
+                { "name": "Jenkins", "logo": "jenkins.svg" },
+                { "name": "Playwright", "logo": "playwright.svg" },
                 { "name": "OVHCloud", "logo": "ovh.svg" },
                 { "name": "Vercel", "logo": "vercel.svg" },
                 { "name": "Linux", "logo": "linux.svg" },
@@ -49,6 +57,7 @@
                 { "name": "Figma", "logo": "figma.svg", "note": "Design handoff" },
                 { "name": "Java", "logo": "java.svg", "note": "Mobile/Backend" },
                 { "name": "React Native", "logo": "react.svg", "note": "Mobile" },
+                { "name": "Electron", "logo": "electron.svg", "note": "Desktop" },
                 { "name": "C", "logo": "c.svg" },
                 { "name": "C#", "logo": "csharp.svg" },
                 { "name": "Python", "logo": "python.svg" },

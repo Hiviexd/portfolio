@@ -90,6 +90,42 @@
         ]
     },
     {
+        "id": "glybette",
+        "name": "Glybette",
+        "description": "AI-powered career platform for students and graduates",
+        "detailedDescription": "Glybette is an intelligent all-in-one career platform that helps students and graduates discover job and internship opportunities, build portfolios and CVs, and prepare for interviews.\n\nIt aggregates multi-source opportunities, provides AI-powered matching and profiling, and includes tools for cover letters and mock interviews. Built as my end-of-studies project at Update IT & Training (Polytechnique Sousse).",
+        "link": "https://glybette.com/",
+        "repo": null,
+        "status": "Completed",
+        "startDate": "2026-02",
+        "endDate": "2026-07",
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "Tailwind CSS", "color": "#06b6d4" },
+            { "name": "Hono", "color": "#E36002" },
+            { "name": "Node.js", "color": "#84bf08" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "RabbitMQ", "color": "#FF6600" },
+            { "name": "Redis", "color": "#DC382D" },
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "Jenkins", "color": "#d13e38" },
+            { "name": "FastAPI", "color": "#009688" },
+            { "name": "Playwright", "color": "#2EAD33" },
+            { "name": "Python", "color": "#3776AB" },
+            { "name": "Ollama", "color": "#080808" }
+        ],
+        "highlights": [
+            "Microservices architecture behind an API gateway (users, jobs, CV, portfolio, projects, scraping, AI, notifications)",
+            "AI-powered opportunity matching, CV enhancement, cover letter support, and mock interviews",
+            "Multi-source job and internship aggregation via a Python scraping service",
+            "Portfolio builder with public subdomain pages",
+            "Event-driven communication with RabbitMQ across services",
+            "pnpm monorepo with Docker Compose and Jenkins CI/CD deployment"
+        ]
+    },
+    {
         "id": "loved-cli",
         "name": "Project Loved CLI",
         "description": "A command-line tool for managing Project Loved operations",
@@ -115,16 +151,32 @@
         "id": "mapset-verifier",
         "name": "Mapset Verifier",
         "description": "The #1 osu! modding tool",
-        "detailedDescription": "Mapset Verifier (MV) is a desktop app which tests quantifyable issues in [beatmapsets](https://osu.ppy.sh/help/wiki/Beatmaps) from [osu!](https://en.wikipedia.org/wiki/Osu!), such as unsnapped objects and unused files. Many of these issues would otherwise disqualify the map from being [ranked](https://osu.ppy.sh/help/wiki/Beatmap_ranking_procedure#ranked). Although mainly aimed at [Beatmap Nominators](https://osu.ppy.sh/help/wiki/Beatmap%20Nominators), this can also be used by mapset creators and reviewers to speed up [the ranking process](https://osu.ppy.sh/help/wiki/Beatmap_ranking_procedure).",
+        "detailedDescription": "Mapset Verifier (MV) is a cross-platform desktop app that automatically tests quantifiable issues in [beatmapsets](https://osu.ppy.sh/help/wiki/Beatmaps) from [osu!](https://en.wikipedia.org/wiki/Osu!) — unsnapped objects, unused files, metadata problems, and more. It is used daily by [Beatmap Nominators](https://osu.ppy.sh/help/wiki/Beatmap%20Nominators), mappers, and reviewers to catch ranking issues before they reach qualification.\n\n**MV 2.0** is a ground-up rewrite with a React + TypeScript frontend, a .NET 9 backend, and 100+ built-in checks for all game modes. As **co-maintainer** and contributor, I played a central role in the rewrite by porting [MVTaikoChecks](https://github.com/Hiviexd/MVTaikoChecks) into core, building key frontend features, and authoring checks across timing, metadata, and mode-specific rules.",
+        "link": "https://mv.mappersguild.com",
         "repo": "https://github.com/Naxesss/MapsetVerifier",
         "status": "Maintainer",
         "startDate": "2025-11",
         "endDate": null,
         "stack": [
             { "name": "C#", "color": "#239120" },
-            { "name": ".NET", "color": "#512bd4" },
+            { "name": ".NET 9", "color": "#512bd4" },
             { "name": "Electron", "color": "#a3ebfc" },
-            { "name": "React", "color": "#61DAFB" }
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "Mantine", "color": "#339af0" },
+            { "name": "SignalR", "color": "#512bd4" },
+            { "name": "GitHub Actions", "color": "#24292E" }
+        ],
+        "highlights": [
+            "Co-maintainer and contributor to the MV 2.0 ground-up rewrite",
+            "Ported MVTaikoChecks into the main app; all mode-specific checks are now built-in",
+            "100+ automated checks covering osu!, taiko, catch, and mania beatmapsets",
+            "Built core frontend features: interactive objects timeline, hitsound analysis, and checks UI",
+            "Overhauled Overview with difficulty/SR charts and in-app audio spectrogram analysis",
+            "Cross-platform Electron desktop app (Windows, Linux, macOS) with auto-updates",
+            "Experimental osu!lazer integration for beatmap detection and up-to-date star ratings",
+            "Custom check plugin system for extending verification with .NET 9 DLLs"
         ]
     },
     {

@@ -16,6 +16,36 @@
         ]
     },
     {
+        "id": "exp-glybette",
+        "role": "Project Lead & Software Developer",
+        "company": "Glybette (Update IT & Training)",
+        "location": "Sousse, Tunisia",
+        "type": "End-of-Studies Project",
+        "startDate": "Feb 2026",
+        "endDate": "Jul 2026",
+        "description": "Built Glybette, an AI-powered career platform for students and graduates to discover opportunities, build portfolios and CVs, and prepare for interviews.",
+        "responsibilities": [
+            "Implemented multi-source job and internship aggregation via a Python scraping service (FastAPI, Playwright).",
+            "Architected a microservices backend (Hono, Node.js, MongoDB, RabbitMQ) behind an API gateway, with an AI service for matching, CV enhancement, and mock interviews.",
+            "Developed the React/TypeScript client (Vite, TanStack Query) in a pnpm monorepo; deployed with Docker and a Jenkins CI/CD pipeline.",
+            "Shipped on an Agile/SCRUM cadence with sprints, stand-ups, and retrospectives."
+        ],
+        "stack": [
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "Tailwind CSS", "color": "#06b6d4" },
+            { "name": "Hono", "color": "#E36002" },
+            { "name": "Node.js", "color": "#84bf08" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "RabbitMQ", "color": "#FF6600" },
+            { "name": "Python", "color": "#3776AB" },
+            { "name": "Ollama", "color": "#080808" },
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "Jenkins", "color": "#d13e38" }
+        ]
+    },
+    {
         "id": "exp-2",
         "role": "Full-stack Developer",
         "company": "Mobelite",
