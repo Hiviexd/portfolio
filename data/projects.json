@@ -32,6 +32,38 @@
         ]
     },
     {
+        "id": "guessu",
+        "name": "guessu!",
+        "description": "Daily Wordle-like osu! player guessing game with competitive leaderboards",
+        "detailedDescription": "guessu! is a Wordle-style daily game where you guess the osu! player of the day from multi-attribute clues (country, ranks, groups, badges, and more). Guests play entirely in the browser; logged-in players get server-owned games, streaks, and rankings, plus random practice and shareable custom rooms.",
+        "link": "https://guessu.hivie.tn",
+        "status": "Active",
+        "startDate": "2026-07",
+        "endDate": null,
+        "stack": [
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TanStack Start", "color": "#FF4154" },
+            { "name": "NestJS", "color": "#E0234E" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "Redis", "color": "#DC382D" },
+            { "name": "Tailwind CSS", "color": "#06b6d4" },
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "GitHub Actions", "color": "#24292E" }
+        ],
+        "highlights": [
+            "Domain-driven pnpm monorepo: pure game logic shared by client and API; Nest API and a dedicated scheduler microservice stay thin over a shared domain package",
+            "Idempotent UTC daily puzzle engine: Queue promote/archive with Redis lock, versioned force-skip, and freeze/recover when the queue empties",
+            "Multi-attribute compare with log-distance closeness scoring and deliberate rank/follower rounding so clues stay fair",
+            "Cache-through player resolution (Redis → Mongo → osu! API) with scheduled stale snapshot refresh",
+            "Hybrid leaderboards: Mongo for correctness on today's board, Redis sorted sets for global/streak/random with nightly reconcile",
+            "Trust-split guest vs auth: Guests never poison leaderboards; logged-in games are server-authored with no guest→account merge",
+            "Three play modes with hard boundaries: daily (streaks + histograms), random (eligibility rules + separate LB), and shareable custom rooms",
+            "Custom migration framework with typed BaseMigration classes, confirm-before-run CLI, and one-off data backfills/indexing",
+            "Production Docker/nginx gateway with GHCR images, CI typecheck/test/build, and VPS deploy via GitHub Actions"
+        ]
+    },
+    {
         "id": "axerbot",
         "name": "AxerBot",
         "description": "General-purpose Discord bot with osu! features related to mapping & modding",
