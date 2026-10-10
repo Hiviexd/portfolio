@@ -10,8 +10,8 @@
         "startDate": "2024-11",
         "endDate": null,
         "stack": [
-            { "name": "React", "color": "#61DAFB" },
             { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "React", "color": "#61DAFB" },
             { "name": "Express.js", "color": "#fbfbfb" },
             { "name": "MongoDB", "color": "#08ee69" },
             { "name": "Sass", "color": "#cc6699" },
@@ -32,14 +32,44 @@
         ]
     },
     {
+        "id": "osumod",
+        "name": "osumod",
+        "description": "All-in-one modding queues for osu! Beatmap Nominators and modders",
+        "detailedDescription": "osumod is a web app where mappers find open queues, submit beatmaps, and track request status, while queue owners (Beatmap Nominators or regular modders) triage incoming maps with filters, priorities, custom forms, and Discord or in-app notifications.\n\nThis is a ground-up rewrite and successor to [cory2067/osumod](https://github.com/cory2067/osumod), rebuilt with searchable queues, follow notifications, Discord webhooks, and BN-aware workflows while keeping the classic one-queue-per-user model.",
+        "link": "https://osumod.com",
+        "repo": null,
+        "status": "Active",
+        "startDate": "2026-09",
+        "endDate": null,
+        "stack": [
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TanStack Start", "color": "#FF4154" },
+            { "name": "NestJS", "color": "#E0234E" },
+            { "name": "MongoDB", "color": "#08ee69" },
+            { "name": "RabbitMQ", "color": "#FF6600" },
+            { "name": "Docker", "color": "#2496ED" },
+            { "name": "GitHub Actions", "color": "#24292E" }
+        ],
+        "highlights": [
+            "pnpm monorepo: TanStack Start client, NestJS API, plus dedicated notification and scheduler workers over shared domain and db packages",
+            "osu! OAuth identity: NAT, BN, and probation roles plus game modes drive BN vs modder queues and BN-only statuses",
+            "Request stepper with map URL/ID parse, live preview, custom questions, and queue limits (cooldown, caps, BPM/length/stars, and more)",
+            "Owner triage: statuses including nominated and ranked, priority, bulk actions, CSV export, and coordination features",
+            "Event-driven notifications over RabbitMQ: in-app via Socket.io plus encrypted Discord webhooks",
+            "UI translations in 14 locales with community contributor credits",
+            "Legacy data migrator plus production Docker/nginx/GHCR deploy via GitHub Actions"
+        ]
+    },
+    {
         "id": "guessu",
         "name": "guessu!",
         "description": "Daily Wordle-like osu! player guessing game with competitive leaderboards",
         "detailedDescription": "guessu! is a Wordle-style daily game where you guess the osu! player of the day from multi-attribute clues (country, ranks, groups, badges, and more). Guests play entirely in the browser; logged-in players get server-owned games, streaks, and rankings, plus random practice and shareable custom rooms.",
         "link": "https://guessu.hivie.tn",
-        "status": "Active",
+        "status": "Completed",
         "startDate": "2026-07",
-        "endDate": null,
+        "endDate": "2026-10",
         "stack": [
             { "name": "TypeScript", "color": "#3178C6" },
             { "name": "React", "color": "#61DAFB" },
@@ -61,6 +91,38 @@
             "Three play modes with hard boundaries: daily (streaks + histograms), random (eligibility rules + separate LB), and shareable custom rooms",
             "Custom migration framework with typed BaseMigration classes, confirm-before-run CLI, and one-off data backfills/indexing",
             "Production Docker/nginx gateway with GHCR images, CI typecheck/test/build, and VPS deploy via GitHub Actions"
+        ]
+    },
+    {
+        "id": "mapset-verifier",
+        "name": "Mapset Verifier",
+        "description": "The #1 osu! modding tool",
+        "detailedDescription": "Mapset Verifier (MV) is a cross-platform desktop app that automatically tests quantifiable issues in [beatmapsets](https://osu.ppy.sh/help/wiki/Beatmaps) from [osu!](https://en.wikipedia.org/wiki/Osu!) — unsnapped objects, unused files, metadata problems, and more. It is used daily by [Beatmap Nominators](https://osu.ppy.sh/help/wiki/Beatmap%20Nominators), mappers, and reviewers to catch ranking issues before they reach qualification.\n\n**MV 2.0** is a ground-up rewrite with a React + TypeScript frontend, a .NET 9 backend, and 100+ built-in checks for all game modes. As **co-maintainer** and contributor, I played a central role in the rewrite by porting [MVTaikoChecks](https://github.com/Hiviexd/MVTaikoChecks) into core, building key frontend features, and authoring checks across timing, metadata, and mode-specific rules.",
+        "link": "https://mv.mappersguild.com",
+        "repo": "https://github.com/Naxesss/MapsetVerifier",
+        "status": "Maintainer",
+        "startDate": "2025-11",
+        "endDate": null,
+        "stack": [
+            { "name": "C#", "color": "#239120" },
+            { "name": ".NET 10", "color": "#512bd4" },
+            { "name": "Electron", "color": "#a3ebfc" },
+            { "name": "React", "color": "#61DAFB" },
+            { "name": "TypeScript", "color": "#3178C6" },
+            { "name": "Vite", "color": "#9c36d7" },
+            { "name": "Mantine", "color": "#339af0" },
+            { "name": "SignalR", "color": "#512bd4" },
+            { "name": "GitHub Actions", "color": "#24292E" }
+        ],
+        "highlights": [
+            "Co-maintainer and contributor to the MV 2.0 ground-up rewrite",
+            "Ported MVTaikoChecks into the main app; all mode-specific checks are now built-in",
+            "100+ automated checks covering osu!, taiko, catch, and mania beatmapsets",
+            "Built core frontend features: interactive objects timeline, hitsound analysis, and checks UI",
+            "Overhauled Overview with difficulty/SR charts and in-app audio spectrogram analysis",
+            "Cross-platform Electron desktop app (Windows, Linux, macOS) with delta auto-updates",
+            "osu!lazer integration for beatmap detection and up-to-date star ratings",
+            "Custom plugin system for extending features with .NET 10 DLLs"
         ]
     },
     {
@@ -177,38 +239,6 @@
             "Extensive options for customizing outputs",
             "Object-oriented approach (inheritance, polymorphism, design patterns)",
             "Robust type safety"
-        ]
-    },
-    {
-        "id": "mapset-verifier",
-        "name": "Mapset Verifier",
-        "description": "The #1 osu! modding tool",
-        "detailedDescription": "Mapset Verifier (MV) is a cross-platform desktop app that automatically tests quantifiable issues in [beatmapsets](https://osu.ppy.sh/help/wiki/Beatmaps) from [osu!](https://en.wikipedia.org/wiki/Osu!) — unsnapped objects, unused files, metadata problems, and more. It is used daily by [Beatmap Nominators](https://osu.ppy.sh/help/wiki/Beatmap%20Nominators), mappers, and reviewers to catch ranking issues before they reach qualification.\n\n**MV 2.0** is a ground-up rewrite with a React + TypeScript frontend, a .NET 9 backend, and 100+ built-in checks for all game modes. As **co-maintainer** and contributor, I played a central role in the rewrite by porting [MVTaikoChecks](https://github.com/Hiviexd/MVTaikoChecks) into core, building key frontend features, and authoring checks across timing, metadata, and mode-specific rules.",
-        "link": "https://mv.mappersguild.com",
-        "repo": "https://github.com/Naxesss/MapsetVerifier",
-        "status": "Maintainer",
-        "startDate": "2025-11",
-        "endDate": null,
-        "stack": [
-            { "name": "C#", "color": "#239120" },
-            { "name": ".NET 9", "color": "#512bd4" },
-            { "name": "Electron", "color": "#a3ebfc" },
-            { "name": "React", "color": "#61DAFB" },
-            { "name": "TypeScript", "color": "#3178C6" },
-            { "name": "Vite", "color": "#9c36d7" },
-            { "name": "Mantine", "color": "#339af0" },
-            { "name": "SignalR", "color": "#512bd4" },
-            { "name": "GitHub Actions", "color": "#24292E" }
-        ],
-        "highlights": [
-            "Co-maintainer and contributor to the MV 2.0 ground-up rewrite",
-            "Ported MVTaikoChecks into the main app; all mode-specific checks are now built-in",
-            "100+ automated checks covering osu!, taiko, catch, and mania beatmapsets",
-            "Built core frontend features: interactive objects timeline, hitsound analysis, and checks UI",
-            "Overhauled Overview with difficulty/SR charts and in-app audio spectrogram analysis",
-            "Cross-platform Electron desktop app (Windows, Linux, macOS) with auto-updates",
-            "Experimental osu!lazer integration for beatmap detection and up-to-date star ratings",
-            "Custom check plugin system for extending verification with .NET 9 DLLs"
         ]
     },
     {
