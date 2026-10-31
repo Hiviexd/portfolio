@@ -36,9 +36,8 @@ export function getRandomEmptyCell(tiles: TileData[]): { row: number; col: numbe
 }
 
 export function addRandomTile(tiles: TileData[]): TileData[] {
-    // Remove any tiles that were merging (cleanup)
-    const cleanedTiles = tiles.filter((t) => !t.mergingInto);
-    const cell = getRandomEmptyCell(cleanedTiles);
+    // Merging tiles are kept so they can finish sliding; getRandomEmptyCell ignores them
+    const cell = getRandomEmptyCell(tiles);
     if (cell) {
         const newTile: TileData = {
             id: getNextTileId(),
@@ -47,9 +46,9 @@ export function addRandomTile(tiles: TileData[]): TileData[] {
             col: cell.col,
             isNew: true,
         };
-        return [...cleanedTiles, newTile];
+        return [...tiles, newTile];
     }
-    return cleanedTiles;
+    return tiles;
 }
 
 export function initializeTiles(): TileData[] {
@@ -141,25 +140,28 @@ export function moveTiles(tiles: TileData[], direction: Direction, currentHighes
                 mergedPositions.add(posKey);
                 const mergedValue = (tile.value * 2) as TileValue;
                 const isMilestone = mergedValue > currentHighest;
-
-                // Update the target tile to be the merged result
-                targetTile.value = mergedValue;
-                targetTile.isMerged = true;
-                targetTile.isMilestone = isMilestone;
+                const target = { row: nextRow, col: nextCol };
 
                 totalScore += mergedValue;
                 mergedValues.push(mergedValue);
                 moved = true;
 
-                // Add this tile as sliding into the merge position
-                mergingTiles.push({
-                    ...tile,
-                    prevRow: startRow,
-                    prevCol: startCol,
-                    row: nextRow,
-                    col: nextCol,
-                    mergingInto: { row: nextRow, col: nextCol },
-                });
+                // Both source tiles slide into the target cell and are removed on the next move
+                resultTiles.splice(resultTiles.indexOf(targetTile), 1);
+                mergingTiles.push(
+                    { ...targetTile, mergingInto: target },
+                    { ...tile, prevRow: startRow, prevCol: startCol, ...target, mergingInto: target },
+                );
+
+                const mergedTile: TileData = {
+                    id: getNextTileId(),
+                    value: mergedValue,
+                    ...target,
+                    isMerged: true,
+                    isMilestone,
+                };
+                newGrid[nextRow][nextCol] = mergedTile;
+                resultTiles.push(mergedTile);
 
                 // Don't add this tile to result (it's consumed)
                 row = -1; // Mark as merged
