@@ -1,10 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { HeadContent, Scripts, createRootRoute, Outlet } from "@tanstack/react-router";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Particles } from "@/components/ui/shadcn-io/particles";
+
+// With a relative base (BASE=./ in the Pages build), Vite resolves `?url` imports to
+// "./assets/x.css" on the server but to an absolute "http://host/assets/x.css" in the browser.
+// That href mismatch breaks hydration, React regenerates <html>, and the theme class is lost
+// (a light flash). Normalize to the same string on both sides.
+const appCssHref = appCss.startsWith("/") ? appCss : appCss.replace(/^.*?assets\//, "./assets/");
 
 export const Route = createRootRoute({
     head: () => ({
@@ -52,7 +58,7 @@ export const Route = createRootRoute({
         links: [
             {
                 rel: "stylesheet",
-                href: appCss,
+                href: appCssHref,
             },
         ],
     }),
@@ -91,8 +97,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 var resolvedTheme = theme === 'system' ? systemTheme : theme;
                 var root = document.documentElement;
                 root.classList.add(resolvedTheme);
-                root.style.colorScheme = resolvedTheme;
-              })();
+                root.style.colorScheme = resolvedTheme;              })();
             `,
                     }}
                 />
@@ -109,9 +114,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                     className="transition-opacity duration-500 ease-out"
                     style={{ opacity: isHydrated ? 1 : 0 }}
                 >
-                    <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-                        <Particles className="bg-background">{children}</Particles>
-                    </ThemeProvider>
+                    {/* Boundary so a hydration mismatch (e.g. deep links like ?t=blogs on the
+                        prerendered page) only re-renders the app, not <html>, which keeps the theme class. */}
+                    <Suspense>
+                        <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+                            <Particles className="bg-background">{children}</Particles>
+                        </ThemeProvider>
+                    </Suspense>
                 </div>
                 <Scripts />
             </body>
