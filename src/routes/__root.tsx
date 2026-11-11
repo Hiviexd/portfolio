@@ -80,19 +80,29 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
-                <HeadContent />
+                {/* Runs before any stylesheet so the theme class is set before first paint. */}
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
               (function() {
-                const theme = localStorage.getItem('portfolio-theme') || 'system';
-                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                const resolvedTheme = theme === 'system' ? systemTheme : theme;
-                document.documentElement.classList.add(resolvedTheme);
+                var theme = 'system';
+                try { theme = localStorage.getItem('portfolio-theme') || 'system'; } catch (e) {}
+                var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                var resolvedTheme = theme === 'system' ? systemTheme : theme;
+                var root = document.documentElement;
+                root.classList.add(resolvedTheme);
+                root.style.colorScheme = resolvedTheme;
               })();
             `,
                     }}
                 />
+                {/* Critical inline background so the page never paints white while styles.css loads. */}
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: `html{background:oklch(0.9249 0 0)}html.dark{background:oklch(0.141 0.005 285.823)}`,
+                    }}
+                />
+                <HeadContent />
             </head>
             <body className="min-h-screen antialiased">
                 <div
