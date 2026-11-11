@@ -173,9 +173,9 @@
         "detailedDescription": "Daily Challenge is a web application for organizing [osu! daily challenges](https://osu.ppy.sh/wiki/en/Gameplay/Daily_challenge), where staff members can create and manage 'weeks' of daily beatmaps.",
         "link": "https://dc.hivie.tn",
         "repo": "https://github.com/Hiviexd/daily-challenge",
-        "status": "Active",
+        "status": "Completed",
         "startDate": "2025-05",
-        "endDate": null,
+        "endDate": "2026-08",
         "stack": [
             { "name": "React", "color": "#61DAFB" },
             { "name": "TypeScript", "color": "#3178C6" },
